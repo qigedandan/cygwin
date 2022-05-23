@@ -1,0 +1,50 @@
+Expat 1.95.8
+------------------------------------------
+
+This is Expat, a C library for parsing XML, written by James Clark.
+Expat is a stream-oriented XML parser.  This means that you register
+handlers with the parser before starting the parse.  These handlers
+are called when the parser discovers the associated structures in the
+document being parsed.  A start tag is an example of the kind of
+structures for which you may register handlers.
+
+------------------------------------------
+
+Note:
+
+An application linking to the static libraries must have the global
+macro XML_STATIC defined.
+
+------------------------------------------
+
+Runtime requirements:
+  cygwin
+
+Build requirements:
+  (basic development packages)
+  autoconf
+  libtool
+
+Canonical homepage:
+  http://www.libexpat.org/
+
+SourceForge project:
+  http://sourceforge.net/projects/expat
+
+Canonical download:
+  http://<mirror>.dl.sourceforge.net/sourceforce/expat/expat-1.95.8.tar.gz
+
+------------------------------------------
+
+Build instructions:
+  unpack expat-1.95.8-2-src.tar.bz2
+    if you use setup to install this src package, it will be
+    unpacked under /usr/src automatically
+  cd /usr/src
+  ./expat-1.95.8-2.sh all
+
+Or use './expat-1.95.8-2.sh prep' to get a patched source directory
+
+------------------------------------------
+
+Cygwin port maintained by: Max Bowsher <maxb1@ukf.net>

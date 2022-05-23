@@ -1,0 +1,8 @@
+2006-10-19  Charles Wilson  <cygwin@cygwin.com>
+
+	* alternatives.c (displayService): Fix null pointer bug
+
+2005-06-25  gettextize  <bug-gnu-gettext@gnu.org>
+
+	* configure.ac (AC_OUTPUT): Add po/Makefile.in.
+

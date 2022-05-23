@@ -1,0 +1,1 @@
+The 2527+1 line is_more_calls or is_switch_statement;

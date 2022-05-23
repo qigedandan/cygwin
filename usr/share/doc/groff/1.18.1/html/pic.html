@@ -1,0 +1,2562 @@
+<!-- Creator     : groff version 1.18.1 -->
+<!-- CreationDate: Mon Dec 16 13:03:08 2002 -->
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta name="Content-Style" content="text/css">
+<title>Making Pictures With GNU PIC</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<h1 align=center>Making Pictures With GNU PIC</h1>
+<a href="#1. Introduction to PIC">1. Introduction to PIC</a><br>
+<a href="#1.1. Why PIC?">1.1. Why PIC?</a><br>
+<a href="#1.2. PIC Versions">1.2. PIC Versions</a><br>
+<a href="#2. Invoking PIC">2. Invoking PIC</a><br>
+<a href="#2.1. PIC Error Messages">2.1. PIC Error Messages</a><br>
+<a href="#3. Basic PIC Concepts">3. Basic PIC Concepts</a><br>
+<a href="#4. Sizes and Spacing">4. Sizes and Spacing</a><br>
+<a href="#4.1. Default Sizes of Objects">4.1. Default Sizes of Objects</a><br>
+<a href="#4.2. Objects Do Not Stretch!">4.2. Objects Do Not Stretch!</a><br>
+<a href="#4.3. Resizing Boxes">4.3. Resizing Boxes</a><br>
+<a href="#4.4. Resizing Other Object Types">4.4. Resizing Other Object Types</a><br>
+<a href="#4.5. The &lsquo;same&rsquo; Keyword">4.5. The &lsquo;same&rsquo; Keyword</a><br>
+<a href="#5. Generalized Lines and Splines">5. Generalized Lines and Splines</a><br>
+<a href="#5.1. Diagonal Lines">5.1. Diagonal Lines</a><br>
+<a href="#5.2. Multi-Segment Line Objects">5.2. Multi-Segment Line Objects</a><br>
+<a href="#5.3. Spline Objects">5.3. Spline Objects</a><br>
+<a href="#6. Decorating Objects">6. Decorating Objects</a><br>
+<a href="#6.1. Dashed Objects">6.1. Dashed Objects</a><br>
+<a href="#6.2. Dotted Objects">6.2. Dotted Objects</a><br>
+<a href="#6.3. Rounding Box Corners">6.3. Rounding Box Corners</a><br>
+<a href="#6.4. Arrowheads">6.4. Arrowheads</a><br>
+<a href="#6.5. Line Thickness">6.5. Line Thickness</a><br>
+<a href="#6.6. Invisible Objects">6.6. Invisible Objects</a><br>
+<a href="#6.7. Filled Objects">6.7. Filled Objects</a><br>
+<a href="#6.8. Colored Objects">6.8. Colored Objects</a><br>
+<a href="#7. More About Text Placement">7. More About Text Placement</a><br>
+<a href="#8. More About Direction Changes">8. More About Direction Changes</a><br>
+<a href="#9. Naming Objects">9. Naming Objects</a><br>
+<a href="#9.1. Naming Objects By Order Of Drawing">9.1. Naming Objects By Order Of Drawing</a><br>
+<a href="#9.2. Naming Objects With Labels">9.2. Naming Objects With Labels</a><br>
+<a href="#10. Describing locations">10. Describing locations</a><br>
+<a href="#10.1. Absolute Coordinates">10.1. Absolute Coordinates</a><br>
+<a href="#10.2. Locations Relative to Objects">10.2. Locations Relative to Objects</a><br>
+<a href="#10.2.1. Locations Relative to Closed Objects">10.2.1. Locations Relative to Closed Objects</a><br>
+<a href="#10.2.2. Locations Relative to Open Objects">10.2.2. Locations Relative to Open Objects</a><br>
+<a href="#10.3. Ways of Composing Positions">10.3. Ways of Composing Positions</a><br>
+<a href="#10.3.1. Vector Sums and Displacements">10.3.1. Vector Sums and Displacements</a><br>
+<a href="#10.3.2. Interpolation Between Positions">10.3.2. Interpolation Between Positions</a><br>
+<a href="#10.3.3. Projections of Points">10.3.3. Projections of Points</a><br>
+<a href="#10.4. Using Locations">10.4. Using Locations</a><br>
+<a href="#10.5. The &lsquo;chop&rsquo; Modifier">10.5. The &lsquo;chop&rsquo; Modifier</a><br>
+<a href="#11. Object Groups">11. Object Groups</a><br>
+<a href="#11.1. Brace Grouping">11.1. Brace Grouping</a><br>
+<a href="#11.2. Block Composites">11.2. Block Composites</a><br>
+<a href="#12. Style Variables">12. Style Variables</a><br>
+<a href="#13. Expressions, Variables, and Assignment">13. Expressions, Variables, and Assignment</a><br>
+<a href="#14. Macros">14. Macros</a><br>
+<a href="#15. Import/Export Commands">15. Import/Export Commands</a><br>
+<a href="#15.1. File and Table Insertion">15.1. File and Table Insertion</a><br>
+<a href="#15.2. Debug Messages">15.2. Debug Messages</a><br>
+<a href="#15.3. Escape to Post-Processor">15.3. Escape to Post-Processor</a><br>
+<a href="#15.4. Executing Shell Commands">15.4. Executing Shell Commands</a><br>
+<a href="#16. Control-flow constructs">16. Control-flow constructs</a><br>
+<a href="#17. Interface To [gt]roff">17. Interface To [gt]roff</a><br>
+<a href="#17.1. Scaling Arguments">17.1. Scaling Arguments</a><br>
+<a href="#17.2. How Scaling is Handled">17.2. How Scaling is Handled</a><br>
+<a href="#18. Interface to TeX">18. Interface to TeX</a><br>
+<a href="#19. Obsolete Commands">19. Obsolete Commands</a><br>
+<a href="#20. Some Larger Examples">20. Some Larger Examples</a><br>
+<a href="#21. PIC Reference">21. PIC Reference</a><br>
+<a href="#21.1. Lexical Items">21.1. Lexical Items</a><br>
+<a href="#21.2. Semi-Formal Grammar">21.2. Semi-Formal Grammar</a><br>
+<a href="#22. History and Acknowledgements">22. History and Acknowledgements</a><br>
+<a href="#23. Bibliography">23. Bibliography</a><br>
+
+<hr>
+
+<p align=center><i>ABSTRACT</i></p>
+
+<p align=center><i>Eric S. Raymond</i><br>
+&lang;<i>esr@snark.thyrsus.com</i>&rang;</p>
+
+<p>The <b>pic</b> language is a <b>troff</b> extension that
+makes it easy to create and alter box-and-arrow diagrams of
+the kind frequently used in technical papers and textbooks.
+This paper is both an introduction to and reference for
+<i>gpic</i>(1), the implementation distributed by the Free
+Software Foundation for use with <i>groff</i>(1).</p>
+<a name="1. Introduction to PIC"></a>
+<h2>1. Introduction to PIC</h2>
+<a name="1.1. Why PIC?"></a>
+<h2>1.1. Why PIC?</h2>
+
+<p>The <b>pic</b> language provides an easy way to write
+procedural box-and-arrow diagrams to be included in
+<b>troff</b> documents. The language is sufficiently
+flexible to be quite useful for state charts, Petri-net
+diagrams, flow charts, simple circuit schematics, jumper
+layouts, and other kinds of illustration involving
+repetitive uses of simple geometric forms and splines.
+Because these descriptions are procedural and object-based,
+they are both compact and easy to modify.</p>
+
+<p>The <i>gpic</i>(1) implementation of <b>pic</b> is
+distributed by the Free Software Foundation for use with
+their <i>groff</i>(1) implementation of <b>troff</b>.
+Because both implementations are widely available in source
+form for free, they are good bets for writing very portable
+documentation.</p>
+<a name="1.2. PIC Versions"></a>
+<h2>1.2. PIC Versions</h2>
+
+<p>The original 1984 pre-<i>ditroff</i>(1) version of
+<b>pic</b> is long obsolete. The rewritten 1991 version is
+still available as part of the Documenter&rsquo;s Work Bench
+module of System V.</p>
+
+<p>Where differences between Documenter&rsquo;s Work Bench
+(1991) <b>pic</b> and GNU <b>pic</b> need to be described,
+original <b>pic</b> is referred to as &ldquo;DWB pic&rdquo;.
+Details on the history of the program are given at the end
+of this document.</p>
+
+<p>In this document, the <i>gpic</i>(1) extensions will be
+marked as such.</p>
+<a name="2. Invoking PIC"></a>
+<h2>2. Invoking PIC</h2>
+
+<p>Every <b>pic</b> description is a little program, which
+gets compiled by <i>pic</i>(1) into <i>gtroff</i>(1) macros.
+Programs that process or display <i>gtroff</i>(1) output
+need not know or care that parts of the image began life as
+<b>pic</b> descriptions.</p>
+
+<p>The <i>pic</i>(1) program tries to translate anything
+between <b>.PS</b> and <b>.PE</b> markers, and passes
+through everything else. The normal definitions of
+<b>.PS</b> and <b>.PE</b> in the <i>ms</i> macro package and
+elsewhere have also the side-effect of centering the
+<b>pic</b> output on the page.</p>
+<a name="2.1. PIC Error Messages"></a>
+<h2>2.1. PIC Error Messages</h2>
+
+<p>If you make a <b>pic</b> syntax error, <i>gpic</i>(1)
+will issue an error message in the standard
+<i>gcc</i>(1)-like syntax. A typical error message looks
+like this,</p>
+<pre>     pic:pic.ms:&lt;nnn&gt;: parse error before &lsquo;&lt;token&gt;&rsquo;
+     pic:pic.ms:&lt;nnn&gt;: giving up on this picture
+
+
+</pre>
+
+<p>where &lang;nnn&rang; is a line number, and
+&lang;token&rang; is a token near (usually just after) the
+error location.</p>
+<a name="3. Basic PIC Concepts"></a>
+<h2>3. Basic PIC Concepts</h2>
+
+<p>Pictures are described procedurally, as collections of
+objects connected by motions. Normally, <b>pic</b> tries to
+string together objects left-to-right in the sequence they
+are described, joining them at visually natural points. Here
+is an example illustrating the flow of data in <b>pic</b>
+processing:</p>
+
+<p align=center><img src="img/pic1.png"></p>
+
+<p align=center>Figure 3-1: Flow of <b>pic</b> data</p>
+
+<p>This was produced from the following <b>pic</b>
+program:</p>
+<pre><small>     .PS
+     ellipse &quot;document&quot;;
+     arrow;
+     box width 0.6 &quot;\fIpic\/\fP(1)&quot;
+     arrow;
+     box width 1.1 &quot;\fIgtbl\/\fP(1) or \fIgeqn\/\fP(1)&quot; &quot;(optional)&quot; dashed;
+     arrow;
+     box width 0.6 &quot;\fIgtroff\/\fP(1)&quot;;
+     arrow;
+     ellipse &quot;PostScript&quot;
+     .PE
+
+
+</small></pre>
+
+<p>This little program illustrates several <b>pic</b>
+basics. Firstly, we see how to invoke three object types;
+ellipses, arrows, and boxes. We see how to declare text
+lines to go within an object (and that text can have font
+changes in it). We see how to change the line style of an
+object from solid to dashed. And we see that a box can be
+made wider than its default size to accommodate more text
+(we&rsquo;ll discuss this facility in detail in the next
+section).</p>
+
+<p>We also get to see <b>pic</b>&rsquo;s simple syntax.
+Statements are ended by newlines or semicolons. String
+quotes are required around all text arguments, whether or
+not they contain spaces. In general, the order of command
+arguments and modifiers like &ldquo;width 1.2&rdquo; or
+&ldquo;dashed&rdquo; doesn&rsquo;t matter, except that the
+order of text arguments is significant.</p>
+
+<p>Here are all but one of the basic <b>pic</b> objects at
+their default sizes:</p>
+
+<p align=center><img src="img/pic2.png"></p>
+
+<p align=center>Figure 3-2: Basic <b>pic</b> objects</p>
+
+<p>The missing simple object type is a <i>spline</i>. There
+is also a way to collect objects into <i>block
+composites</i> which allows you to treat the whole group as
+a single object (resembling a box) for many purposes.
+We&rsquo;ll describe both of these later on.</p>
+
+<p>The box, ellipse, circle, and block composite objects
+are <i>closed</i>; lines, arrows, arcs and splines are
+<i>open</i>. This distinction will often be important in
+explaining command modifiers.</p>
+
+<p>Figure 3-2 was produced by the following <b>pic</b>
+program, which introduces some more basic concepts:</p>
+<pre>     .PS
+     box &quot;box&quot;;
+     move;
+     line &quot;line&quot; &quot;&quot;;
+     move;
+     arrow &quot;arrow&quot; &quot;&quot;;
+     move;
+     circle &quot;circle&quot;;
+     move;
+     ellipse &quot;ellipse&quot;;
+     move;
+     arc; down; move; &quot;arc&quot;
+     .PE
+
+
+</pre>
+
+<p>The first thing to notice is the <i>move</i> command,
+which moves a default distance (1/2 inch) in the current
+movement direction.</p>
+
+<p>Secondly, see how we can also decorate lines and arrows
+with text. The line and arrow commands each take two
+arguments here, specifying text to go above and below the
+object. If you wonder why one argument would not do,
+contemplate the output of <b>arrow &quot;ow!&quot;</b>:</p>
+
+<p align=center><img src="img/pic3.png"></p>
+
+<p align=center>Figure 3-3: Text centered on an arrow</p>
+
+<p>When a command takes one text string, <b>pic</b> tries
+to place it at the object&rsquo;s geometric center. As you
+add more strings, <b>pic</b> treats them as a vertical block
+to be centered. The program</p>
+<pre>     line &quot;1&quot;;
+     line &quot;1&quot; &quot;2&quot;;
+     line &quot;1&quot; &quot;2&quot; &quot;3&quot;;
+     line &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot;;
+     line &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; &quot;5&quot;;
+
+
+</pre>
+
+<p>for example, gives you this:</p>
+
+<p align=center><img src="img/pic4.png"></p>
+
+<p align=center>Figure 3-4: Effects of multiple text
+arguments</p>
+
+<p>The last line of Figure 3.2&rsquo;s program,
+&lsquo;<b>arc; down; move; &quot;arc&quot;</b>&rsquo;,
+describing the captioned arc, introduces several new ideas.
+Firstly, we see how to change the direction in which objects
+are joined. Had we written <b>arc; move;
+&quot;arc&quot;</b>, omitting <b>down</b> the caption would
+have been joined to the top of the arc, like this:</p>
+
+<p align=center><img src="img/pic5.png"></p>
+
+<p align=center>Figure 3-5: Result of <b>arc; move;</b></p>
+
+<p>This is because drawing an arc changes the default
+direction to the one its exit end points at. To reinforce
+this point, consider:</p>
+
+<p align=center><img src="img/pic6.png"></p>
+
+<p align=center>Figure 3-6: Result of <b>arc cw;
+move;</b></p>
+
+<p>All we&rsquo;ve done differently here is specify
+&ldquo;cw&rdquo; for a clockwise arc (&ldquo;ccw&rdquo;
+specifies counter-clockwise direction). Observe how it
+changes the default direction to down, rather than up.</p>
+
+<p>Another good way to see this via with the following
+program:</p>
+<pre>     line; arc; arc cw; line
+
+
+</pre>
+
+<p>which yields:</p>
+
+<p align=center><img src="img/pic7.png"></p>
+
+<p align=center>Figure 3-7: Result of <b>line; arc; arc cw;
+line</b></p>
+
+<p>Notice that we did not have to specify &ldquo;up&rdquo;
+for the second arc to be joined to the end of the first.</p>
+
+<p>Finally, observe that a string, alone, is treated as
+text to be surrounded by an invisible box of a size either
+specified by width and height attributes or by the defaults
+<b>textwid</b> and <b>textht</b>. Both are initially zero
+(because we don&rsquo;t know the default font size).</p>
+<a name="4. Sizes and Spacing"></a>
+<h2>4. Sizes and Spacing</h2>
+
+<p>Sizes are specified in inches. If you don&rsquo;t like
+inches, it&rsquo;s possible to set a global style variable
+<b>scale</b> that changes the unit. Setting <b>scale =
+2.54</b> will effectively change the internal unit to
+centimeters (all other size variable values will be scaled
+correspondingly).</p>
+<a name="4.1. Default Sizes of Objects"></a>
+<h2>4.1. Default Sizes of Objects</h2>
+
+<p>Here are the default sizes for <b>pic</b> objects:</p>
+
+<p align=center><img src="img/pic8.png"></p>
+
+<p>The simplest way to think about these defaults is that
+they make the other basic objects fit snugly into a
+default-sized box.</p>
+<a name="4.2. Objects Do Not Stretch!"></a>
+<h2>4.2. Objects Do Not Stretch!</h2>
+
+<p>Text is rendered in the current font with normal troff
+line spacing. Boxes, circles, and ellipses do <i>not</i>
+automatically resize to fit enclosed text. Thus, if you say
+<b>box &quot;this text far too long for a default
+box&quot;</b> you&rsquo;ll get this:</p>
+
+<p align=center><img src="img/pic9.png"></p>
+
+<p align=center>Figure 4-1: Boxes do not automatically
+resize</p>
+
+<p>which is probably not the effect you want.</p>
+<a name="4.3. Resizing Boxes"></a>
+<h2>4.3. Resizing Boxes</h2>
+
+<p>To change the box size, you can specify a box width with
+the &ldquo;width&rdquo; modifier:</p>
+
+<p align=center><img src="img/pic10.png"></p>
+
+<p align=center>Figure 4-2: Result of <b>box width
+3</b></p>
+
+<p>This modifier takes a dimension in inches. There is also
+a &ldquo;height&rdquo; modifier that will change a
+box&rsquo;s height. The <b>width</b> keyword may be
+abbreviated to <b>wid</b>; the <b>height</b> keyword to
+<b>ht</b>.</p>
+<a name="4.4. Resizing Other Object Types"></a>
+<h2>4.4. Resizing Other Object Types</h2>
+
+<p>To change the size of a circle, give it a
+<b>rad[ius]</b> or <b>diam[eter]</b> modifier; this changes
+the radius or diameter of the circle, according to the
+numeric argument that follows.</p>
+
+<p align=center><img src="img/pic11.png"></p>
+
+<p align=center>Figure 4-3: Circles with increasing
+radii</p>
+
+<p>The <b>move</b> command can also take a dimension, which
+just tells it how many inches to move in the current
+direction.</p>
+
+<p>Ellipses are sized to fit in the rectangular box defined
+by their axes, and can be resized with <b>width</b> and
+<b>height</b> like boxes.</p>
+
+<p>You can also change the radius of curvature of an arc
+with <b>rad[ius]</b> (which specifies the radius of the
+circle of which the arc is a segment). Larger values yield
+flatter arcs.</p>
+
+<p align=center><img src="img/pic12.png"></p>
+
+<p align=center>Figure 4-4: <b>arc rad</b> with increasing
+radii</p>
+
+<p>Observe that because an arc is defined as a quarter
+circle, increasing the radius also increases the size of the
+arc&rsquo;s bounding box.</p>
+<a name="4.5. The &lsquo;same&rsquo; Keyword"></a>
+<h2>4.5. The &lsquo;same&rsquo; Keyword</h2>
+
+<p>In place of a dimension specification, you can use the
+keyword <b>same</b>. This gives the object the same size as
+the previous one of its type. As an example, the program</p>
+<pre>     .PS
+     box; box wid 1 ht 1; box same; box
+     .PE
+
+
+</pre>
+
+<p>gives you</p>
+
+<p align=center><img src="img/pic13.png"></p>
+
+<p align=center>Figure 4-5: The <b>same</b> keyword</p>
+<a name="5. Generalized Lines and Splines"></a>
+<h2>5. Generalized Lines and Splines</h2>
+<a name="5.1. Diagonal Lines"></a>
+<h2>5.1. Diagonal Lines</h2>
+
+<p>It is possible to specify diagonal lines or arrows by
+adding multiple <b>up</b>, <b>down</b>, <b>left</b>, and
+<b>right</b> modifiers to the line object. Any of these can
+have a multiplier. To understand the effects, think of the
+drawing area as being gridded with standard-sized boxes.</p>
+
+<p align=center><img src="img/pic14.png"></p>
+
+<p align=center>Figure 5-1: Diagonal arrows (dotted boxes
+show the implied 0.5-inch grid)</p>
+<a name="5.2. Multi-Segment Line Objects"></a>
+<h2>5.2. Multi-Segment Line Objects</h2>
+
+<p>A &ldquo;line&rdquo; or &ldquo;arrow&rdquo; object may
+actually be a path consisting of any number of segments of
+varying lengths and directions. To describe a path, connect
+several line or arrow commands with the keyword
+<b>then</b>.</p>
+
+<p align=center><img src="img/pic15.png"></p>
+
+<p align=center>Figure 5-2: <b>line right 1 then down .5
+left 1 then right 1</b></p>
+<a name="5.3. Spline Objects"></a>
+<h2>5.3. Spline Objects</h2>
+
+<p>If you start a path with the <b>spline</b> keyword, the
+path vertices are treated as control points for a spline
+curve fit.</p>
+
+<p align=center><img src="img/pic16.png"></p>
+
+<p align=center>Figure 5-3: <b>spline right 1 then down .5
+left 1 then right 1</b></p>
+
+<p>You can describe many natural-looking but irregular
+curves this way. For example:</p>
+
+<p align=center><img src="img/pic17.png"></p>
+
+<p align=center>Figure 5-4: Two more spline examples</p>
+
+<p>Note the arrow decorations. Arrowheads can be applied
+naturally to any path-based object, line or spline.
+We&rsquo;ll see how in the next section.</p>
+<a name="6. Decorating Objects"></a>
+<h2>6. Decorating Objects</h2>
+<a name="6.1. Dashed Objects"></a>
+<h2>6.1. Dashed Objects</h2>
+
+<p>We&rsquo;ve already seen that the modifier <b>dashed</b>
+can change the line style of an object from solid to dashed.
+GNU <b>gpic</b> permits you to dot or dash ellipses,
+circles, and arcs (and splines in TeX mode only); some
+versions of DWB may only permit dashing of lines and boxes.
+It&rsquo;s possible to change the dash interval by
+specifying a number after the modifier.</p>
+
+<p align=center><img src="img/pic18.png"></p>
+
+<p align=center>Figure 6-1: Dashed objects</p>
+<a name="6.2. Dotted Objects"></a>
+<h2>6.2. Dotted Objects</h2>
+
+<p>Another available qualifier is <b>dotted</b>. GNU
+<b>gpic</b> permits you to dot or dash ellipses, circles,
+and arcs (and splines in TeX mode only); some versions of
+DWB may only permit dashing of lines and boxes. It too can
+be suffixed with a number to specify the interval between
+dots:</p>
+
+<p align=center><img src="img/pic19.png"></p>
+
+<p align=center>Figure 6-2: Dotted objects</p>
+<a name="6.3. Rounding Box Corners"></a>
+<h2>6.3. Rounding Box Corners</h2>
+
+<p>It is also possible, in GNU <b>gpic</b> only, to modify
+a box so it has rounded corners:</p>
+
+<p align=center><img src="img/pic20.png"></p>
+
+<p align=center>Figure 6-3: <b>box rad</b> with increasing
+radius values</p>
+
+<p>Radius values higher than half the minimum box dimension
+are silently truncated to that value.</p>
+<a name="6.4. Arrowheads"></a>
+<h2>6.4. Arrowheads</h2>
+
+<p>Lines and arcs can be decorated as well. Any line or arc
+(and any spline as well) can be decorated with arrowheads by
+adding one or more as modifiers:</p>
+
+<p align=center><img src="img/pic21.png"></p>
+
+<p align=center>Figure 6-4: Double-headed line made with
+<b>line &lt;- -&gt;</b></p>
+
+<p>In fact, the <b>arrow</b> command is just shorthand for
+<b>line -&gt;</b>. And there is a double-head modifier
+&lt;-&gt;, so the figure above could have been made with
+<b>line &lt;-&gt;</b>.</p>
+
+<p>Arrowheads have a <b>width</b> attribute, the distance
+across the rear; and a <b>height</b> attribute, the length
+of the arrowhead along the shaft.</p>
+
+<p>Arrowhead style is controlled by the style variable
+<b>arrowhead</b>. The DWB and GNU versions interpret it
+differently. DWB defaults to open arrowheads and an
+<b>arrowhead</b> value of 2; the Kernighan paper says a
+value of 7 will make solid arrowheads. GNU <b>gpic</b>
+defaults to solid arrowheads and an <b>arrowhead</b> value
+of 1; a value of 0 will produce open arrowheads. Note that
+solid arrowheads are always filled with the current outline
+color.</p>
+<a name="6.5. Line Thickness"></a>
+<h2>6.5. Line Thickness</h2>
+
+<p>It&rsquo;s also possible to change the line thickness of
+an object (this is a GNU extension, DWB <b>pic</b>
+doesn&rsquo;t support it). The default thickness of the
+lines used to draw objects is controlled by the
+<b>linethick</b> variable. This gives the thickness of lines
+in points. A negative value means use the default thickness:
+in TeX output mode, this means use a thickness of 8
+milliinches; in TeX output mode with the <b>-c</b> option,
+this means use the line thickness specified by <b>.ps</b>
+lines; in troff output mode, this means use a thickness
+proportional to the pointsize. A zero value means draw the
+thinnest possible line supported by the output device.
+Initially it has a value of -1. There is also a
+<b>thickness</b> attribute (which can be abbreviated to
+<b>thick</b>). For example, <b>circle thickness 1.5</b>
+would draw a circle using a line with a thickness of 1.5
+points. The thickness of lines is not affected by the value
+of the <b>scale</b> variable, nor by any width or height
+given in the <b>.PS</b> line.</p>
+<a name="6.6. Invisible Objects"></a>
+<h2>6.6. Invisible Objects</h2>
+
+<p>The modifier <b>invis[ible]</b> makes an object entirely
+invisible. This used to be useful for positioning text in an
+invisible object that is properly joined to neighboring
+ones. Newer DWB versions and GNU <b>pic</b> treat
+stand-alone text in exactly this way.</p>
+<a name="6.7. Filled Objects"></a>
+<h2>6.7. Filled Objects</h2>
+
+<p>It is possible to fill boxes, circles, and ellipses. The
+modifier <b>fill[ed]</b> accomplishes this. You can suffix
+it with a fill value; the default is given by the stule
+variable <b>fillval</b>.</p>
+
+<p>DWB <b>pic</b> and <b>gpic</b> have opposite conventions
+for fill values and different defaults. DWB <b>fillval</b>
+defaults to 0.3 and smaller values are darker; GNU
+<b>fillval</b> uses 0 for white and 1 for black.</p>
+
+<p align=center><img src="img/pic22.png"></p>
+
+<p align=center>Figure 6-5: <b>circle fill; move; circle
+fill 0.4; move; circle fill 0.9;</b></p>
+
+<p>GNU <b>gpic</b> makes some additional guarantees. A fill
+value greater than 1 can also be used: this means fill with
+the shade of gray that is currently being used for text and
+lines. Normally this will be black, but output devices may
+provide a mechanism for changing this. The invisible
+attribute does not affect the filling of objects. Any text
+associated with a filled object will be added after the
+object has been filled, so that the text will not be
+obscured by the filling.</p>
+
+<p>The closed-object modifier <b>solid</b> is equivalent to
+<b>fill</b> with the darkest fill value (DWB <b>pic</b> had
+this capability but mentioned it only in a reference
+section).</p>
+<a name="6.8. Colored Objects"></a>
+<h2>6.8. Colored Objects</h2>
+
+<p>As a GNU extension, three additional modifiers are
+available to specify colored objects. <b>outline</b> sets
+the color of the outline, <b>shaded</b> the fill color, and
+<b>color</b> sets both. All three keywords expect a suffix
+specifying the color. Example:</p>
+
+<p align=center><img src="img/pic23.png"></p>
+
+<p align=center>Figure 6-6: <b>box color
+&quot;yellow&quot;; arrow color &quot;cyan&quot;; circle
+shaded &quot;green&quot; outline &quot;black&quot;;</b></p>
+
+<p>Alternative spellings are <b>colour</b>, <b>colored</b>,
+<b>coloured</b>, and <b>outlined</b>.</p>
+
+<p>Currently, color support is not available in TeX mode.
+Predefined color names for <i>groff</i>(1) are in the device
+macro files, for example <tt>ps.tmac</tt>; additional colors
+can be defined with the <b>.defcolor</b> request (see the
+manual page of GNU <i>troff</i>(1) for more details).</p>
+
+<p><b>pic</b> assumes that at the beginning of a picture
+both glyph and fill color are set to the default value.</p>
+<a name="7. More About Text Placement"></a>
+<h2>7. More About Text Placement</h2>
+
+<p>By default, text is centered at the geometric center of
+the object it is associated with. The modifier <b>ljust</b>
+causes the left end to be at the specified point (which
+means that the text lies to the right of the specified
+place!), the modifier <b>rjust</b> puts the right end at the
+place. The modifiers <b>above</b> and <b>below</b> center
+the text one half line space in the given direction.</p>
+
+<p>Text attributes can be combined:</p>
+
+<p align=center><img src="img/pic24.png"></p>
+
+<p align=center>Figure 7-1: Text attributes</p>
+
+<p>What actually happens is that <i>n</i> text strings are
+centered in a box that is <b>textwid</b> wide by
+<b>textht</b> high. Both these variables are initially zero
+(that is <b>pic</b>&rsquo;s way of not making assumptions
+about <i>[tg]roff</i>(1)&rsquo;s default point size).</p>
+
+<p>In GNU <b>gpic</b>, objects can have an <b>aligned</b>
+attribute. This will only work when the postprocessor is
+<b>grops</b>. Any text associated with an object having the
+<b>aligned</b> attribute will be rotated about the center of
+the object so that it is aligned in the direction from the
+start point to the end point of the object. Note that this
+attribute will have no effect for objects whose start and
+end points are coincident.</p>
+<a name="8. More About Direction Changes"></a>
+<h2>8. More About Direction Changes</h2>
+
+<p>We&rsquo;ve already seen how to change the direction in
+which objects are composed from rightwards to downwards.
+Here are some more illustrative examples:</p>
+
+<p align=center><img src="img/pic25.png"></p>
+
+<p align=center>Figure 8-1: Effects of different motion
+directions (right and left)</p>
+
+<p align=center><img src="img/pic26.png"></p>
+
+<p align=center>Figure 8-2: Effects of different motion
+directions (up and down)</p>
+
+<p>Something that may appear surprising happens if you
+change directions in the obvious way:</p>
+
+<p align=center><img src="img/pic27.png"></p>
+
+<p align=center>Figure 8-3: <b>box; arrow; circle; down;
+arrow; ellipse</b></p>
+
+<p>You might have expected that program to yield this:</p>
+
+<p align=center><img src="img/pic28.png"></p>
+
+<p align=center>Figure 8-4: More intuitive?</p>
+
+<p>But, in fact, to get Figure 8.3 you have to do this:</p>
+<pre>     .PS
+     box;
+     arrow;
+     circle;
+     move to last circle .s;
+     down;
+     arrow;
+     ellipse
+     .PE
+
+
+</pre>
+
+<p>Why is this? Because the exit point for the current
+direction is already set when you draw the object. The
+second arrow in Figure 8.2 dropped downwards from the
+circle&rsquo;s attachment point for an object to be joined
+to the right.</p>
+
+<p>The meaning of the command <b>move to last circle .s</b>
+should be obvious. In order to see how it generalizes,
+we&rsquo;ll need to go into detail on two important topics;
+locations and object names.</p>
+<a name="9. Naming Objects"></a>
+<h2>9. Naming Objects</h2>
+
+<p>The most natural way to name locations in <b>pic</b> is
+relative to objects. In order to do this, you have to be
+able you have to be able to name objects. The <b>pic</b>
+language has rich facilities for this that try to emulate
+the syntax of English.</p>
+<a name="9.1. Naming Objects By Order Of Drawing"></a>
+<h2>9.1. Naming Objects By Order Of Drawing</h2>
+
+<p>The simplest (and generally the most useful) way to name
+an object is with a <b>last</b> clause. It needs to be
+followed by an object type name; <b>box</b>, <b>circle</b>,
+<b>ellipse</b>, <b>line</b>, <b>arrow</b>, <b>spline</b>,
+<b>&quot;&quot;</b>, or <b>[]</b> (the last type refers to a
+<i>composite object</i> which we&rsquo;ll discuss later).
+So, for example, the <b>last circle</b> clause in the
+program attached to Figure 9.1.3 refers to the last circle
+drawn.</p>
+
+<p>More generally, objects of a given type are implicitly
+numbered (starting from 1). You can refer to (say) the third
+ellipse in the current picture with <b>3rd ellipse</b>, or
+to the first box as <b>1st box</b>, or to the fifth text
+string (which isn&rsquo;t an attribute to another object) as
+<b>5th &quot;&quot;</b>.</p>
+
+<p>Objects are also numbered backwards by type from the
+last one. You can say <b>2nd last box</b> to get the
+second-to-last box, or <b>3rd last ellipse</b> to get the
+third-to-last ellipse.</p>
+
+<p>In places where <i>n</i><b>th</b> is allowed,
+<b>&lsquo;</b><i>expr</i><b>&rsquo;th</b> is also allowed.
+Note that <b>&rsquo;th</b> is a single token: no space is
+allowed between the <b>&rsquo;</b> and the <b>th</b>. For
+example,</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+<pre>     for i = 1 to 4 do {
+        line from &lsquo;i&rsquo;th box.nw to &lsquo;i+1&rsquo;th box.se
+     }
+
+
+</pre>
+</td>
+</table>
+<a name="9.2. Naming Objects With Labels"></a>
+<h2>9.2. Naming Objects With Labels</h2>
+
+<p>You can also specify an object by referring to a label.
+A label is a word (which must begin with a capital letter)
+followed by a colon; you declare it by placing it
+immediately before the object drawing command. For example,
+the program</p>
+<pre>     .PS
+     A: box &quot;first&quot; &quot;object&quot;
+     move;
+     B: ellipse &quot;second&quot; &quot;object&quot;
+     move;
+     arrow right at A .r;
+     .PE
+
+
+</pre>
+
+<p>declares labels <b>A</b> and <b>B</b> for its first and
+second objects. Here&rsquo;s what that looks like:</p>
+
+<p align=center><img src="img/pic29.png"></p>
+
+<p align=center>Figure 9-1: Example of label use</p>
+
+<p>The <b>at</b> statement in the fourth line uses the
+label <b>A</b> (the behavior of <b>at</b> will be explained
+in the next section). We&rsquo;ll see later on that labels
+are most useful for referring to block composite
+objects.</p>
+
+<p>Labels are not constants but variables (you can view
+colon as a sort of assignment). You can say something like
+<b>A: A + (1,0);</b> and the effect will be to reassign the
+label <b>A</b> to designate a position one inch to the right
+of its old value.</p>
+<a name="10. Describing locations"></a>
+<h2>10. Describing locations</h2>
+
+<p>The location of points can be described in many
+different ways. All these forms are interchangeable as for
+as the <b>pic</b> language syntax is concerned; where you
+can use one, any of the others that would make semantic
+sense are allowed.</p>
+
+<p>The special label <b>Here</b> always refers to the
+current position.</p>
+<a name="10.1. Absolute Coordinates"></a>
+<h2>10.1. Absolute Coordinates</h2>
+
+<p>The simplest is absolute coordinates in inches;
+<b>pic</b> uses a Cartesian system with (0, 0) at the lower
+left corner of the virtual drawing surface for each picture
+(that is, X increases to the right and Y increases upwards).
+An absolute location may always be written in the
+conventional form as two comma-separated numbers surrounded
+by parentheses (and this is recommended for clarity). In
+contexts where it creates no ambiguity, the pair of X and Y
+coordinates suffices without parentheses.</p>
+
+<p>It is a good idea to avoid absolute coordinates,
+however. They tend to make picture descriptions difficult to
+understand and modify. Instead, there are quite a number of
+ways to specify locations relative to <b>pic</b> objects and
+previous locations.</p>
+<a name="10.2. Locations Relative to Objects"></a>
+<h2>10.2. Locations Relative to Objects</h2>
+
+<p>The symbol <b>Here</b> always refers to the position of
+the last object drawn or the destination of the last
+<b>move</b>.</p>
+
+<p>Alone and unqualified, a <b>last circle</b> or any other
+way of specifying a closed-object or arc location refers as
+a position to the geometric center of the object.
+Unqualified, the name of a line or spline object refers to
+the position of the object start.</p>
+
+<p>Also, <b>pic</b> objects have quite a few named
+locations associated with them. One of these is the object
+center, which can be indicated (redundantly) with the suffix
+<b>.center</b> (or just <b>.c</b>). Thus, <b>last circle
+.center</b> is equivalent to <b>last circle</b>.</p>
+<a name="10.2.1. Locations Relative to Closed Objects"></a>
+<h2>10.2.1. Locations Relative to Closed Objects</h2>
+
+<p>Every closed object (box, circle, ellipse, or block
+composite) also has eight compass points associated with
+it;</p>
+
+<p align=center><img src="img/pic30.png"></p>
+
+<p align=center>Figure 10-1: Compass points</p>
+
+<p>these are the locations where eight compass rays from
+the geometric center would intersect the figure. So when we
+say <b>last circle .s</b> we are referring to the south
+compass point of the last circle drawn. The explanation of
+Figure 7.3&rsquo;s program is now complete.</p>
+
+<p>(In case you dislike compass points, the names
+<b>.top</b>, <b>.bottom</b>, <b>.left</b> and <b>.right</b>
+are synonyms for <b>.n</b>, <b>.s</b>, <b>.e</b>, and
+<b>.w</b> respectively; they can even be abbreviated to
+<b>.t</b>, <b>.b</b>, <b>.l</b> and <b>.r</b>).</p>
+
+<p>The names <b>center</b>, <b>top</b>, <b>bottom</b>,
+<b>left</b>, <b>right</b>, <b>north</b>, <b>south</b>,
+<b>east</b>, and <b>west</b> can also be used (without the
+leading dot) in a prefix form marked by <b>of</b>; thus,
+<b>center of last circle</b> and <b>top of 2nd last
+ellipse</b> are both valid object references. Finally, the
+names <b>left</b> and <b>right</b> can be prefixed with
+<b>upper</b> and <b>lower</b> which both have the obvious
+meaning.</p>
+
+<p>Arc objects also have compass point; they are the
+compass points of the implied circle.</p>
+<a name="10.2.2. Locations Relative to Open Objects"></a>
+<h2>10.2.2. Locations Relative to Open Objects</h2>
+
+<p>Every open object (line, arrow, arc, or spline) has
+three named points: <b>.start</b>, <b>.center</b> (or
+<b>.c</b>), and <b>.end</b>. They can also be used without
+leading dots in the <b>of</b> prefix form. The center of an
+arc is the center of its circle, but the center of a line,
+path, or spline is halfway between its endpoints.</p>
+
+<p align=center><img src="img/pic31.png"></p>
+
+<p align=center>Figure 10-2: Special points on open
+objects</p>
+<a name="10.3. Ways of Composing Positions"></a>
+<h2>10.3. Ways of Composing Positions</h2>
+
+<p>Once you have two positions to work with, there are
+several ways to combine them to specify new positions.</p>
+<a name="10.3.1. Vector Sums and Displacements"></a>
+<h2>10.3.1. Vector Sums and Displacements</h2>
+
+<p>Positions may be added or subtracted to yield a new
+position (to be more precise, you can only add a position
+and an expression pair; the latter must be on the right side
+of the addition or subtraction sign). The result is the
+conventional vector sum or difference of coordinates. For
+example, <b>last box .ne + (0.1, 0)</b> is a valid position.
+This example illustrates a common use, to define a position
+slightly offset from a named one (say, for captioning
+purposes).</p>
+<a name="10.3.2. Interpolation Between Positions"></a>
+<h2>10.3.2. Interpolation Between Positions</h2>
+
+<p>A position may be interpolated between any two
+positions. The syntax is &lsquo;<i>fraction</i> <b>of the
+way between</b> <i>position1</i> <b>and</b>
+<i>position2</i>&rsquo;. For example, you can say <b>1/3 of
+the way between here and last ellipse .ne</b>. The fraction
+may be in numerator/denominator form or may be an ordinary
+number (values are <i>not</i> restricted to [0,1]). As an
+alternative to this verbose syntax, you can say
+&lsquo;<i>fraction</i> <b>&lt;</b><i>position1</i> <b>,</b>
+<i>position2</i><b>&gt;</b>&rsquo;; thus, the example could
+also be written as <b>1/3 &lt;here, last
+ellipse&gt;</b>.</p>
+
+<p align=center><img src="img/pic32.png"></p>
+
+<p align=center>Figure 10-3: <b>P: 1/3 of the way between
+last arrow .start and last arrow .end</b></p>
+
+<p>This facility can be used, for example, to draw double
+connections.</p>
+
+<p align=center><img src="img/pic33.png"></p>
+
+<p align=center>Figure 10-4: Doubled arrows</p>
+
+<p>You can get Figure 10-4 from the following program:</p>
+<pre>     .PS
+     A: box &quot;yin&quot;; move;
+     B: box &quot;yang&quot;;
+     arrow right at 1/4 &lt;A.e,A.ne&gt;;
+     arrow left  at 1/4 &lt;B.w,B.sw&gt;;
+     .PE
+
+
+</pre>
+
+<p>Note the use of the short form for interpolating
+points.</p>
+<a name="10.3.3. Projections of Points"></a>
+<h2>10.3.3. Projections of Points</h2>
+
+<p>Given two positions <i>p</i> and <i>q</i>, the position
+<b>(</b><i>p</i><b>,</b> <i>q</i><b>)</b> has the X
+coordinate of <i>p</i> and the Y coordinate of <i>q</i>.
+This can be helpful in placing an object at one of the
+corners of the virtual box defined by two other objects.</p>
+
+<p align=center><img src="img/pic34.png"></p>
+
+<p align=center>Figure 10-5: Using (<i>x</i>, <i>y</i>)
+composition</p>
+<a name="10.4. Using Locations"></a>
+<h2>10.4. Using Locations</h2>
+
+<p>There are four ways to use locations; <b>at</b>,
+<b>from</b>, <b>to</b>, and <b>with</b>. All three are
+object modifiers; that is, you use them as suffixes to a
+drawing command.</p>
+
+<p>The <b>at</b> modifier says to draw a closed object or
+arc with its center at the following location, or to draw a
+line/spline/arrow starting at the following location.</p>
+
+<p>The <b>to</b> modifier can be used alone to specify a
+move destination. The <b>from</b> modifier can be used alone
+in the same way as <b>at</b>.</p>
+
+<p>The <b>from</b> and <b>to</b> modifiers can be used with
+a <b>line</b> or <b>arc</b> command to specify start and end
+points of the object. In conjunction with named locations,
+this offers a very flexible mechanism for connecting
+objects. For example, the following program</p>
+<pre>     .PS
+     box &quot;from&quot;
+     move 0.75;
+     ellipse &quot;to&quot;
+     arc cw from 1/3 of the way \
+         between last box .n and last box .ne to last ellipse .n;
+     .PE
+
+
+</pre>
+
+<p>yields:</p>
+
+<p align=center><img src="img/pic35.png"></p>
+
+<p align=center>Figure 10-6: A tricky connection specified
+with English-like syntax</p>
+
+<p>The <b>with</b> modifier allows you to identify a named
+attachment point of an object (or a position within the
+object) with another point. This is very useful for
+connecting objects in a natural way. For an example,
+consider these two programs:</p>
+
+<p align=center><img src="img/pic36.png"></p>
+
+<p align=center>Figure 10-7: Using the <b>with</b> modifier
+for attachments</p>
+<a name="10.5. The &lsquo;chop&rsquo; Modifier"></a>
+<h2>10.5. The &lsquo;chop&rsquo; Modifier</h2>
+
+<p>When drawing lines between circles that don&rsquo;t
+intersect them at a compass point, it is useful to be able
+to shorten a line by the radius of the circle at either or
+both ends. Consider the following program:</p>
+<pre>     .PS
+     circle &quot;x&quot;
+     circle &quot;y&quot; at 1st circle - (0.4, 0.6)
+     circle &quot;z&quot; at 1st circle + (0.4, -0.6)
+     arrow from 1st circle to 2nd circle chop
+     arrow from 2nd circle to 3rd circle chop
+     arrow from 3rd circle to 1st circle chop
+     .PE
+
+
+</pre>
+
+<p>It yields the following:</p>
+
+<p align=center><img src="img/pic37.png"></p>
+
+<p align=center>Figure 10-8: The <b>chop</b> modifier</p>
+
+<p>Notice that the <b>chop</b> attribute moves arrowheads
+rather than stepping on them. By default, the <b>chop</b>
+modifier shortens both ends of the line by <b>circlerad</b>.
+By suffixing it with a number you can change the amount of
+chopping.</p>
+
+<p>If you say <b>line ... chop</b> <i>r1</i> <b>chop</b>
+<i>r2</i> with <i>r1</i> and <i>r2</i> both numbers, you can
+vary the amount of chopping at both ends. You can use this
+in combination with trigonometric functions to write code
+that will deal with more complex intersections.</p>
+<a name="11. Object Groups"></a>
+<h2>11. Object Groups</h2>
+
+<p>There are two different ways to group objects in
+<b>pic</b>; <i>brace grouping</i> and <i>block
+composites</i>.</p>
+<a name="11.1. Brace Grouping"></a>
+<h2>11.1. Brace Grouping</h2>
+
+<p>The simpler method is simply to group a set of objects
+within curly bracket or brace characters. On exit from this
+grouping, the current position and direction are restored to
+their value when the opening brace was encountered.</p>
+<a name="11.2. Block Composites"></a>
+<h2>11.2. Block Composites</h2>
+
+<p>A block composite object is created a series of commands
+enclosed by square brackets. The composite can be treated
+for most purposes like a single closed object, with the size
+and shape of its bounding box. Here is an example. The
+program fragment</p>
+<pre>     A: [
+         circle;
+         line up 1 at last circle .n;
+         line down 1 at last circle .s;
+         line right 1 at last circle .e;
+         line left 1 at last circle .w;
+         box dashed with .nw at last circle .se + (0.2, -0.2);
+         Caption: center of last box;
+     ]
+
+
+</pre>
+
+<p>yields the block in figure 11-1, which we show both with
+and without its attachment points. The block&rsquo;s
+location becomes the value of <b>A</b>.</p>
+
+<p align=center><img src="img/pic38.png"></p>
+
+<p align=center>Figure 11-1: A sample composite object</p>
+
+<p>To refer to one of the composite&rsquo;s attachment
+points, you can say (for example) <b>A .s</b>. For purposes
+of object naming, composites are a class. You could write
+<b>last [] .s</b> as an equivalent reference, usable
+anywhere a location is needed. This construction is very
+important for putting together large, multi-part
+diagrams.</p>
+
+<p>Blocks are also a variable-scoping mechanism, like a
+<i>groff</i>(1) environment. All variable assignments done
+inside a block are undone at the end of it. To get at values
+within a block, write a name of the block followed by a dot,
+followed by the label you want. For example, we could refer
+the the center of the box in the above composite as <b>last
+[] .Caption</b> or <b>A.Caption</b>.</p>
+
+<p>This kind of reference to a label can be used in any way
+any other location can be. For example, if we added
+<b>&quot;Hi!&quot; at A.Caption</b> the result would look
+like this:</p>
+
+<p align=center><img src="img/pic39.png"></p>
+
+<p align=center>Figure 11-2: Adding a caption using
+interior labeling</p>
+
+<p>You can also use interior labels in either part of a
+<b>with</b> modifier. This means that the example composite
+could be placed relative to its caption box by a command
+containing <b>with A.Caption at</b>.</p>
+
+<p>Note that both width and height of the block composite
+object are always positive:</p>
+
+<p align=center><img src="img/pic40.png"></p>
+
+<p align=center>Figure 11-3: Composite block objects always
+have positive width and height</p>
+
+<p>Blocks may be nested. This means you can use block
+attachment points to build up complex diagrams
+hierarchically, from the inside out. Note that <b>last</b>
+and the other sequential naming mechanisms don&rsquo;t look
+inside blocks, so if you have a program that looks like</p>
+<pre>     .PS
+     P: [box &quot;foo&quot;; ellipse &quot;bar&quot;];
+     Q: [
+          [box &quot;baz&quot;; ellipse &quot;quxx&quot;]
+          &quot;random text&quot;;
+        ]
+     arrow from 2nd last [];
+     .PE
+
+
+</pre>
+
+<p>the arrow in the last line will be attached to object
+<b>P</b>, not object <b>Q</b>.</p>
+
+<p>In DWB <b>pic</b>, only references one level deep into
+enclosed blocks were permitted. GNU <b>gpic</b> removes this
+restriction.</p>
+
+<p>The combination of block variable scoping, assignability
+of labels and the macro facility that we&rsquo;ll describe
+later on can be used to simulate functions with local
+variables (just wrap the macro body in block braces).</p>
+<a name="12. Style Variables"></a>
+<h2>12. Style Variables</h2>
+
+<p>There are a number of global style variables in
+<b>pic</b> that can be used to change its overall behavior.
+We&rsquo;ve mentioned several of them in previous sections.
+They&rsquo;re all described here. For each variable, the
+default is given.</p>
+
+<p align=center><img src="img/pic41.png"></p>
+
+<p>Any of these variables can be set with a simple
+assignment statement. For example:</p>
+
+<p align=center><img src="img/pic42.png"></p>
+
+<p align=center>Figure 12-1: <b>boxht=1; boxwid=0.3;
+movewid=0.2; box; move; box; move; box; move; box;</b></p>
+
+<p>In GNU <b>pic</b>, setting the <b>scale</b> variable
+re-scales all size-related state variables so that their
+values remain equivalent in the new units.</p>
+
+<p>The command <b>reset</b> resets all style variables to
+their defaults. You can give it a list of variable names as
+arguments (optionally separated by commas), in which case it
+resets only those.</p>
+
+<p>State variables retain their values across pictures
+until reset.</p>
+<a name="13. Expressions, Variables, and Assignment"></a>
+<h2>13. Expressions, Variables, and Assignment</h2>
+
+<p>A number is a valid expression, of course (all numbers
+are stored internally as floating-point). Decimal-point
+notation is acceptable; in GNU <b>gpic</b>, scientific
+notation in C&rsquo;s &lsquo;e&rsquo; format (like
+<tt>5e-2</tt>) is accepted.</p>
+
+<p>Anywhere a number is expected, the language will also
+accept a variable. Variables may be the built-in style
+variable described in the last section, or new variables
+created by assignment.</p>
+
+<p>DWB <b>pic</b> supports only the ordinary assignment via
+<b>=</b>, which defines the variable (on the left side of
+the equal sign) in the current block if it is not already
+defined there, and then changes the value (on the right
+side) in the current block. The variable is not visible
+outside of the block. This is similar to the C programming
+language where a variable within a block shadows a variable
+with the same name outside of the block.</p>
+
+<p>GNU <b>gpic</b> supports an alternate form of assignment
+using <b>:=</b>. The variable must already be defined, and
+the value will be assigned to that variable without creating
+a variable local to the current block. For example, this</p>
+<pre>     x=5
+     y=5
+     [
+       x:=3
+       y=3
+     ]
+     print x &quot; &quot; y
+
+
+</pre>
+
+<p>prints <b>3 5</b>.</p>
+
+<p>You can use the height, width, radius, and x and y
+coordinates of any object or corner in expressions. If
+<b>A</b> is an object label or name, all the following are
+valid:</p>
+<pre>     A.x                  # x coordinate of the center of A
+     A.ne.y               # y coordinate of the northeast corner of A
+     A.wid                # the width of A
+     A.ht                 # and its height
+     2nd last circle.rad  # the radius of the 2nd last circle
+
+
+</pre>
+
+<p>Note the second expression, showing how to extract a
+corner coordinate.</p>
+
+<p>Basic arithmetic resembling those of C operators are
+available; <b>+</b>, <b>*</b>, <b>-</b>, <b>/</b>, and
+<b>%</b>. So is <b>^</b> for exponentiation. Grouping is
+permitted in the usual way using parentheses. GNU
+<b>gpic</b> allows logical operators to appear in
+expressions; <b>!</b> (logical negation, not factorial),
+<b>&amp;&amp;</b>, <b>||</b>, <b>==</b>, <b>!=</b>,
+<b>&gt;=</b>, <b>&lt;=</b>, <b>&lt;</b>, <b>&gt;</b>.</p>
+
+<p>Various built-in functions are supported:
+<b>sin(</b><i>x</i><b>)</b>, <b>cos(</b><i>x</i><b>)</b>,
+<b>log(</b><i>x</i><b>)</b>, <b>exp(</b><i>x</i><b>)</b>,
+<b>sqrt(</b><i>x</i><b>)</b>,
+<b>max(</b><i>x</i><b>,</b><i>y</i><b>)</b>,
+<b>atan2(</b><i>x</i><b>,</b><i>y</i><b>)</b>,
+<b>min(</b><i>x</i><b>,</b><i>y</i><b>)</b>,
+<b>int(</b><i>x</i><b>)</b>, <b>rand()</b>, and
+<b>srand()</b>. Both <b>exp</b> and <b>log</b> are base 10;
+<b>int</b> does integer truncation; <b>rand()</b> returns a
+random number in [0-1), and <b>srand()</b> sets the seed for
+a new sequence of pseudo-random numbers to be returned by
+<b>rand()</b> (<b>srand()</b> is a GNU extension).</p>
+
+<p>GNU <b>gpic</b> also documents a one-argument form or
+rand, <b>rand(</b><i>x</i><b>)</b>, which returns a random
+number between 1 and <i>x</i>, but this is deprecated and
+may be removed in a future version.</p>
+
+<p>The function <b>sprintf()</b> behaves like a C
+<i>sprintf</i>(3) function that only takes %, %e, %f, and %g
+format strings.</p>
+<a name="14. Macros"></a>
+<h2>14. Macros</h2>
+
+<p>You can define macros in <b>pic</b>. This is useful for
+diagrams with repetitive parts. In conjunction with the
+scope rules for block composites, it effectively gives you
+the ability to write functions.</p>
+
+<p>The syntax is</p>
+<pre><b>     define</b> <i>name</i> <b>{</b> <i>replacement text</i> <b>}
+</b></pre>
+
+<p>This defines <i>name</i> as a macro to be replaced by
+the replacement text (not including the braces). The macro
+may be called as</p>
+<pre><i>     name</i><b>(</b><i>arg1, arg2, ... argn</i><b>)
+</b></pre>
+
+<p>The arguments (if any) will be substituted for tokens
+<b>$1</b>, <b>$2</b> ... <b>$n</b> appearing in the
+replacement text.</p>
+
+<p>As an example of macro use, consider this:</p>
+<pre><small>     .PS
+     # Plot a single jumper in a box, $1 is the on-off state.
+     define jumper { [
+         shrinkfactor = 0.8;
+         Outer: box invis wid 0.45 ht 1;
+
+
+         # Count on end ] to reset these
+         boxwid = Outer.wid * shrinkfactor / 2;
+         boxht  = Outer.ht  * shrinkfactor / 2;
+
+
+         box fill (!$1) with .s at center of Outer;
+         box fill ($1)  with .n at center of Outer;
+     ] }
+
+
+     # Plot a block of six jumpers.
+     define jumperblock {
+         jumper($1);
+         jumper($2);
+         jumper($3);
+         jumper($4);
+         jumper($5);
+         jumper($6);
+
+
+         jwidth  = last [].Outer.wid;
+         jheight = last [].Outer.ht;
+
+
+         box with .nw at 6th last [].nw wid 6*jwidth ht jheight;
+
+
+         # Use {} to avoid changing position from last box draw.
+         # This is necessary so move in any direction will work as expected
+         {&quot;Jumpers in state $1$2$3$4$5$6&quot; at last box .s + (0, -0.2);}
+     }
+
+
+     # Sample macro invocations.
+     jumperblock(1,1,0,0,1,0);
+     move;
+     jumperblock(1,0,1,0,1,1);
+     .PE
+
+
+</small></pre>
+
+<p>It yields the following:</p>
+
+<p align=center><img src="img/pic43.png"></p>
+
+<p align=center>Figure 14-1: Sample use of a macro</p>
+
+<p>This macro example illustrates how you can combine [],
+brace grouping, and variable assignment to write true
+functions.</p>
+
+<p>One detail the example above does not illustrate is the
+fact that macro argument parsing is not token-oriented. If
+you call <b>jumper( 1 )</b>, the value of $1 will be
+<b>&quot; 1 &quot;</b>. You could even call <b>jumper(big
+string)</b> to give $1 the value <b>&quot;big
+string&quot;</b>.</p>
+
+<p>If you want to pass in a coordinate pair, you can avoid
+getting tripped up by the comma by wrapping the pair in
+parentheses.</p>
+
+<p>Macros persist through pictures. To undefine a macro,
+say <b>undef</b> <i>name</i>; for example,</p>
+<pre>     undef jumper
+     undef jumperblock
+</pre>
+
+<p>would undefine the two macros in the jumper block
+example.</p>
+<a name="15. Import/Export Commands"></a>
+<h2>15. Import/Export Commands</h2>
+
+<p>Commands that import or export data between <b>pic</b>
+and its environment are described here.</p>
+<a name="15.1. File and Table Insertion"></a>
+<h2>15.1. File and Table Insertion</h2>
+
+<p>The statement</p>
+<pre>     copy <i>filename
+</i></pre>
+
+<p>inserts the contents of <i>filename</i> in the
+<b>pic</b> input stream. Any <b>.PS</b>/<b>.PE</b> pair in
+the file will be ignored. This, you can use this to include
+pre-generated images.</p>
+
+<p>A variant of this statement replicates the <b>copy
+thru</b> feature of <i>grap</i>(1). The call</p>
+<pre>     copy <i>filename</i> thru <i>macro
+</i></pre>
+
+<p>calls <i>macro</i> (which may be either a name or
+replacement text) on the arguments obtained by breaking each
+line of the file into blank-separated fields. The macro may
+have up to 9 arguments. The replacement text may be
+delimited by braces or by a pair of instances of any
+character not appearing in the rest of the text.</p>
+
+<p>If you write</p>
+<pre>     copy thru <i>macro
+</i></pre>
+
+<p>omitting the filename, lines to be parsed are taken from
+the input source up to the next <b>.PE</b>.</p>
+
+<p>In either of the last two <b>copy</b> commands, GNU
+<b>gpic</b> permits a trailing &lsquo;<b>until</b>
+<i>word</i>&rsquo; clause to be added which terminates the
+copy when the first word matches the argument (the default
+behavior is therefore equivalent to <b>until .PE</b>).</p>
+
+<p>Accordingly, the command</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="19%"></td>
+<td width="80%">
+<pre>.PS
+copy thru % circle at ($1,$2) % until &quot;END&quot;
+1 2
+3 4
+5 6
+END
+box
+.PE
+</pre>
+</td>
+</table>
+
+<p>is equivalent to</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="19%"></td>
+<td width="80%">
+<pre>.PS
+circle at (1,2)
+circle at (3,4)
+circle at (5,6)
+box
+.PE
+</pre>
+</td>
+</table>
+<a name="15.2. Debug Messages"></a>
+<h2>15.2. Debug Messages</h2>
+
+<p>The command <b>print</b> accepts any number of
+arguments, concatenates their output forms, and writes the
+result to standard error. Each argument must be an
+expression, a position, or a text string.</p>
+<a name="15.3. Escape to Post-Processor"></a>
+<h2>15.3. Escape to Post-Processor</h2>
+
+<p>If you write</p>
+<pre><b>     command</b> <i>arg</i>...
+</pre>
+
+<p><b>pic</b> concatenates the arguments and pass them
+through as a line to troff or TeX. Each <i>arg</i> must be
+an expression, a position, or text. This has a similar
+effect to a line beginning with <b>.</b> or <b>\</b>, but
+allows the values of variables to be passed through.</p>
+<a name="15.4. Executing Shell Commands"></a>
+<h2>15.4. Executing Shell Commands</h2>
+
+<p>The command</p>
+<pre>     sh { <i>anything...</i> }
+</pre>
+
+<p>macro-expands the text in braces, then executes it as a
+shell command. This could be used to generate images or data
+tables for later inclusion. The delimiters shown as {} here
+may also be two copies of any one character not present in
+the shell command text. In either case, the body may contain
+balanced {} pairs. Strings in the body may contain balanced
+or unbalanced braces in any case.</p>
+<a name="16. Control-flow constructs"></a>
+<h2>16. Control-flow constructs</h2>
+
+<p>The <b>pic</b> language provides conditionals and
+looping. For example,</p>
+<pre>     pi = atan2(0, -1);
+     for i = 0 to 2 * pi by 0.1 do {
+         &quot;-&quot; at (i/2, 0);
+         &quot;.&quot; at (i/2, sin(i)/2);
+         &quot;:&quot; at (i/2, cos(i)/2);
+     }
+
+
+</pre>
+
+<p>which yields this:</p>
+
+<p align=center><img src="img/pic44.png"></p>
+
+<p align=center>Figure 16-1: Plotting with a <b>for</b>
+loop</p>
+
+<p>The syntax of the <b>for</b> statement is:</p>
+<pre><b>     for</b> <i>variable</i> <b>=</b> <i>expr1</i> <b>to</b> <i>expr2</i> [<b>by</b> [<b>*</b>]<i>expr3</i>] <b>do</b> <i>X body X
+</i></pre>
+
+<p>The semantics are as follows: Set <i>variable</i> to
+<i>expr1</i>. While the value of <i>variable</i> is less
+than or equal to <i>expr2</i>, do <i>body</i> and increment
+<i>variable</i> by <i>expr3</i>; if <b>by</b> is not given,
+increment <i>variable</i> by 1. If <i>expr3</i> is prefixed
+by <b>*</b> then <i>variable</i> will instead be multiplied
+by <i>expr3</i>. <i>X</i> can be any character not occurring
+in <i>body</i>; or the two <i>X</i>s may be paired braces
+(as in the <b>sh</b> command).</p>
+
+<p>The syntax of the <b>if</b> statement is as follows:</p>
+<pre><b>     if</b> <i>expr</i> <b>then</b> <i>X if-true X</i> [<b>else</b> <i>Y if-false Y</i>]
+</pre>
+
+<p>Its semantics are as follows: Evaluate <i>expr</i>; if
+it is non-zero then do <i>if-true</i>, otherwise do
+<i>if-false</i>. <i>X</i> can be any character not occurring
+in <i>if-true</i>. <i>Y</i> can be any character not
+occurring in <i>if-false</i>.</p>
+
+<p>Eithe or both of the <i>X</i> or <i>Y</i> pairs may
+instead be balanced pairs of braces ({ and }) as in the
+<b>sh</b> command. In either case, the <i>if-true</i> may
+contain balanced pairs of braces. None of these delimiters
+will be seen inside strings.</p>
+
+<p>All the usual relational operators my be used in
+conditional expressions; <b>!</b> (logical negation, not
+factorial), <b>&amp;&amp;</b>, <b>||</b>, <b>==</b>,
+<b>!=</b>, <b>&gt;=</b>, <b>&lt;=</b>, <b>&lt;</b>,
+<b>&gt;</b>.</p>
+
+<p>String comparison is also supported using <b>==</b> and
+<b>!=</b>. String comparisons may need to be parenthesized
+to avoid syntactic ambiguities.</p>
+<a name="17. Interface To [gt]roff"></a>
+<h2>17. Interface To [gt]roff</h2>
+
+<p>The output of <b>pic</b> is <b>[gt]roff</b> drawing
+commands. The GNU <i>gpic</i>(1) command warns that it
+relies on drawing extensions present in <i>groff</i>(1) that
+are not present in <i>troff</i>(1).</p>
+<a name="17.1. Scaling Arguments"></a>
+<h2>17.1. Scaling Arguments</h2>
+
+<p>The DWB <i>pic</i>(1) program will accept one or two
+arguments to <b>.PS</b>, which is interpreted as a width and
+height in inches to which the results of <i>pic</i>(1)
+should be scaled (width and height scale independently). If
+there is only one argument, it is interpreted as a width to
+scale the picture to, and height will be scaled by the same
+proportion.</p>
+
+<p>GNU <b>gpic</b> is less general; it will accept a single
+width to scale to, or a zero width and a maximum height to
+scale to. With two non-zero arguments, it will scale to the
+maximum height.</p>
+<a name="17.2. How Scaling is Handled"></a>
+<h2>17.2. How Scaling is Handled</h2>
+
+<p>When <b>pic</b> processes a picture description on
+input, it passes <b>.PS</b> and <b>.PE</b> through to the
+postprocessor. The <b>.PS</b> gets decorated with two
+numeric arguments which are the X and Y dimensions of the
+picture in inches. The post-processor can use these to
+reserve space for the picture and center it.</p>
+
+<p>The GNU incarnation of the <b>ms</b> macro package, for
+example, includes the following definitions:</p>
+<pre><small>     .de PS
+     .br
+     .sp \\n[DD]u
+     .ie \\n[.$]&lt;2 .@error bad arguments to PS (not preprocessed with pic?)
+     .el \{\
+     .    ds@need (u;\\$1)+1v
+     .    in +(u;\\n[.l]-\\n[.i]-\\$2/2&gt;?0)
+     .\}
+     ..
+     .de PE
+     .par@reset
+     .sp \\n[DD]u+.5m
+     ..
+
+
+</small></pre>
+
+<p>Equivalent definition will be supplied by GNU
+<i>pic</i>(1) if you use the &minus;mpic option; this should
+make it usable with macro pages other than <i>ms</i>(1).</p>
+
+<p>If <b>.PF</b> is used instead of <b>.PE</b>, the
+<b>troff</b> position is restored to what it was at the
+picture start (Kernighan notes that the F stands for
+&ldquo;flyback&rdquo;).</p>
+
+<p>The invocation</p>
+<pre><b>     .PS &lt;</b><i>file
+</i></pre>
+
+<p>causes the contents of <i>file</i> to replace the
+<b>.PS</b> line. This feature is deprecated; use
+&lsquo;<b>copy</b> <i>file</i>&rsquo; instead).</p>
+
+<p>By default, input lines that begin with a period are
+passed to the postprocessor, embedded at the corresponding
+point in the output. Messing with horizontal or vertical
+spacing is an obvious recipe for bugs, but point size and
+font changes will usually be safe.</p>
+
+<p>Point sizes and font changes are also safe within text
+strings, as long as they are undone before the end of
+string.</p>
+
+<p>The state of <b>[gt]roff</b>&rsquo;s fill mode is
+preserved across pictures.</p>
+
+<p>The Kernighan paper notes that there is a subtle problem
+with complicated equations inside <b>pic</b> pictures; they
+come out wrong if <i>eqn</i>(1) has to leave extra vertical
+space for the equation. If your equation involves more than
+subscripts and superscripts, you must add to the beginning
+of each equation the extra information <b>space 0</b>. He
+gives the following example:</p>
+<pre>     arrow
+     box &quot;$space 0 {H( omega )} over {1 - H( omega )}$&quot;
+     arrow
+
+
+</pre>
+
+<p align=center><img src="img/pic46.png"></p>
+
+<p align=center>Figure 17-1: Equations within pictures</p>
+<a name="18. Interface to TeX"></a>
+<h2>18. Interface to TeX</h2>
+
+<p>TeX mode is enabled by the <b>&minus;t</b> option. In
+TeX mode, pic will define a vbox called <b>\graph</b> for
+each picture. You must yourself print that vbox using, for
+example, the command</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+<p><tt>\centerline{\box\graph}</tt></p>
+</td>
+</table>
+
+<p>Actually, since the vbox has a height of zero this will
+produce slightly more vertical space above the picture than
+below it;</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+<p><tt>\centerline{\raise 1em\box\graph}</tt></p>
+</td>
+</table>
+
+<p>would avoid this.</p>
+
+<p>You must use a TeX driver that supports the <b>tpic</b>
+specials, version 2.</p>
+
+<p>Lines beginning with <b>\</b> are passed through
+transparently; a <b>%</b> is added to the end of the line to
+avoid unwanted spaces. You can safely use this feature to
+change fonts or to change the value of <b>\baselineskip</b>.
+Anything else may well produce undesirable results; use at
+your own risk. Lines beginning with a period are not given
+any special treatment.</p>
+
+<p>The TeX mode of <i>pic</i>(1) will <i>not</i> translate
+<b>troff</b> font and size changes included in text
+strings!</p>
+<a name="19. Obsolete Commands"></a>
+<h2>19. Obsolete Commands</h2>
+
+<p>GNU <i>gpic</i>(1) has a command</p>
+<pre><b>     plot</b> <i>expr</i> [<b>&quot;</b><i>text</i><b>&quot;</b>]
+</pre>
+
+<p>This is a text object which is constructed by using
+<i>text</i> as a format string for sprintf with an argument
+of <i>expr</i>. If <i>text</i> is omitted a format string of
+<b>&quot;%g&quot;</b> is used. Attributes can be specified
+in the same way as for a normal text object. Be very careful
+that you specify an appropriate format string; <b>pic</b>
+does only very limited checking of the string. This is
+deprecated in favour of <b>sprintf</b>.</p>
+<a name="20. Some Larger Examples"></a>
+<h2>20. Some Larger Examples</h2>
+
+<p>Here are a few larger examples, with complete source
+code. One of our earlier examples is generated in an
+instructive way using a for loop:</p>
+<pre><small>     .PS
+     # Draw a demonstration up left arrow with grid box overlay
+     define gridarrow
+     {
+         move right 0.1
+         [
+             {arrow up left $1;}
+             box wid 0.5 ht 0.5 dotted with .nw at last arrow .end;
+             for i = 2 to ($1 / 0.5) do
+             {
+                 box wid 0.5 ht 0.5 dotted with .sw at last box .se;
+             }
+             move down from last arrow .center;
+             [
+                 if ( $1 == boxht ) \
+                 then { &quot;\fBline up left\fP&quot; } \
+                 else { sprintf(&quot;\fBarrow up left %g\fP&quot;, $1) };
+             ]
+         ]
+         move right 0.1 from last [] .e;
+     }
+     gridarrow(0.5);
+     gridarrow(1);
+     gridarrow(1.5);
+     gridarrow(2);
+     undef gridarrow
+     .PE
+
+
+</small></pre>
+
+<p align=center><img src="img/pic47.png"></p>
+
+<p align=center>Figure 20-1: Diagonal arrows (dotted boxes
+show the implied 0.5-inch grid)</p>
+
+<p>Here&rsquo;s an example concocted to demonstrate layout
+of a large, multiple-part pattern:</p>
+<pre><small>     .PS
+     define filter {box ht 0.25 rad 0.125}
+     lineht = 0.25;
+     Top: [
+         right;
+         box &quot;\fBms\fR&quot; &quot;sources&quot;;
+         move;
+         box &quot;\fBHTML\fR&quot; &quot;sources&quot;;
+         move;
+         box &quot;\fBlinuxdoc-sgml\fP&quot; &quot;sources&quot; wid 1.5;
+         move;
+         box &quot;\fBTexinfo\fP&quot; &quot;sources&quot;;
+
+
+         line down from 1st box .s lineht;
+         A: line down;
+         line down from 2nd box .s; filter &quot;\fBhtml2ms\fP&quot;;
+         B: line down;
+         line down from 3rd box .s; filter &quot;\fBformat\fP&quot;;
+         C: line down;
+         line down from 4th box .s; filter &quot;\fBtexi2roff\fP&quot;;
+         D: line down;
+     ]
+     move down 1 from last [] .s;
+     Anchor: box wid 1 ht 0.75 &quot;\fBms\fR&quot; &quot;intermediate&quot; &quot;form&quot;;
+     arrow from Top.A.end to Anchor.nw;
+     arrow from Top.B.end to 1/3 of the way between Anchor.nw and Anchor.ne;
+     arrow from Top.C.end to 2/3 of the way between Anchor.nw and Anchor.ne;
+     arrow from Top.D.end to Anchor.ne
+     {
+         # PostScript column
+         move to Anchor .sw;
+         line down left then down -&gt;;
+         filter &quot;\fBpic\fP&quot;;
+         arrow;
+         filter &quot;\fBeqn\fP&quot;;
+         arrow;
+         filter &quot;\fBtbl\fP&quot;;
+         arrow;
+         filter &quot;\fBgroff\fP&quot;;
+         arrow;
+         box &quot;PostScript&quot;;
+
+
+         # HTML column
+         move to Anchor .se;
+         line down right then down -&gt;;
+         A: filter dotted &quot;\fBpic2img\fP&quot;;
+         arrow;
+         B: filter dotted &quot;\fBeqn2html\fP&quot;;
+         arrow;
+         C: filter dotted &quot;\fBtbl2html\fP&quot;;
+         arrow;
+         filter &quot;\fBms2html\fP&quot;;
+         arrow;
+         box &quot;HTML&quot;;
+
+
+         # Nonexistence caption
+         box dashed wid 1 at B + (2, 0) &quot;These tools&quot; &quot;don&rsquo;t yet exist&quot;;
+         line chop 0 chop 0.1 dashed from last box .nw to A.e -&gt;;
+         line chop 0 chop 0.1 dashed from last box .w  to B.e -&gt;;
+         line chop 0 chop 0.1 dashed from last box .sw to C.e -&gt;;
+     }
+     .PE
+
+
+</small></pre>
+
+<p align=center><img src="img/pic48.png"></p>
+
+<p align=center>Figure 20-2: Hypothetical production flow
+for dual-mode publishing</p>
+<a name="21. PIC Reference"></a>
+<h2>21. PIC Reference</h2>
+
+<p>This is an annotated grammar of <b>pic</b>.</p>
+<a name="21.1. Lexical Items"></a>
+<h2>21.1. Lexical Items</h2>
+
+<p>In general, <b>pic</b> is a free-format, token-oriented
+language that ignores whitespace outside strings. But
+certain lines and contructs are specially interpreted at the
+lexical level:</p>
+
+<p>A comment begins with <b>#</b> and continues to
+<b>\n</b> (comments may also follow text in a line). A line
+beginning with a period or backslash may be interpreted as
+text to be passed through to the post-processor, depending
+on command-line options. An end-of-line backslash is
+interpreted as a request to continue the line; the backslash
+and following newline are ignored.</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+<p>Here are the grammar terminals:</p>
+</td>
+</table>
+<!-- TABS -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="5" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="4%">
+
+<p><small>INT</small></p>
+</td>
+<td width="4%"></td>
+<td width="38%">
+
+<p>A positive integer.</p>
+</td>
+<td width="43%">
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+<p><small>NUMBER</small></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="19%"></td>
+<td width="80%">
+<p>A floating point numeric constant. May contain a decimal
+point or be expressed in scientific notation in the style of
+<i>printf</i>(3)&rsquo;s %e escape. A trailing
+&lsquo;i&rsquo; or &lsquo;I&rsquo; (indicating the unit
+&lsquo;inch&rsquo;) is ignored.</p>
+</td>
+</table>
+<!-- TABS -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="4" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="6%">
+
+<p><small>TEXT</small></p>
+</td>
+<td width="2%"></td>
+<td width="81%">
+
+<p>A string enclosed in double quotes. A double quote
+within <small>TEXT</small> must be preceded by a backslash.
+Instead of <small>TEXT</small> you can use</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="19%"></td>
+<td width="80%">
+<pre>     sprintf ( TEXT [, &lt;expr&gt; ...] )
+</pre>
+<!-- INDENTATION -->
+<p>except after the &lsquo;until&rsquo; and
+&lsquo;last&rsquo; keywords, and after all ordinal keywords
+(&lsquo;th&rsquo; and friends).</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+<p><small>VARIABLE</small></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="19%"></td>
+<td width="80%">
+<p>A string starting with a character from the set [a-z],
+optionally followed by one or more characters of the set
+[a-zA-Z0-9_]. (Values of variables are preserved across
+pictures.)</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+<p><small>LABEL</small></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="19%"></td>
+<td width="80%">
+<p>A string starting with a character from the set [A-Z],
+optionally followed by one or more characters of the set
+[a-zA-Z0-9_].</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+<p><small>COMMAND-LINE</small></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="19%"></td>
+<td width="80%">
+<p>A line starting with a command character (&lsquo;.&rsquo;
+in groff mode, &lsquo;\&rsquo; in TeX mode).</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+<p><small>BALANCED-TEXT</small></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="19%"></td>
+<td width="80%">
+<p>A string either enclosed by &lsquo;{&rsquo; and
+&lsquo;}&rsquo; or with <i>X</i> and <i>X</i>, where
+<i>X</i> doesn&rsquo;t occur in the string.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+<p><small>BALANCED-BODY</small></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="19%"></td>
+<td width="80%">
+<p>Delimiters as in <small>BALANCED-TEXT</small> ; the body
+will be interpreted as
+&lsquo;<b>&lang;command&rang;...</b>&rsquo;.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+<p><small>FILENAME</small></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="19%"></td>
+<td width="80%">
+<p>The name of a file. This has the same semantics as
+<small>TEXT</small> .</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+<p><small>MACRONAME</small></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="19%"></td>
+<td width="80%">
+<p>Either <small>VARIABLE</small> or <small>LABEL</small>
+.</p>
+</td>
+</table>
+<a name="21.2. Semi-Formal Grammar"></a>
+<h2>21.2. Semi-Formal Grammar</h2>
+
+<p>Tokens not enclosed in &lang;&rang; are literals,
+except:</p>
+<!-- TABS -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="4" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="4%">
+
+<p>1.</p>
+</td>
+<td width="6%"></td>
+<td width="32%">
+
+<p><b>\n</b> is a newline.</p>
+</td>
+<td width="57%">
+</td>
+</table>
+<!-- TABS -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="3" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="4%">
+
+<p>2.</p>
+</td>
+<td width="6%"></td>
+<td width="90%">
+
+<p>Three dots is a suffix meaning &lsquo;replace with 0 or
+more repetitions of the preceding element(s).</p>
+</td>
+</table>
+<!-- TABS -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="3" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="4%">
+
+<p>3.</p>
+</td>
+<td width="6%"></td>
+<td width="90%">
+
+<p>An enclosure in square brackets has its usual meaning of
+&lsquo;this clause is optional&rsquo;.</p>
+</td>
+</table>
+<!-- TABS -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="3" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="4%">
+
+<p>4.</p>
+</td>
+<td width="6%"></td>
+<td width="90%">
+
+<p>Square-bracket-enclosed portions within tokens are
+optional. Thus, &lsquo;h[eigh]t&rsquo; matches either
+&lsquo;height&rsquo; or &lsquo;ht&rsquo;.</p>
+</td>
+</table>
+
+<p>If one of these special tokens has to be referred to
+literally, it is surrounded with single quotes.</p>
+
+<p>The top-level <b>pic</b> object is a picture.</p>
+<pre>     &lt;picture&gt; ::=
+       .PS [NUMBER [NUMBER]]\n
+       &lt;statement&gt; ...
+       .PE \n
+</pre>
+
+<p>The arguments, if present, represent the width and
+height of the picture, causing <b>pic</b> to attempt to
+scale it to the given dimensions in inches. In no case,
+however, will the X and Y dimensions of the picture exceed
+the values of the style variables <b>maxpswid</b> and
+<b>maxpsheight</b> (which default to the normal 8.5i by 11i
+page size).</p>
+
+<p>If the ending &lsquo;.PE&rsquo; is replaced by
+&lsquo;.PF&rsquo;, the page vertical position is restored to
+its value at the time &lsquo;.PS&rsquo; was encountered.
+Another alternate form of invocation is &lsquo;.PS &lt;
+<small>FILENAME</small> &rsquo;, which replaces the
+&lsquo;.PS&rsquo; line with a file to be interpreted by
+<b>pic</b> (but this feature is deprecated).</p>
+
+<p>The &lsquo;.PS&rsquo;, &lsquo;.PE&rsquo;, and
+&lsquo;.PF&rsquo; macros to perform centering and scaling
+are normally supplied by the post-processor.</p>
+
+<p>In the following, either &lsquo;|&rsquo; or a new line
+starts an alternative.</p>
+<pre>     &lt;statement&gt; ::=
+       &lt;command&gt; ;
+       &lt;command&gt; \n
+</pre>
+<pre>     &lt;command&gt; ::=
+       &lt;primitive&gt; [&lt;attribute&gt;]
+       LABEL : [;] &lt;command&gt;
+       LABEL : [;] &lt;command&gt; [&lt;position&gt;]
+       { &lt;command&gt; ... }
+       VARIABLE [:] = &lt;any-expr&gt;
+       up | down | left | right
+       COMMAND-LINE
+       command &lt;print-arg&gt; ...
+       print &lt;print-arg&gt; ...
+       sh BALANCED-TEXT
+       copy FILENAME
+       copy [FILENAME] thru MACRONAME [until TEXT]
+       copy [FILENAME] thru BALANCED-BODY [until TEXT]
+       for VARIABLE = &lt;expr&gt; to &lt;expr&gt; [by [*] &lt;expr&gt;] do BALANCED-BODY
+       if &lt;any-expr&gt; then BALANCED-BODY [else BALANCED-BODY]
+       reset [VARIABLE [[,] VARIABLE ...]]
+</pre>
+<pre>     &lt;print-arg&gt; ::=
+       TEXT
+       &lt;expr&gt;
+       &lt;position&gt;
+</pre>
+
+<p>The current position and direction are saved on entry to
+a &lsquo;{ ... }&rsquo; construction and restored on exit
+from it.</p>
+
+<p>Note that in &lsquo;if&rsquo; constructions, newlines
+can only occur in <small>BALANCED-BODY</small> . This means
+that</p>
+<pre>     if
+     { ... }
+     else
+     { ... }
+</pre>
+
+<p>will fail. You have to use the braces on the same line
+as the keywords:</p>
+<pre>     if {
+     ...
+     } else {
+     ...
+     }
+</pre>
+
+<p>This restriction doesn&rsquo;t hold for the body after
+the &lsquo;do&rsquo; in a &lsquo;for&rsquo;
+construction.</p>
+<pre>     &lt;any-expr&gt; ::=
+       &lt;expr&gt;
+       &lt;text-expr&gt;
+       &lt;any-expr&gt; &lt;logical-op&gt; &lt;any-expr&gt;
+       ! &lt;any-expr&gt;
+</pre>
+<pre>     &lt;logical-op&gt; ::=
+       == | != | &amp;&amp; | &rsquo;||&rsquo;
+</pre>
+<pre>     &lt;text-expr&gt; ::=
+       TEXT == TEXT
+       TEXT != TEXT
+</pre>
+
+<p>Logical operators are handled specially by <b>pic</b>
+since they can deal with text strings also. <b>pic</b> uses
+<i>strcmp</i>(3) to test for equality of strings; an empty
+string is considered as &lsquo;false&rsquo; for
+&lsquo;&amp;&amp;&rsquo; and &lsquo;||&rsquo;.</p>
+<pre>     &lt;primitive&gt; ::=
+       box                   # closed object &mdash; rectangle
+       circle                # closed object &mdash; circle
+       ellipse               # closed object &mdash; ellipse
+       arc                   # open object &mdash; quarter-circle
+       line                  # open object &mdash; line
+       arrow                 # open object &mdash; line with arrowhead
+       spline                # open object &mdash; spline curve
+       move
+       TEXT TEXT ...         # text within invisible box
+       plot &lt;expr&gt; TEXT      # formatted text
+       &rsquo;[&rsquo; &lt;command&gt; ... &rsquo;]&rsquo;
+</pre>
+
+<p>Drawn objects within &lsquo;[ ... ]&rsquo; are treated
+as a single composite object with a rectangular shape (that
+of the bounding box of all the elements). Variable and label
+assignments within a block are local to the block. Current
+direction of motion is restored to the value at start of
+block upon exit. Position is <i>not</i> restored (unlike
+&lsquo;{ }&rsquo;); instead, the current position becomes
+the exit position for the current direction on the
+block&rsquo;s bounding box.</p>
+<pre>     &lt;attribute&gt; ::=
+       h[eigh]t &lt;expr&gt;       # set height of closed figure
+       wid[th] &lt;expr&gt;        # set width of closed figure
+       rad[ius] &lt;expr&gt;       # set radius of circle/arc
+       diam[eter] &lt;expr&gt;     # set diameter of circle/arc
+       up [&lt;expr&gt;]           # move up
+       down [&lt;expr&gt;]         # move down
+       left [&lt;expr&gt;]         # move left
+       right [&lt;expr&gt;]        # move right
+       from &lt;position&gt;       # set from position of open figure
+       to &lt;position&gt;         # set to position of open figure
+       at &lt;position&gt;         # set center of open figure
+       with &lt;path&gt;           # fix corner/named point at specified location
+       with &lt;position&gt;       # fix position of object at specified location
+       by &lt;expr-pair&gt;        # set object&rsquo;s attachment point
+       then                  # sequential segment composition
+       dotted [&lt;expr&gt;]       # set dotted line style
+       dashed [&lt;expr&gt;]       # set dashed line style
+       thick[ness] &lt;expr&gt;    # set thickness of lines
+       chop [&lt;expr&gt;]         # chop end(s) of segment
+       &rsquo;-&gt;&rsquo; | &rsquo;&lt;-&rsquo; | &rsquo;&lt;-&gt;&rsquo;   # decorate with arrows
+       invis[ible]           # make primitive invisible
+       solid                 # make closed figure solid
+       fill[ed] [&lt;expr&gt;]     # set fill density for figure
+       colo[u]r[ed] TEXT     # set fill and outline color for figure
+       outline[d] TEXT       # set outline color for figure
+       shaded TEXT           # set fill color for figure
+       same                  # copy size of previous object
+       cw | ccw              # set orientation of curves
+       ljust | rjust         # adjust text horizontally
+       above | below         # adjust text vertically
+       aligned               # align parallel to object
+       TEXT TEXT ...         # text within object
+       &lt;expr&gt;                # motion in the current direction
+</pre>
+
+<p>Missing attributes are supplied from defaults;
+inappropriate ones are silently ignored. For lines, splines,
+and arcs, height and width refer to arrowhead size.</p>
+
+<p>The &lsquo;at&rsquo; primitive sets the center of the
+current object. The &lsquo;with&rsquo; attribute fixes the
+specified feature of the given object to a specified
+location. (Note that &lsquo;with&rsquo; is incorrectly
+described in the Kernighan paper.)</p>
+
+<p>The &lsquo;by&rsquo; primitive is not documented in the
+tutorial portion of the Kernighan paper, and should probably
+be considered unreliable.</p>
+
+<p>The primitive &lsquo;arrow&rsquo; is a synonym for
+&lsquo;line -&gt;&rsquo;.</p>
+
+<p>Text is normally an attribute of some object, in which
+case successive strings are vertically stacked and centered
+on the object&rsquo;s center by default. Standalone text is
+treated as though placed in an invisible box.</p>
+
+<p>A text item consists of a string or sprintf-expression,
+optionally followed by positioning information. Text (or
+strings specified with &lsquo;sprintf&rsquo; may contain
+[gtn]roff font changes, size changes, and local motions,
+provided those changes are undone before the end of the
+current item.</p>
+
+<p>A position is an (x,y) coordinate pair. There are lots
+of different ways to specify positions:</p>
+<pre>     &lt;position&gt; ::=
+       &lt;position-not-place&gt;
+       &lt;place&gt;
+</pre>
+<pre>     &lt;position-not-place&gt; ::=
+       &lt;expr-pair&gt;
+       &lt;position&gt; + &lt;expr-pair&gt;
+       &lt;position&gt; - &lt;expr-pair&gt;
+       ( &lt;position&gt; , &lt;position&gt; )
+       &lt;expr&gt; [of the way] between &lt;position&gt; and &lt;position&gt;
+       &lt;expr&gt; &rsquo;&lt;&rsquo; &lt;position&gt; , &lt;position&gt; &rsquo;&gt;&rsquo;
+</pre>
+<pre>     &lt;expr-pair&gt; ::=
+       &lt;expr&gt; , &lt;expr&gt;
+       ( expr-pair )
+</pre>
+<pre>     &lt;place&gt; ::=
+       &lt;label&gt;
+       &lt;label&gt; &lt;corner&gt;
+       &lt;corner&gt; [of] &lt;label&gt;
+       Here
+</pre>
+<pre>     &lt;label&gt; ::=
+       LABEL [. LABEL ...]
+       &lt;nth-primitive&gt;
+</pre>
+<pre>     &lt;corner&gt; ::=
+       .n | .e | .w | .s
+       .ne | .se | .nw | .sw
+       .c[enter] | .start | .end
+       .t[op] | .b[ot[tom]] | .l[eft] | .r[ight]
+       left | right | &lt;top-of&gt; | &lt;bottom-of&gt;
+       &lt;north-of&gt; | &lt;south-of&gt; | &lt;east-of&gt; | &lt;west-of&gt;
+       &lt;center-of&gt; | &lt;start-of&gt; | &lt;end-of&gt;
+       upper left | lower left | upper right | lower right
+</pre>
+<pre>     &lt;xxx-of&gt; ::=
+       xxx                   # followed by &lsquo;of&rsquo;
+</pre>
+<pre>     &lt;nth-primitive&gt; ::=
+       &lt;ordinal&gt; &lt;object-type&gt;
+       [&lt;ordinal&gt;] last &lt;object-type&gt;
+</pre>
+<pre>     &lt;ordinal&gt; ::=
+       INT th
+       INT st | INT nd | INT rd
+       &lsquo; &lt;any-expr&gt; &rsquo;th
+</pre>
+<pre>     &lt;object-type&gt; ::=
+       box
+       circle
+       ellipse
+       arc
+       line
+       arrow
+       spline
+       &rsquo;[]&rsquo;
+       TEXT
+</pre>
+
+<p>As Kernighan notes, &ldquo;since barbarisms like
+<b>1th</b> and <b>3th</b> are barbaric, synonyms like
+<b>1st</b> and <b>3rd</b> are accepted as well.&rdquo;
+Objects of a given type are numbered from 1 upwards in order
+of declaration; the <b>last</b> modifier counts
+backwards.</p>
+
+<p>The &ldquo;&rsquo;th&rdquo; form (which allows you to
+select a previous object with an expression, as opposed to a
+numeric literal) is not documented in DWB&rsquo;s
+<i>pic</i>(1).</p>
+
+<p>The &lang;<i>xxx</i>-of&rang; rule is special: The
+lexical parser checks whether <i>xxx</i> is followed by the
+token &lsquo;of&rsquo; without eliminating it so that the
+grammar parser can still see &lsquo;of&rsquo;. Valid
+examples of specifying a place with corner and label are
+thus</p>
+<pre>     A .n
+     .n of A
+     .n A
+     north of A
+</pre>
+
+<p>while</p>
+<pre>     north A
+     A north
+</pre>
+
+<p>both cause a syntax error. (DWB <b>pic</b> also allows
+the weird form &lsquo;A north of&rsquo;.)</p>
+
+<p>Here the special rules for the &lsquo;with&rsquo;
+keyword using a path:</p>
+<pre>     &lt;path&gt; ::=
+       &lt;relative-path&gt;
+       ( &lt;relative-path&gt; , &lt;relative-path&gt; )
+</pre>
+<pre>     &lt;relative-path&gt; ::=
+       &lt;corner&gt;
+       . LABEL [. LABEL ...] [&lt;corner&gt;]
+</pre>
+
+<p>The following style variables control output:</p>
+
+<p align=center><img src="img/pic49.png"></p>
+
+<p>Any of these can be set by assignment, or reset using
+the <b>reset</b> statement. Style variables assigned within
+&lsquo;[ ]&rsquo; blocks are restored to their
+beginning-of-block value on exit; top-level assignments
+persist across pictures. Dimensions are divided by
+<b>scale</b> on output.</p>
+
+<p>All <b>pic</b> expressions are evaluated in floating
+point; units are always inches (a trailing &lsquo;i&rsquo;
+or &lsquo;I&rsquo; is ignored). Expressions have the
+following simple grammar, with semantics very similar to C
+expressions:</p>
+<pre>     &lt;expr&gt; ::=
+       VARIABLE
+       NUMBER
+       &lt;place&gt; &lt;place-attribute&gt;
+       &lt;expr&gt; &lt;op&gt; &lt;expr&gt;
+       - &lt;expr&gt;
+       ( &lt;any-expr&gt; )
+       ! &lt;expr&gt;
+       &lt;func1&gt; ( &lt;any-expr&gt; )
+       &lt;func2&gt; ( &lt;any-expr&gt; , &lt;any-expr&gt; )
+       rand ( )
+</pre>
+<pre>     &lt;place-attribute&gt;
+      .x | .y | .h[eigh]t | .wid[th] | .rad
+</pre>
+<pre>     &lt;op&gt; ::=
+       + | - | * | / | % | ^ | &rsquo;&lt;&rsquo; | &rsquo;&gt;&rsquo; | &rsquo;&lt;=&rsquo; | &rsquo;&gt;=&rsquo;
+</pre>
+<pre>     &lt;func1&gt; ::=
+       sin | cos | log | exp | sqrt | int | rand | srand
+</pre>
+<pre>     &lt;func2&gt; ::=
+       atan2 | max | min
+</pre>
+
+<p>Both <b>exp</b> and <b>log</b> are base 10; <b>int</b>
+does integer truncation; and <b>rand()</b> returns a random
+number in [0-1).</p>
+
+<p>There are <b>define</b> and <b>undef</b> statements
+which are not part of the grammar (they behave as
+pre-processor macros to the language). These may be used to
+define pseudo-functions.</p>
+<pre><b>     define</b> <i>name</i> <b>{</b> <i>replacement-text</i> <b>}
+</b></pre>
+
+<p>This defines <i>name</i> as a macro to be replaced by
+the replacement text (not including the braces). The macro
+may be called as</p>
+<pre><i>     name</i><b>(</b><i>arg1, arg2, ..., argn</i><b>)
+</b></pre>
+
+<p>The arguments (if any) will be substituted for tokens
+$1, $2 ... $n appearing in the replacement text. To undefine
+a macro, say <b>undef</b> <i>name</i>, specifying the name
+to be undefined.</p>
+<a name="22. History and Acknowledgements"></a>
+<h2>22. History and Acknowledgements</h2>
+
+<p>Original <b>pic</b> was written to go with Joseph
+Ossanna&rsquo;s original <i>troff</i>(1) by Brian Kernighan,
+and later re-written by Kernighan with substantial
+enhancements (apparently as part of the evolution of
+<i>troff</i>(1) into <i>ditroff</i>(1) to generate
+device-independent output).</p>
+
+<p>The language had been inspired by some earlier graphics
+languages including <b>ideal</b> and <b>grap</b>. Kernighan
+credits Chris van Wyk (the designer of <b>ideal</b>) with
+many of the ideas that went into <b>pic</b>.</p>
+
+<p>The <b>pic</b> language was originally described by
+Brian Kernighan in Bell Labs Computing Science Technical
+Report #116 (you can obtain a PostScript copy of the revised
+version, [1], by sending a mail message to
+<i>netlib@research.att.com</i> with a body of &lsquo;send
+116 from research/cstr&rsquo;). There have been two
+revisions, in 1984 and 1991.</p>
+
+<p>The document you are reading effectively subsumes
+Kernighan&rsquo;s description; it was written to fill in
+lacun&aelig; in the exposition and integrate in descriptions
+of the GNU <i>gpic</i>(1) features.</p>
+
+<p>The GNU <b>gpic</b> implementation was written by James
+Clark &lang;<i>jjc@jclark.com</i>&rang;. It is currently
+maintained by Werner Lemberg
+&lang;<i>wl@gnu.org</i>&rang;.</p>
+<a name="23. Bibliography"></a>
+<h2>23. Bibliography</h2>
+<!-- TABS -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="3" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="4%">
+
+<p>1.</p>
+</td>
+<td width="6%"></td>
+<td width="90%">
+
+<p>Kernighan, B. W. <b>PIC &mdash; A Graphics Language for
+Typesetting (Revised User Manual)</b>. Bell Labs Computing
+Science Technical Report #116, December 1991.</p>
+</td>
+</table>
+<!-- TABS -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="3" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="4%">
+
+<p>2.</p>
+</td>
+<td width="6%"></td>
+<td width="90%">
+
+<p>Van Wyk, C. J. <b>A high-level language for specifying
+pictures</b>. <i>ACM Transactions On Graphics</i> 1,2 (1982)
+163-182.</p>
+</td>
+</table>
+<hr>
+</body>
+</html>

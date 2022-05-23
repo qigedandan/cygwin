@@ -1,0 +1,77 @@
+The source archive already has the 
+cygwin-specific patch rcs-5.7-X.patch applied.
+
+To remove and revert to a 'clean' rcs-5.7
+  mv <srctop>/CYGWIN-PATCHES/rcs-5.7-X.patch <srctop>/..
+  cd <srctop>
+  patch -p1 -R < ../rcs-5.7-X.patch
+  
+------------------
+
+Requirements:
+  gcc-2.95.2-5 or later
+  binutils-20001029-2 or later 
+
+Direct Dependencies:
+  (none)
+
+Canonical homepage:
+  http://www.gnu.org/software/rcs/rcs.html
+
+Canonical download:
+  ftp://ftp.gnu.org/gnu/rcs/rcs-5.7.tar.gz
+
+------------------
+
+To build the application for cygwin: 
+
+tar jxf rcs-5.7-X.tar.bz2
+mkdir build
+cd build
+../rcs-5.7/configure --prefix=/usr
+make
+strip src/*.exe
+#mkdir ../install
+make install #DESTDIR=`pwd`/../install
+
+------------------
+
+Files included in the binary distro
+
+  /usr/bin/ci.exe
+  /usr/bin/co.exe
+  /usr/bin/ident.exe
+  /usr/bin/merge.exe
+  /usr/bin/rcs.exe
+  /usr/bin/rcsclean.exe
+  /usr/bin/rcsdiff.exe
+  /usr/bin/rcsmerge.exe
+  /usr/bin/rlog.exe
+  /usr/doc/Cygwin/rcs-5.7.README
+  /usr/doc/rcs-5.7/COPYING
+  /usr/doc/rcs-5.7/CREDITS
+  /usr/doc/rcs-5.7/ChangeLog
+  /usr/doc/rcs-5.7/INSTALL
+  /usr/doc/rcs-5.7/INSTALL.RCS
+  /usr/doc/rcs-5.7/NEWS
+  /usr/doc/rcs-5.7/README
+  /usr/doc/rcs-5.7/REFS
+  /usr/man/man1/ci.1
+  /usr/man/man1/co.1
+  /usr/man/man1/ident.1
+  /usr/man/man1/merge.1
+  /usr/man/man1/rcs.1
+  /usr/man/man1/rcsclean.1
+  /usr/man/man1/rcsdiff.1
+  /usr/man/man1/rcsintro.1
+  /usr/man/man1/rcsmerge.1
+  /usr/man/man1/rlog.1
+  /usr/man/man5/rcsfile.5
+
+------------------
+
+Port Notes:
+
+Builds mostly OOTB.
+
+Cygwin port done and maintained by: Stipe Tolj <tolj@wapme-systems.de>

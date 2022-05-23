@@ -1,0 +1,205 @@
+# $Id: README.old,v 1.1 2000/09/17 03:28:55 cwilson Exp $ 
+
+WARNING: This package is provided AS IS, with NO garanty at all that it will
+ever work for you.... Just pray.
+In no way should the authors of this package be liable for any loss of data,
+malfunction, etc.....
+
+Flames and comment should be sent to : llange@capgemini.fr, the current
+maintainer of this package.
+
+
+This is version 1.03.
+=====================
+
+
+
+
+READ CAREFULLY THIS FILE !
+
+
+
+
+This package has been wrote to allow the use of IPC for CygWin.
+
+After extraction you have :
+
+/bin			binaries. Copy them in your BIN directory
+
+    ipc-daemon.exe	providing ipc support for CygWin32
+    ipck		shell allowing killing of ipc's
+    ipcrm		removes an ipc
+    ipcs		lists system's ipc's
+    ipctest		test program, known to be *very* buggy, test purpose only
+    
+/include
+
+    IpcNtExt.h		includes needed for recompilation
+    IpcNtLit.h		includes needed for recompilation
+    IpcNtStr.h		includes needed for recompilation
+    
+/include/sys		Headers for IPC support. Copy them in your INCLUDE dir.
+
+    ipc.h
+    msg.h
+    sem.h
+    shm.h
+    
+    
+/src
+
+    Makefile
+    ipc-daemon.c
+    ipcrm.c
+    ipcs.c
+    ipctest.c
+    itoa.c
+    msg.c
+    reverse.c
+    sem.c
+    shm.c
+    strace.c
+    version.c
+
+/lib
+
+    libcygipc.a		Library for your applications
+
+
+README			This file.
+
+
+
+
+Functions provided in this package are :
+
+	msgget
+	msgrcv
+	msgsnd
+	msgctl
+
+	semget
+	semop
+	semctl
+
+	shmget
+	shmat
+	shmdt
+	shmctl
+
+
+
+
+
+Compiling the IPC support (not necessary as binaries are provided)
+-------------------------
+
+
+
+Go to /src.
+
+Edit Makefile if you need.
+
+You can change
+
+CONF_FLAGS = -DSHMAT_LINUX
+to
+CONF_FLAGS = #-DSHMAT_LINUX and vice versa.
+
+if you compile with -DSHMAT_LINUX (silly name but I didn't know what to choose)
+you will have a shmat function with header :
+
+int shmat (int shmid, char *shmaddr, int shmflg, char **adr);
+
+
+if you compile without -DSHMAT_LINUX you will have a shmat function with header :
+
+char * shmat (int shmid, char *shmaddr, int shmflg);	(this is more a standard)
+
+
+Feel free to choose.
+
+
+
+You can also add -DTRACE to CONF_FLAGS if you want to build the library with execution
+traces to stderr. It's quite the same ouput as STRACE (cygwin environment variable).
+
+
+	    make		does the job. Just one warning, normal.
+	    
+(these targets exists : 	    
+	    make clobj		delete the objs
+	    make cldep		delete the dependancies
+	    make clean		both
+	    
+	    make realclean	deletes objs + executables + dependancies + libraries)
+	    
+there it goes...
+
+
+
+
+
+
+Installing the IPC support:
+---------------------------
+
+Manual installation is necessary.
+
+Copy /bin/* in one of your binary directory (one that is in the $PATH), for
+example /usr/local/bin,
+
+Copy /sys/* in one of your include directory, for example /usr/local/include/sys,
+
+Copy /lib/* in one of your library directory, for example /usr/local/lib
+
+
+You MUST have a directory named /tmp (yes it's hard-coded :-) )
+There will go the files mapped in memory that are used.
+
+You must start the daemon (ipc-daemon.exe) from your Startup group or explorer.
+You can also start it in CygWin32, but it will not survive the death of its
+father terminal...
+
+
+
+Using the package:
+------------------
+
+
+For any program you have that needs IPC's, you must modify its makefile to
+include the new library   libcygipc.a
+
+90% of the time you just add "-lcygipc" to the (g)cc command.
+
+
+
+
+
+
+Have fun, feel free to modify the code, and remember to keep us informed of any
+change you made.
+
+
+
+History:
+========
+
+V1.00		First public release
+V1.01		Added -DSHMAT_LINUX as an option
+V1.02		Denis LALANNE (DLalanne@sif.com.ar)
+			    Warning fixed,
+			    Minor code changes,
+			    Makefile facelifts,
+			    Bugs fixed.
+		Ludovic LANGE (llange@capgemini.fr)
+			    ENOSYS return code for unimplemented ctl operations
+V1.03		Ludovic LANGE (llange@capgemini.fr)
+			    -DTRACE to have executions traces
+			    fixed a bug with shmat allocation at a fixed address
+V1.03-csw  added ftok()
+V1.04      updates from Daniel Horak and also from Eric Fifer
+           * 1.03 used some variable without initializing them
+			  * g++ fixes
+
+17/06/98 Ludovic LANGE (llange@capgemini.fr)

@@ -1,0 +1,94 @@
+.\" Copyright 1999, 2000 SuSE GmbH Nuernberg, Germany
+.\" Author: Thorsten Kukuk <kukuk@suse.de>
+.\" May be distributed under the GNU General Public License
+.TH LOGIN 1 "17 May 2000" "Cygwin Login 1.2" "Cygwin Manual"
+.SH NAME
+login \- sign on
+.SH SYNOPSIS
+.BR "login [ " name " ]"
+.br
+.B "login \-p"
+.br
+.BR "login \-h " hostname
+.br
+.BR "login \-f " name
+.SH DESCRIPTION
+.B login
+is used when signing onto a system.
+If an argument is not given,
+.B login
+prompts for the username.
+
+If the file
+.I /etc/nologin
+exists, the content of the file is written to stdout and nobody
+is permitted to log into the system.
+
+Random administrative things, such as setting the UID and GID of the
+tty are performed.  The TERM environment variable is preserved, if it
+exists (other environment variables are preserved if the
+.B \-p
+option is used).  Then the HOME, PATH, SHELL, MAIL, and LOGNAME
+environment variables are set.  PATH is not changed from the
+system PATH if it's found. Otherwise PATH defaults to
+.I /usr/local/bin:/bin:/usr/bin.
+
+Authentication is done via SAM database on NT/W2K systems and
+via 56 bit DES passwords in
+.BR /etc/passwd ,
+on W9X systems.
+
+The user's shell is then started. If no shell is specified for the
+user in
+.BR /etc/passwd ,
+then
+.B /bin/sh
+is used.  If there is no directory specified in
+.IR /etc/passwd ,
+then
+.I /
+is used (the home directory is checked for the
+.I .hushlogin
+file described above).
+.SH OPTIONS
+.TP
+.B \-p
+Used by
+.BR getty (8)
+to tell
+.B login
+not to destroy the environment. This is disabled in the Cygwin version.
+.TP
+.B \-f
+Used to skip a second login authentication.  This specifically does
+.B not
+work for root.
+.TP
+.B \-h
+Used by other servers (i.e.,
+.BR telnetd (8))
+to pass the name of the remote host to
+.B login
+so that it may be placed in utmp and wtmp.
+
+.SH FILES
+.nf
+.I /var/run/utmp
+.I /var/log/wtmp
+.I /var/log/lastlog
+.I /etc/passwd
+.fi
+.SH "SEE ALSO"
+.BR passwd (1),
+.BR passwd (5),
+.BR environ (7),
+.BR telnetd (8).
+.SH BUGS
+
+Perhaps.
+
+.SH AUTHOR
+Derived from BSD login 5.32.1.1 (1/28/89) and ported to Cygwin
+by Sergey Okhapkin (sos@prospect.com.ru)
+.br
+Added new features: Corinna Vinschen <vinschen@cygnus.com>

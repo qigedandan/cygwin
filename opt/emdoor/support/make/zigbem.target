@@ -1,0 +1,11 @@
+PLATFORM = zigbem
+#PFLAGS += -finline-limit=100000
+
+ifdef PLATFORM
+PFLAGS += -D__$(PLATFORM)__=1
+endif
+
+$(call TOSMake_include_platform,zigbem)
+
+zigbem: $(APP_ERROR) $(BUILD_DEPS)
+	@:

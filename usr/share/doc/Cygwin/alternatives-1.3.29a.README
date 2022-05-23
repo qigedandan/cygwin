@@ -1,0 +1,63 @@
+alternatives
+------------------------------------------
+This package provides mechanisms for maintaining a database of, and 
+managing, other packages which might be in conflict with each other.
+The end user can easily switch between the desired versions.
+
+Runtime requirements:
+  cygwin-1.5.21-2
+  libintl3
+  libiconv2
+
+Build requirements:
+  cygwin-1.5.21-2
+  gcc-core-3.4.4-1
+  binutils-20060817-1
+  gettext
+
+Canonical homepage:
+  N/A
+
+Canonical download:
+  N/A
+
+(package forked from Red Hat chkconfig-1.3.20; looking for a CVS/web home)
+
+------------------------------------
+
+Build instructions:
+  unpack alternatives-1.3.29a-REL-src.tar.bz2
+    if you use setup to install this src package, it will be
+	 unpacked under /usr/src automatically
+  cd /usr/src
+  cygport ./alternatives-1.3.29a-REL.cygport all
+
+This will create:
+  /usr/src/alternatives-1.3.29a-REL.tar.bz2
+  /usr/src/alternatives-1.3.29a-REL-src.tar.bz2
+
+Or use 'cygport ./alternatives-1.3.29a-REL.cygport prep' to get
+a patched source directory
+
+---------------------------------------
+
+Files included in alternatives-1.3.29a-REL: see cygcheck -l output.
+
+----------------------------------------
+
+Port Notes:
+
+----------  alternatives-1.3.29a-1 -- 18 Oct 2006 ---------
+* Resync with Red Hat chkconfig 1.3.29
+* Update to latest autotools
+* Fix null pointer crash in --display
+* Switch to cygport build framework
+
+
+----------  alternatives-1.3.20a-1 -----------
+Initial release; forked from Red Hat chkconfig-1.3.20.
+
+
+Cygwin port maintained by: Charles Wilson  <cygwin@cygwin.com>
+Please address all questions to the Cygwin mailing list at <cygwin@cygwin.com>
+

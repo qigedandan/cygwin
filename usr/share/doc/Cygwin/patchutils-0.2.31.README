@@ -1,0 +1,41 @@
+Patchutils 0.2.31
+--------------------------------------------------------
+Patchutils is a small collection of programs that operate
+on patch files. You can use the programs to combine,
+filter and split, correct output from 'cvs diff', list
+and grep patch files.
+
+Runtime requirements:
+  cygwin
+
+Build requirements:
+  (basic development packages)
+
+Canonical homepage:
+  http://cyberelk.net/tim/patchutils/
+
+Canonical download:
+  http://cyberelk.net/tim/data/patchutils/stable/patchutils-0.2.31.tar.bz2
+
+------------------------------------
+
+Build instructions:
+  unpack patchutils-0.2.31-1-src.tar.bz2
+    if you use setup to install this src package, it will be
+	 unpacked under /usr/src automatically
+  cd /usr/src
+  ./patchutils-0.2.31-1.sh all
+
+Or use './patchutils-0.2.31-1.sh prep' to get a patched source directory
+
+-------------------------------------------
+
+Port Notes:
+
+Builds OOTB.
+
+Some tests fail:
+ * nul*: These tests were recently added, but fail with previous versions
+         of Cygwin patchutils too - i.e. they are not a regression.
+
+Cygwin port maintained by: Max Bowsher <maxb1@ukf.net>

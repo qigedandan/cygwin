@@ -1,0 +1,11 @@
+#!/bin/sh
+prefix=/usr
+if [ ! -d ${prefix}/include/sys ] ; then
+  mkdir -p ${prefix}/include/sys
+fi
+for fn in ipc.h  ipctrace.h  msg.h  sem.h  shm.h ; do
+  if [ ! -e ${prefix}/include/sys/${fn} ] ; then
+    (cd ${prefix}/include/sys ; ln -fs ../cygipc/sys/${fn} ${fn})
+  fi
+done
+

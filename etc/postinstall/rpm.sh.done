@@ -1,0 +1,3 @@
+#!/bin/sh
+rpm --initdb
+test -e /etc/mtab || touch /etc/mtab

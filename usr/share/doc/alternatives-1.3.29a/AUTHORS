@@ -1,0 +1,6 @@
+Charles Wilson
+  forked from Red Hat chkconfig-1.3.20, autotoolified, and
+  disentangled from chkconfig/ntsysv stuff.
+
+Red Hat, Inc.
+  original coding as part of the Fedora chkconfig package

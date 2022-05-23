@@ -1,0 +1,33 @@
+emacs-leim
+------------------------------------------
+LEIM is now part of emacs package and no longer an own package.
+
+Runtime requirements:
+  none
+
+Build requirements:
+  none
+
+Canonical homepage:
+  none
+
+Canonical download:
+  none
+
+License:
+  none
+
+Language:
+  none
+
+------------------------------------
+
+Build instructions:
+  none
+
+This will create:
+  nothing
+
+------------------
+
+Port Notes:

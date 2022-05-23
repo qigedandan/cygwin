@@ -1,0 +1,3 @@
+#-*Makefile-*- vim:syntax=make
+
+BUILD_DEPS = tosimage $(POST_BUILD_EXTRA_DEPS) $(PROG_ACTION)

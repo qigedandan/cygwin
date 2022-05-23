@@ -1,0 +1,29 @@
+/* $Id: USAGE,v 1.8 2004/02/01 06:48:04 cwilson Exp $ */
+
+To link this library with your projects:
+ 1. include sys/ipc.h, and one or more of:
+    ( sys/msg.h, sys/sem.h, and sys/shm.h )
+ 2. for debugging and error redirection, also
+    include sys/ipctrace.h.  See NOTES below.
+ 3. Compile using -I/usr/include/cygipc 
+ 4. link with the static library using '-lcygipc'
+
+The daemon (ipc-daemon2.exe) must be running before programs that
+require IPC services are started.  You can run it from your 
+Startup folder, from the explorer, or as a service (on NT/2K).  
+You can also start it from within a bash shell or dos box, but 
+it will not survive the death of its parent terminal in that 
+case (in other words, don't close the window).
+
+If started from a `naked' dosbox (e.g. not from bash), then you
+will not be able to see any debug or help messages unless you 
+use this workaround (see the README for an indepth discussion):
+
+   ipc-daemon2 [OPTIONS] 2>&1 | cat
+
+Also, see the README file for information concerning running 
+ipc-daemon2 as a service (NT/2K only). (Do NOT attempt to 
+call ipc-daemon2 with the '--service' option -- it will not
+do what you think...)
+
+

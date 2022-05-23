@@ -1,0 +1,451 @@
+2022/01/03 14:36:45 Starting cygwin install, version 2.573.2.2
+2022/01/03 14:36:45 io_stream_cygfile: fopen(/etc/setup/last-action) failed 2 No such file or directory
+2022/01/03 14:36:45 io_stream_cygfile: fopen(/etc/setup/last-mirror) failed 2 No such file or directory
+2022/01/03 14:36:45 io_stream_cygfile: fopen(/etc/setup/last-connection) failed 2 No such file or directory
+2022/01/03 14:36:45 io_stream_cygfile: fopen(/etc/setup/last-cache) failed 2 No such file or directory
+2022/01/03 14:36:45 Current Directory: C:\ZigbemDS\\setup\cygwin-installationfiles
+2022/01/03 14:36:45 Changing gid to Users
+2022/01/03 14:36:45 Could not open service McShield for query, start and stop. McAfee may not be installed, or we don't have access.
+2022/01/03 14:36:45 io_stream_cygfile: fopen(/etc/setup/installed.db) failed 2 No such file or directory
+2022/01/03 14:36:45 root: C:\ZigbemDS\\cygwin binary system
+2022/01/03 14:36:45 io_stream_cygfile: fopen(/etc/setup/last-cache) failed 2 No such file or directory
+2022/01/03 14:36:45 Selected local directory: C:\ZigbemDS\\setup\cygwin-installationfiles
+2022/01/03 14:36:46 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/alternatives/alternatives-1.3.29a-1.tar.bz2
+2022/01/03 14:36:46 io_stream_cygfile: fopen(/etc/setup/alternatives.lst.gz) failed 2 No such file or directory
+2022/01/03 14:36:46 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/ash/ash-20040127-3.tar.bz2
+2022/01/03 14:36:46 io_stream_cygfile: fopen(/etc/setup/ash.lst.gz) failed 2 No such file or directory
+2022/01/03 14:36:46 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/autoconf/autoconf-4-1.tar.bz2
+2022/01/03 14:36:46 io_stream_cygfile: fopen(/etc/setup/autoconf.lst.gz) failed 2 No such file or directory
+2022/01/03 14:36:46 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/autoconf/autoconf-devel/autoconf-devel-2.59-2.tar.bz2
+2022/01/03 14:36:46 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/autoconf/autoconf-stable/autoconf-stable-2.13-6.tar.bz2
+2022/01/03 14:36:46 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/autoconf/autoconf2.1/autoconf2.1-2.13-3.tar.bz2
+2022/01/03 14:36:46 io_stream_cygfile: fopen(/etc/setup/autoconf2.1.lst.gz) failed 2 No such file or directory
+2022/01/03 14:36:46 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/autoconf/autoconf2.5/autoconf2.5-2.61-1.tar.bz2
+2022/01/03 14:36:46 io_stream_cygfile: fopen(/etc/setup/autoconf2.5.lst.gz) failed 2 No such file or directory
+2022/01/03 14:36:46 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/automake/automake-2-1.tar.bz2
+2022/01/03 14:36:46 io_stream_cygfile: fopen(/etc/setup/automake.lst.gz) failed 2 No such file or directory
+2022/01/03 14:36:46 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/automake/automake-devel/automake-devel-1.9.2-2.tar.bz2
+2022/01/03 14:36:46 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/automake/automake-stable/automake-stable-1.4p6-3.tar.bz2
+2022/01/03 14:36:46 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/automake/automake1.10/automake1.10-1.10-1.tar.bz2
+2022/01/03 14:36:46 io_stream_cygfile: fopen(/etc/setup/automake1.10.lst.gz) failed 2 No such file or directory
+2022/01/03 14:36:47 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/automake/automake1.4/automake1.4-1.4p6-4.tar.bz2
+2022/01/03 14:36:47 io_stream_cygfile: fopen(/etc/setup/automake1.4.lst.gz) failed 2 No such file or directory
+2022/01/03 14:36:47 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/automake/automake1.5/automake1.5-1.5-2.tar.bz2
+2022/01/03 14:36:47 io_stream_cygfile: fopen(/etc/setup/automake1.5.lst.gz) failed 2 No such file or directory
+2022/01/03 14:36:47 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/automake/automake1.6/automake1.6-1.6.3-3.tar.bz2
+2022/01/03 14:36:47 io_stream_cygfile: fopen(/etc/setup/automake1.6.lst.gz) failed 2 No such file or directory
+2022/01/03 14:36:47 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/automake/automake1.7/automake1.7-1.7.9-3.tar.bz2
+2022/01/03 14:36:47 io_stream_cygfile: fopen(/etc/setup/automake1.7.lst.gz) failed 2 No such file or directory
+2022/01/03 14:36:48 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/automake/automake1.8/automake1.8-1.8.5-3.tar.bz2
+2022/01/03 14:36:48 io_stream_cygfile: fopen(/etc/setup/automake1.8.lst.gz) failed 2 No such file or directory
+2022/01/03 14:36:48 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/automake/automake1.9/automake1.9-1.9.6-2.tar.bz2
+2022/01/03 14:36:48 io_stream_cygfile: fopen(/etc/setup/automake1.9.lst.gz) failed 2 No such file or directory
+2022/01/03 14:36:48 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/base-files/base-files-3.7-1.tar.bz2
+2022/01/03 14:36:48 io_stream_cygfile: fopen(/etc/setup/base-files.lst.gz) failed 2 No such file or directory
+2022/01/03 14:36:48 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/base-passwd/base-passwd-2.2-1.tar.bz2
+2022/01/03 14:36:48 io_stream_cygfile: fopen(/etc/setup/base-passwd.lst.gz) failed 2 No such file or directory
+2022/01/03 14:36:48 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/bash/bash-3.2.25-17.tar.bz2
+2022/01/03 14:36:48 io_stream_cygfile: fopen(/etc/setup/bash.lst.gz) failed 2 No such file or directory
+2022/01/03 14:36:48 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/binutils/binutils-20060817-1.tar.bz2
+2022/01/03 14:36:48 io_stream_cygfile: fopen(/etc/setup/binutils.lst.gz) failed 2 No such file or directory
+2022/01/03 14:36:49 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/bison/bison-2.3-1.tar.bz2
+2022/01/03 14:36:49 io_stream_cygfile: fopen(/etc/setup/bison.lst.gz) failed 2 No such file or directory
+2022/01/03 14:36:49 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/bzip2/bzip2-1.0.3-2.tar.bz2
+2022/01/03 14:36:49 io_stream_cygfile: fopen(/etc/setup/bzip2.lst.gz) failed 2 No such file or directory
+2022/01/03 14:36:49 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/coreutils/coreutils-6.9-5.tar.bz2
+2022/01/03 14:36:49 io_stream_cygfile: fopen(/etc/setup/coreutils.lst.gz) failed 2 No such file or directory
+2022/01/03 14:36:50 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/crypt/crypt-1.1-1.tar.bz2
+2022/01/03 14:36:50 io_stream_cygfile: fopen(/etc/setup/crypt.lst.gz) failed 2 No such file or directory
+2022/01/03 14:36:50 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/ctags/ctags-5.7-1.tar.bz2
+2022/01/03 14:36:50 io_stream_cygfile: fopen(/etc/setup/ctags.lst.gz) failed 2 No such file or directory
+2022/01/03 14:36:50 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/cvs/cvs-1.11.22-1.tar.bz2
+2022/01/03 14:36:50 io_stream_cygfile: fopen(/etc/setup/cvs.lst.gz) failed 2 No such file or directory
+2022/01/03 14:36:50 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/_obsolete/cygipc/cygipc-2.03-2.tar.bz2
+2022/01/03 14:36:50 io_stream_cygfile: fopen(/etc/setup/cygipc.lst.gz) failed 2 No such file or directory
+2022/01/03 14:36:50 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/cygrunsrv/cygrunsrv-1.17-1.tar.bz2
+2022/01/03 14:36:50 io_stream_cygfile: fopen(/etc/setup/cygrunsrv.lst.gz) failed 2 No such file or directory
+2022/01/03 14:36:50 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/cygutils/cygutils-1.3.2-1.tar.bz2
+2022/01/03 14:36:50 io_stream_cygfile: fopen(/etc/setup/cygutils.lst.gz) failed 2 No such file or directory
+2022/01/03 14:36:50 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/cygwin/cygwin-1.5.24-2.tar.bz2
+2022/01/03 14:36:50 io_stream_cygfile: fopen(/etc/setup/cygwin.lst.gz) failed 2 No such file or directory
+2022/01/03 14:36:51 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/cygwin-doc/cygwin-doc-1.4-4.tar.bz2
+2022/01/03 14:36:51 io_stream_cygfile: fopen(/etc/setup/cygwin-doc.lst.gz) failed 2 No such file or directory
+2022/01/03 14:36:51 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/diffutils/diffutils-2.8.7-1.tar.bz2
+2022/01/03 14:36:51 io_stream_cygfile: fopen(/etc/setup/diffutils.lst.gz) failed 2 No such file or directory
+2022/01/03 14:36:52 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/e2fsprogs/e2fsprogs-1.35-3.tar.bz2
+2022/01/03 14:36:52 io_stream_cygfile: fopen(/etc/setup/e2fsprogs.lst.gz) failed 2 No such file or directory
+2022/01/03 14:36:52 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/editrights/editrights-1.01-1.tar.bz2
+2022/01/03 14:36:52 io_stream_cygfile: fopen(/etc/setup/editrights.lst.gz) failed 2 No such file or directory
+2022/01/03 14:36:52 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/emacs/emacs-21.2-13.tar.bz2
+2022/01/03 14:36:52 io_stream_cygfile: fopen(/etc/setup/emacs.lst.gz) failed 2 No such file or directory
+2022/01/03 14:36:54 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/emacs/emacs-el/emacs-el-21.2-13.tar.bz2
+2022/01/03 14:36:54 io_stream_cygfile: fopen(/etc/setup/emacs-el.lst.gz) failed 2 No such file or directory
+2022/01/03 14:36:56 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/emacs/emacs-leim/emacs-leim-22.1-3.tar.bz2
+2022/01/03 14:36:56 io_stream_cygfile: fopen(/etc/setup/emacs-leim.lst.gz) failed 2 No such file or directory
+2022/01/03 14:36:56 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/expat/expat-1.95.8-2.tar.bz2
+2022/01/03 14:36:56 io_stream_cygfile: fopen(/etc/setup/expat.lst.gz) failed 2 No such file or directory
+2022/01/03 14:36:56 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/file/file-4.21-1.tar.bz2
+2022/01/03 14:36:56 io_stream_cygfile: fopen(/etc/setup/file.lst.gz) failed 2 No such file or directory
+2022/01/03 14:36:56 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/_obsolete/fileutils/fileutils-4.1-3.tar.bz2
+2022/01/03 14:36:56 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/findutils/findutils-4.3.8-1.tar.bz2
+2022/01/03 14:36:56 io_stream_cygfile: fopen(/etc/setup/findutils.lst.gz) failed 2 No such file or directory
+2022/01/03 14:36:56 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/flex/flex-2.5.4a-3.tar.bz2
+2022/01/03 14:36:56 io_stream_cygfile: fopen(/etc/setup/flex.lst.gz) failed 2 No such file or directory
+2022/01/03 14:36:56 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/gawk/gawk-3.1.6-1.tar.bz2
+2022/01/03 14:36:56 io_stream_cygfile: fopen(/etc/setup/gawk.lst.gz) failed 2 No such file or directory
+2022/01/03 14:36:57 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/gcc/gcc-3.4.4-3.tar.bz2
+2022/01/03 14:36:57 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/gcc/gcc-core/gcc-core-3.4.4-3.tar.bz2
+2022/01/03 14:36:57 io_stream_cygfile: fopen(/etc/setup/gcc-core.lst.gz) failed 2 No such file or directory
+2022/01/03 14:36:58 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/gcc/gcc-g++/gcc-g++-3.4.4-3.tar.bz2
+2022/01/03 14:36:58 io_stream_cygfile: fopen(/etc/setup/gcc-g++.lst.gz) failed 2 No such file or directory
+2022/01/03 14:36:59 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/gcc-mingw/gcc-mingw-20040810-1.tar.bz2
+2022/01/03 14:36:59 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/gcc-mingw/gcc-mingw-core/gcc-mingw-core-20050522-1.tar.bz2
+2022/01/03 14:36:59 io_stream_cygfile: fopen(/etc/setup/gcc-mingw-core.lst.gz) failed 2 No such file or directory
+2022/01/03 14:36:59 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/gcc-mingw/gcc-mingw-g++/gcc-mingw-g++-20050522-1.tar.bz2
+2022/01/03 14:37:00 io_stream_cygfile: fopen(/etc/setup/gcc-mingw-g++.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:00 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/gdb/gdb-20060706-2.tar.bz2
+2022/01/03 14:37:00 io_stream_cygfile: fopen(/etc/setup/gdb.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:01 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/gdbm/gdbm-1.8.3-8.tar.bz2
+2022/01/03 14:37:01 io_stream_cygfile: fopen(/etc/setup/gdbm.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:01 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/gettext/gettext-0.15-1.tar.bz2
+2022/01/03 14:37:01 io_stream_cygfile: fopen(/etc/setup/gettext.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:02 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/gperf/gperf-3.0.3-1.tar.bz2
+2022/01/03 14:37:02 io_stream_cygfile: fopen(/etc/setup/gperf.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:02 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/grep/grep-2.5.1a-4.tar.bz2
+2022/01/03 14:37:02 io_stream_cygfile: fopen(/etc/setup/grep.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:02 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/groff/groff-1.18.1-2.tar.bz2
+2022/01/03 14:37:02 io_stream_cygfile: fopen(/etc/setup/groff.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:04 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/gzip/gzip-1.3.12-2.tar.bz2
+2022/01/03 14:37:04 io_stream_cygfile: fopen(/etc/setup/gzip.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:04 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/ioperm/ioperm-0.4-1.tar.bz2
+2022/01/03 14:37:04 io_stream_cygfile: fopen(/etc/setup/ioperm.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:04 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/less/less-382-1.tar.bz2
+2022/01/03 14:37:04 io_stream_cygfile: fopen(/etc/setup/less.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:04 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/bzip2/libbz2_1/libbz2_1-1.0.3-2.tar.bz2
+2022/01/03 14:37:04 io_stream_cygfile: fopen(/etc/setup/libbz2_1.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:04 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/libiconv/libcharset1/libcharset1-1.11-1.tar.bz2
+2022/01/03 14:37:04 io_stream_cygfile: fopen(/etc/setup/libcharset1.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:04 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/db/db4.2/libdb4.2/libdb4.2-4.2.52-1.tar.bz2
+2022/01/03 14:37:04 io_stream_cygfile: fopen(/etc/setup/libdb4.2.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:04 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/db/db4.3/libdb4.3/libdb4.3-4.3.28-1.tar.bz2
+2022/01/03 14:37:04 io_stream_cygfile: fopen(/etc/setup/libdb4.3.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:04 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/postgresql/libecpg5/libecpg5-8.1.4-2.tar.bz2
+2022/01/03 14:37:04 io_stream_cygfile: fopen(/etc/setup/libecpg5.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:04 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/expat/libexpat0/libexpat0-1.95.8-2.tar.bz2
+2022/01/03 14:37:04 io_stream_cygfile: fopen(/etc/setup/libexpat0.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:04 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/gdbm/libgdbm/libgdbm-1.8.0-5.tar.bz2
+2022/01/03 14:37:04 io_stream_cygfile: fopen(/etc/setup/libgdbm.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:04 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/gdbm/libgdbm-devel/libgdbm-devel-1.8.3-8.tar.bz2
+2022/01/03 14:37:04 io_stream_cygfile: fopen(/etc/setup/libgdbm-devel.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:04 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/gdbm/libgdbm3/libgdbm3-1.8.3-3.tar.bz2
+2022/01/03 14:37:04 io_stream_cygfile: fopen(/etc/setup/libgdbm3.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:04 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/gdbm/libgdbm4/libgdbm4-1.8.3-8.tar.bz2
+2022/01/03 14:37:04 io_stream_cygfile: fopen(/etc/setup/libgdbm4.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:04 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/gettext/libgettextpo0/libgettextpo0-0.15-1.tar.bz2
+2022/01/03 14:37:04 io_stream_cygfile: fopen(/etc/setup/libgettextpo0.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:04 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/libiconv/libiconv-1.11-1.tar.bz2
+2022/01/03 14:37:04 io_stream_cygfile: fopen(/etc/setup/libiconv.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:04 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/libiconv/libiconv2/libiconv2-1.11-1.tar.bz2
+2022/01/03 14:37:04 io_stream_cygfile: fopen(/etc/setup/libiconv2.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:04 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/gettext/libintl1/libintl1-0.10.40-1.tar.bz2
+2022/01/03 14:37:04 io_stream_cygfile: fopen(/etc/setup/libintl1.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:04 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/gettext/libintl2/libintl2-0.12.1-3.tar.bz2
+2022/01/03 14:37:04 io_stream_cygfile: fopen(/etc/setup/libintl2.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:04 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/gettext/libintl3/libintl3-0.14.5-1.tar.bz2
+2022/01/03 14:37:04 io_stream_cygfile: fopen(/etc/setup/libintl3.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:04 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/gettext/libintl8/libintl8-0.15-1.tar.bz2
+2022/01/03 14:37:04 io_stream_cygfile: fopen(/etc/setup/libintl8.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:04 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/ncurses/libncurses-devel/libncurses-devel-5.5-3.tar.bz2
+2022/01/03 14:37:04 io_stream_cygfile: fopen(/etc/setup/libncurses-devel.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:05 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/ncurses/libncurses5/libncurses5-5.2-1.tar.bz2
+2022/01/03 14:37:05 io_stream_cygfile: fopen(/etc/setup/libncurses5.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:05 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/ncurses/libncurses6/libncurses6-5.2-8.tar.bz2
+2022/01/03 14:37:05 io_stream_cygfile: fopen(/etc/setup/libncurses6.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:05 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/ncurses/libncurses7/libncurses7-5.3-4.tar.bz2
+2022/01/03 14:37:05 io_stream_cygfile: fopen(/etc/setup/libncurses7.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:05 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/ncurses/libncurses8/libncurses8-5.5-3.tar.bz2
+2022/01/03 14:37:05 io_stream_cygfile: fopen(/etc/setup/libncurses8.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:05 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/_obsolete/libpcre/libpcre-4.1-2.tar.bz2
+2022/01/03 14:37:05 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/pcre/libpcre0/libpcre0-7.2-1.tar.bz2
+2022/01/03 14:37:05 io_stream_cygfile: fopen(/etc/setup/libpcre0.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:05 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/postgresql/libpgtypes2/libpgtypes2-8.1.4-2.tar.bz2
+2022/01/03 14:37:05 io_stream_cygfile: fopen(/etc/setup/libpgtypes2.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:05 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/popt/libpopt0/libpopt0-1.6.4-4.tar.bz2
+2022/01/03 14:37:05 io_stream_cygfile: fopen(/etc/setup/libpopt0.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:05 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/postgresql/libpq4/libpq4-8.0.7-1.tar.bz2
+2022/01/03 14:37:05 io_stream_cygfile: fopen(/etc/setup/libpq4.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:05 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/readline/libreadline4/libreadline4-4.1-2.tar.bz2
+2022/01/03 14:37:05 io_stream_cygfile: fopen(/etc/setup/libreadline4.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:05 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/readline/libreadline5/libreadline5-4.3-5.tar.bz2
+2022/01/03 14:37:05 io_stream_cygfile: fopen(/etc/setup/libreadline5.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:05 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/readline/libreadline6/libreadline6-5.2.7-9.tar.bz2
+2022/01/03 14:37:05 io_stream_cygfile: fopen(/etc/setup/libreadline6.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:05 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/login/login-1.9-7.tar.bz2
+2022/01/03 14:37:05 io_stream_cygfile: fopen(/etc/setup/login.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:05 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/m4/m4-1.4.10-1.tar.bz2
+2022/01/03 14:37:05 io_stream_cygfile: fopen(/etc/setup/m4.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:05 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/make/make-3.81-1.tar.bz2
+2022/01/03 14:37:05 io_stream_cygfile: fopen(/etc/setup/make.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:05 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/man/man-1.6e-1.tar.bz2
+2022/01/03 14:37:05 io_stream_cygfile: fopen(/etc/setup/man.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:07 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/mingw-runtime/mingw-runtime-3.13-1.tar.bz2
+2022/01/03 14:37:07 io_stream_cygfile: fopen(/etc/setup/mingw-runtime.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:07 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/minires/minires-1.01-1.tar.bz2
+2022/01/03 14:37:07 io_stream_cygfile: fopen(/etc/setup/minires.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:07 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/mktemp/mktemp-1.5-4.tar.bz2
+2022/01/03 14:37:07 io_stream_cygfile: fopen(/etc/setup/mktemp.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:07 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/_obsolete/more/more-2.11o-3.tar.bz2
+2022/01/03 14:37:07 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/nano/nano-1.2.2-1.tar.bz2
+2022/01/03 14:37:07 io_stream_cygfile: fopen(/etc/setup/nano.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:07 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/ncurses/ncurses-5.5-3.tar.bz2
+2022/01/03 14:37:07 io_stream_cygfile: fopen(/etc/setup/ncurses.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:07 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/openssh/openssh-4.7p1-2.tar.bz2
+2022/01/03 14:37:07 io_stream_cygfile: fopen(/etc/setup/openssh.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:07 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/openssl/openssl-0.9.8g-1.tar.bz2
+2022/01/03 14:37:07 io_stream_cygfile: fopen(/etc/setup/openssl.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:08 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/patch/patch-2.5.8-9.tar.bz2
+2022/01/03 14:37:08 io_stream_cygfile: fopen(/etc/setup/patch.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:08 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/patchutils/patchutils-0.2.31-1.tar.bz2
+2022/01/03 14:37:08 io_stream_cygfile: fopen(/etc/setup/patchutils.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:08 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/perl/perl-5.8.8-4.tar.bz2
+2022/01/03 14:37:08 io_stream_cygfile: fopen(/etc/setup/perl.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:12 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/perl/perl_manpages/perl_manpages-5.8.8-4.tar.bz2
+2022/01/03 14:37:12 io_stream_cygfile: fopen(/etc/setup/perl_manpages.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:13 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/postgresql/postgresql-8.0.7-1.tar.bz2
+2022/01/03 14:37:13 io_stream_cygfile: fopen(/etc/setup/postgresql.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:18 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/postgresql/postgresql-client/postgresql-client-8.0.7-1.tar.bz2
+2022/01/03 14:37:18 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/python/python-2.5.1-2.tar.bz2
+2022/01/03 14:37:18 io_stream_cygfile: fopen(/etc/setup/python.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:27 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/rcs/rcs-5.7-3.tar.bz2
+2022/01/03 14:37:27 io_stream_cygfile: fopen(/etc/setup/rcs.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:27 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/readline/readline-5.2.7-9.tar.bz2
+2022/01/03 14:37:27 io_stream_cygfile: fopen(/etc/setup/readline.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:27 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/rebase/rebase-2.4.3-1.tar.bz2
+2022/01/03 14:37:27 io_stream_cygfile: fopen(/etc/setup/rebase.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:27 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/rpm/rpm-4.1-2.tar.bz2
+2022/01/03 14:37:27 io_stream_cygfile: fopen(/etc/setup/rpm.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:28 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/rpm/rpm-build/rpm-build-4.1-1.tar.bz2
+2022/01/03 14:37:28 io_stream_cygfile: fopen(/etc/setup/rpm-build.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:28 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/rpm/rpm-doc/rpm-doc-4.1-1.tar.bz2
+2022/01/03 14:37:28 io_stream_cygfile: fopen(/etc/setup/rpm-doc.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:28 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/run/run-1.1.10-1.tar.bz2
+2022/01/03 14:37:28 io_stream_cygfile: fopen(/etc/setup/run.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:28 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/rxvt/rxvt-20050409-7.tar.bz2
+2022/01/03 14:37:28 io_stream_cygfile: fopen(/etc/setup/rxvt.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:28 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/sed/sed-4.1.5-2.tar.bz2
+2022/01/03 14:37:28 io_stream_cygfile: fopen(/etc/setup/sed.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:28 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/_obsolete/sh-utils/sh-utils-2.0.15-5.tar.bz2
+2022/01/03 14:37:28 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/tar/tar-1.19-1.tar.bz2
+2022/01/03 14:37:28 io_stream_cygfile: fopen(/etc/setup/tar.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:28 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/tcltk/tcltk-20060202-1.tar.bz2
+2022/01/03 14:37:28 io_stream_cygfile: fopen(/etc/setup/tcltk.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:29 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/tcsh/tcsh-6.15.00-4.tar.bz2
+2022/01/03 14:37:29 io_stream_cygfile: fopen(/etc/setup/tcsh.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:29 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/termcap/termcap-20050421-1.tar.bz2
+2022/01/03 14:37:29 io_stream_cygfile: fopen(/etc/setup/termcap.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:29 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/terminfo/terminfo-5.5_20061104-1.tar.bz2
+2022/01/03 14:37:29 io_stream_cygfile: fopen(/etc/setup/terminfo.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:32 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/texinfo/texinfo-4.8a-1.tar.bz2
+2022/01/03 14:37:32 io_stream_cygfile: fopen(/etc/setup/texinfo.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:33 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/_obsolete/textutils/textutils-2.0.21-2.tar.bz2
+2022/01/03 14:37:33 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/time/time-1.7-1.tar.bz2
+2022/01/03 14:37:33 io_stream_cygfile: fopen(/etc/setup/time.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:33 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/unzip/unzip-5.52-2.tar.bz2
+2022/01/03 14:37:33 io_stream_cygfile: fopen(/etc/setup/unzip.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:33 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/util-linux/util-linux-2.12r-2.tar.bz2
+2022/01/03 14:37:33 io_stream_cygfile: fopen(/etc/setup/util-linux.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:33 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/vim/vim-7.1-1.tar.bz2
+2022/01/03 14:37:33 io_stream_cygfile: fopen(/etc/setup/vim.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:36 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/w32api/w32api-3.10-1.tar.bz2
+2022/01/03 14:37:36 io_stream_cygfile: fopen(/etc/setup/w32api.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:37 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/wget/wget-1.10.2-2.tar.bz2
+2022/01/03 14:37:37 io_stream_cygfile: fopen(/etc/setup/wget.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:37 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/which/which-1.7-1.tar.bz2
+2022/01/03 14:37:37 io_stream_cygfile: fopen(/etc/setup/which.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:37 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/xemacs/xemacs-emacs-common/xemacs-emacs-common-21.4.20-2.tar.bz2
+2022/01/03 14:37:37 io_stream_cygfile: fopen(/etc/setup/xemacs-emacs-common.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:37 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/zip/zip-2.32-2.tar.bz2
+2022/01/03 14:37:37 io_stream_cygfile: fopen(/etc/setup/zip.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:37 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/zlib/zlib-1.2.3-2.tar.bz2
+2022/01/03 14:37:37 io_stream_cygfile: fopen(/etc/setup/zlib.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:37 Installing file://C:\ZigbemDS\\setup\cygwin-installationfiles/./source/_update-info-dir/_update-info-dir-00553-1.tar.bz2
+2022/01/03 14:37:37 io_stream_cygfile: fopen(/etc/setup/_update-info-dir.lst.gz) failed 2 No such file or directory
+2022/01/03 14:37:37 Visited: 136 nodes out of 136.
+2022/01/03 14:37:37 Dependency ordered install:
+2022/01/03 14:37:37 alternatives
+2022/01/03 14:37:37 ash
+2022/01/03 14:37:37 autoconf
+2022/01/03 14:37:37 autoconf-devel
+2022/01/03 14:37:37 autoconf-stable
+2022/01/03 14:37:37 autoconf2.1
+2022/01/03 14:37:37 autoconf2.5
+2022/01/03 14:37:37 automake
+2022/01/03 14:37:37 automake-devel
+2022/01/03 14:37:37 automake-stable
+2022/01/03 14:37:37 automake1.10
+2022/01/03 14:37:37 automake1.4
+2022/01/03 14:37:37 automake1.5
+2022/01/03 14:37:37 automake1.6
+2022/01/03 14:37:37 automake1.7
+2022/01/03 14:37:37 automake1.8
+2022/01/03 14:37:37 automake1.9
+2022/01/03 14:37:37 base-files
+2022/01/03 14:37:37 base-passwd
+2022/01/03 14:37:37 bash
+2022/01/03 14:37:37 binutils
+2022/01/03 14:37:37 bison
+2022/01/03 14:37:37 bzip2
+2022/01/03 14:37:37 coreutils
+2022/01/03 14:37:37 crypt
+2022/01/03 14:37:37 ctags
+2022/01/03 14:37:37 cvs
+2022/01/03 14:37:37 cygipc
+2022/01/03 14:37:37 cygrunsrv
+2022/01/03 14:37:37 cygutils
+2022/01/03 14:37:37 cygwin
+2022/01/03 14:37:37 cygwin-doc
+2022/01/03 14:37:37 diffutils
+2022/01/03 14:37:37 e2fsprogs
+2022/01/03 14:37:37 editrights
+2022/01/03 14:37:37 emacs
+2022/01/03 14:37:37 emacs-el
+2022/01/03 14:37:37 emacs-leim
+2022/01/03 14:37:37 expat
+2022/01/03 14:37:37 file
+2022/01/03 14:37:37 fileutils
+2022/01/03 14:37:37 findutils
+2022/01/03 14:37:37 flex
+2022/01/03 14:37:37 gawk
+2022/01/03 14:37:37 gcc
+2022/01/03 14:37:37 gcc-core
+2022/01/03 14:37:37 gcc-g++
+2022/01/03 14:37:37 gcc-mingw
+2022/01/03 14:37:37 gcc-mingw-core
+2022/01/03 14:37:37 gcc-mingw-g++
+2022/01/03 14:37:37 gdb
+2022/01/03 14:37:37 gdbm
+2022/01/03 14:37:37 gettext
+2022/01/03 14:37:37 gperf
+2022/01/03 14:37:37 grep
+2022/01/03 14:37:37 groff
+2022/01/03 14:37:37 gzip
+2022/01/03 14:37:37 ioperm
+2022/01/03 14:37:37 less
+2022/01/03 14:37:37 libbz2_1
+2022/01/03 14:37:37 libcharset1
+2022/01/03 14:37:37 libdb4.2
+2022/01/03 14:37:37 libdb4.3
+2022/01/03 14:37:37 libecpg5
+2022/01/03 14:37:37 libexpat0
+2022/01/03 14:37:37 libgdbm
+2022/01/03 14:37:37 libgdbm-devel
+2022/01/03 14:37:37 libgdbm3
+2022/01/03 14:37:37 libgdbm4
+2022/01/03 14:37:37 libgettextpo0
+2022/01/03 14:37:37 libiconv
+2022/01/03 14:37:37 libiconv2
+2022/01/03 14:37:37 libintl1
+2022/01/03 14:37:37 libintl2
+2022/01/03 14:37:37 libintl3
+2022/01/03 14:37:37 libintl8
+2022/01/03 14:37:37 libncurses-devel
+2022/01/03 14:37:37 libncurses5
+2022/01/03 14:37:37 libncurses6
+2022/01/03 14:37:37 libncurses7
+2022/01/03 14:37:37 libncurses8
+2022/01/03 14:37:37 libpcre
+2022/01/03 14:37:37 libpcre0
+2022/01/03 14:37:37 libpgtypes2
+2022/01/03 14:37:37 libpopt0
+2022/01/03 14:37:37 libpq4
+2022/01/03 14:37:37 libreadline4
+2022/01/03 14:37:37 libreadline5
+2022/01/03 14:37:37 libreadline6
+2022/01/03 14:37:37 login
+2022/01/03 14:37:37 m4
+2022/01/03 14:37:37 make
+2022/01/03 14:37:37 man
+2022/01/03 14:37:37 mingw-runtime
+2022/01/03 14:37:37 minires
+2022/01/03 14:37:37 mktemp
+2022/01/03 14:37:37 more
+2022/01/03 14:37:37 nano
+2022/01/03 14:37:37 ncurses
+2022/01/03 14:37:37 openssh
+2022/01/03 14:37:37 openssl
+2022/01/03 14:37:37 patch
+2022/01/03 14:37:37 patchutils
+2022/01/03 14:37:37 perl
+2022/01/03 14:37:37 perl_manpages
+2022/01/03 14:37:37 postgresql
+2022/01/03 14:37:37 postgresql-client
+2022/01/03 14:37:37 python
+2022/01/03 14:37:37 rcs
+2022/01/03 14:37:37 readline
+2022/01/03 14:37:37 rebase
+2022/01/03 14:37:37 rpm
+2022/01/03 14:37:37 rpm-build
+2022/01/03 14:37:37 rpm-doc
+2022/01/03 14:37:37 run
+2022/01/03 14:37:37 rxvt
+2022/01/03 14:37:37 sed
+2022/01/03 14:37:37 sh-utils
+2022/01/03 14:37:37 tar
+2022/01/03 14:37:37 tcltk
+2022/01/03 14:37:37 tcsh
+2022/01/03 14:37:37 termcap
+2022/01/03 14:37:37 terminfo
+2022/01/03 14:37:37 texinfo
+2022/01/03 14:37:37 textutils
+2022/01/03 14:37:37 time
+2022/01/03 14:37:37 unzip
+2022/01/03 14:37:37 util-linux
+2022/01/03 14:37:37 vim
+2022/01/03 14:37:37 w32api
+2022/01/03 14:37:37 wget
+2022/01/03 14:37:37 which
+2022/01/03 14:37:37 xemacs-emacs-common
+2022/01/03 14:37:37 zip
+2022/01/03 14:37:37 zlib
+2022/01/03 14:37:37 _update-info-dir
+2022/01/03 14:37:37 running: C:\ZigbemDS\\cygwin\bin\bash.exe -c /etc/postinstall/00ash.sh
+2022/01/03 14:37:37 running: C:\ZigbemDS\\cygwin\bin\bash.exe -c /etc/postinstall/autoconf.sh
+2022/01/03 14:37:38 running: C:\ZigbemDS\\cygwin\bin\bash.exe -c /etc/postinstall/autoconf2.1.sh
+2022/01/03 14:37:38 running: C:\ZigbemDS\\cygwin\bin\bash.exe -c /etc/postinstall/autoconf2.5.sh
+2022/01/03 14:37:39 running: C:\ZigbemDS\\cygwin\bin\bash.exe -c /etc/postinstall/automake.sh
+2022/01/03 14:37:39 running: C:\ZigbemDS\\cygwin\bin\bash.exe -c /etc/postinstall/automake1.10.sh
+2022/01/03 14:37:40 running: C:\ZigbemDS\\cygwin\bin\bash.exe -c /etc/postinstall/automake1.4.sh
+2022/01/03 14:37:40 running: C:\ZigbemDS\\cygwin\bin\bash.exe -c /etc/postinstall/automake1.5.sh
+2022/01/03 14:37:40 running: C:\ZigbemDS\\cygwin\bin\bash.exe -c /etc/postinstall/automake1.6.sh
+2022/01/03 14:37:41 running: C:\ZigbemDS\\cygwin\bin\bash.exe -c /etc/postinstall/automake1.7.sh
+2022/01/03 14:37:41 running: C:\ZigbemDS\\cygwin\bin\bash.exe -c /etc/postinstall/automake1.8.sh
+2022/01/03 14:37:41 running: C:\ZigbemDS\\cygwin\bin\bash.exe -c /etc/postinstall/automake1.9.sh
+2022/01/03 14:37:42 running: C:\ZigbemDS\\cygwin\bin\bash.exe -c /etc/postinstall/base-files-mketc.sh
+2022/01/03 14:37:42 running: C:\ZigbemDS\\cygwin\bin\bash.exe -c /etc/postinstall/base-files-profile.sh
+2022/01/03 14:37:43 running: C:\ZigbemDS\\cygwin\bin\bash.exe -c /etc/postinstall/passwd-grp.sh
+2022/01/03 14:37:44 running: C:\ZigbemDS\\cygwin\bin\bash.exe -c /etc/postinstall/00bash.sh
+2022/01/03 14:37:45 running: C:\ZigbemDS\\cygwin\bin\bash.exe -c /etc/postinstall/bzip2.sh
+2022/01/03 14:37:45 running: C:\ZigbemDS\\cygwin\bin\bash.exe -c /etc/postinstall/coreutils.sh
+2022/01/03 14:37:45 running: C:\ZigbemDS\\cygwin\bin\bash.exe -c /etc/postinstall/cvs.sh
+2022/01/03 14:37:46 running: C:\ZigbemDS\\cygwin\bin\bash.exe -c /etc/postinstall/cygipc.sh
+2022/01/03 14:37:46 running: C:\ZigbemDS\\cygwin\bin\bash.exe -c /etc/postinstall/cygwin-doc.sh
+2022/01/03 14:37:46 running: C:\ZigbemDS\\cygwin\bin\bash.exe -c /etc/postinstall/e2fsprogs.sh
+2022/01/03 14:37:46 running: C:\ZigbemDS\\cygwin\bin\bash.exe -c /etc/postinstall/emacs.sh
+2022/01/03 14:37:51 running: C:\ZigbemDS\\cygwin\bin\bash.exe -c /etc/postinstall/findutils.sh
+2022/01/03 14:37:51 running: C:\ZigbemDS\\cygwin\bin\bash.exe -c /etc/postinstall/gcc-mingw-core.sh
+2022/01/03 14:37:52 running: C:\ZigbemDS\\cygwin\bin\bash.exe -c /etc/postinstall/gcc-mingw-g++.sh
+2022/01/03 14:37:52 running: C:\ZigbemDS\\cygwin\bin\bash.exe -c /etc/postinstall/gettext.sh
+2022/01/03 14:37:52 running: C:\ZigbemDS\\cygwin\bin\bash.exe -c /etc/postinstall/libgdbm-devel.sh
+2022/01/03 14:37:53 running: C:\ZigbemDS\\cygwin\bin\bash.exe -c /etc/postinstall/libncurses-devel.sh
+2022/01/03 14:37:54 running: C:\ZigbemDS\\cygwin\bin\bash.exe -c /etc/postinstall/m4.sh
+2022/01/03 14:37:54 running: C:\ZigbemDS\\cygwin\bin\bash.exe -c /etc/postinstall/man.sh
+2022/01/03 14:37:54 running: C:\ZigbemDS\\cygwin\bin\bash.exe -c /etc/postinstall/readline.sh
+2022/01/03 14:37:54 running: C:\ZigbemDS\\cygwin\bin\bash.exe -c /etc/postinstall/rpm.sh
+2022/01/03 14:37:55 running: C:\ZigbemDS\\cygwin\bin\bash.exe -c /etc/postinstall/rxvt.sh
+2022/01/03 14:37:56 running: C:\ZigbemDS\\cygwin\bin\bash.exe -c /etc/postinstall/tar.sh
+2022/01/03 14:37:56 running: C:\ZigbemDS\\cygwin\bin\bash.exe -c /etc/postinstall/tcsh.sh
+2022/01/03 14:37:56 running: C:\ZigbemDS\\cygwin\bin\bash.exe -c /etc/postinstall/terminfo.sh
+2022/01/03 14:37:57 running: C:\ZigbemDS\\cygwin\bin\bash.exe -c /etc/postinstall/util-linux.sh
+2022/01/03 14:37:57 running: C:\ZigbemDS\\cygwin\bin\bash.exe -c /etc/postinstall/wget.sh
+2022/01/03 14:37:57 running: C:\ZigbemDS\\cygwin\bin\bash.exe -c /etc/postinstall/update-info-dir.sh
+2022/01/03 14:38:03 Ending cygwin install

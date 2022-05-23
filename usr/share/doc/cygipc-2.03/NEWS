@@ -1,0 +1,196 @@
+# $Id: NEWS,v 1.13 2004/02/01 06:48:03 cwilson Exp $
+
+Version v2_03:
+  1. Make cygipc coexist more peacefully with new cygserver
+     implementation.
+  2. Add semstat, semtool, shmtool, msgtool, ipcs, and ipcrm 
+     back to cygipc distribution.  Official package will rename
+     these files via packaging script so that they don't clash
+     with the cygserver-based ones from cygwin and cygutils.
+
+Version v2_02:
+  1. Better shutdown behavior (Jason Tishler)
+
+Version v2_01:
+  1. Build libcygipc as a DLL
+  2. Rename ipc-daemon to ipc-daemon2
+
+Version v2_00:
+  1. Much improvement in the shm code (Michael Haubenwallne)
+     a. shm handles forks
+     b. shm works better with multiprocess (the whole point,
+        after all...)
+  2. General bugfixes (Joe Buehler, MH)
+  3. semctl(SETALL) now conforms to the standard (MH)
+  4. semctl(GETALL) implemented (MH)
+  5. semaphores now persistent until explicitly removed, or
+     system reboot/ipc-daemon shutdown. (JB)
+  6. Automatic removal of /tmp/MultiFileXXX files on daemon 
+     shutdown (MH)
+  
+Version v1_90:
+CHANGES from the v1_14 branch
+  1. GO BACK to 64 bit key_t!
+  2. Use the ftok() exported by cygwin-1.5.x; don't
+     provide private version.
+  3. remove ipck, ipcs, and ipcrm from the distro 
+     (now provided by cygutils)
+  4. remove semtool, shmtool, and msgtool (have been
+     in cygutils for a while)
+
+---- BRANCH POINT --- 
+
+CHANGES from v1_13 to v_14
+  1. quote-protect the program path, so that ipc-daemon
+     can live in 'Program Files/' (Przemyslaw Sztoch)
+  2. Some corrections to verboseness-level handling.
+  3. Fix a problem with kernel object namespaces that
+     caused cygipc to fail on XP when using 'Fast User
+     Switching'.  Thanks to Jason Tischler and Igor 
+     Pechtchanski for fixing this.
+
+CHANGES from v1_12 to v1_13
+  1. REVERT 64bit key_t CHANGES!!!!!!!!!!
+     This release is STILL BINARY COMPATIBLE with all
+     previously releassed versions (since 1.12 was never
+     really released)
+  2. REVERT ipc-daemon2 name changes.  Still use the
+     ipc-daemon names.
+  3. --quiet and --debug are deprecated (but still present). 
+     Instead, use --verbose=0 (e.g. quiet), --verbose=1 (e.g.
+     normal default), or --verbose=2 (e.g. debug).
+  4. Some functions now return ENOSYS instead of EACCESS
+     (Jason Tischler)
+  5. Fix bug in recording the verboseness level in the
+     registry, when --install-as-service
+  6. Quote-protect the program path, so that ipc-daemon
+     can live in "Program Files" when --install-as-service
+
+CHANGES from v1_11 to v1_12
+  1. Adapt to the new 64bit definition of key_t in newlib
+     ----- BREAKS BINARY COMPATIBILITY -----
+     But then, you can no longer compile against the old
+     version on a cygwin-1.3.X system, where X >= 11.
+     So, this change was absolutely necessary given the
+     changes in cygwin.
+
+  2. Rename deamon to 'ipc-daemon2.exe'; use different
+     ID strings and filenames to avoid conflicts with
+     concurrently running old 'ipc-daemon.exe'.
+
+     Old programs, linked against cygipc-1.11 or below, 
+     will still continue to work on cygwin-1.3.11+ 
+     systems, using the old ipc-daemon.exe.  However, 
+     to compile new programs against cygipc on cygwin-1.3.11+
+     MUST use the new cygipc-1.12 version of the cygipc
+     library, and will require that 'ipc-daemon2.exe' be running.
+
+     You can have both ipc-daemon.exe and ipc-daemon2.exe 
+     running on the same system -- but information will not
+     be shared between them (e.g. a program running in the
+     ipc-daemon "space" cannot communicated to a program 
+     running in the ipc-daemon2 "space".
+	  
+  3. Changes for VPATH building
+
+  4. --quiet and --debug are deprecated (but still present). 
+     Instead, use --verbose=0 (e.g. quiet), --verbose=1 (e.g.
+     normal default), or --verbose=2 (e.g. debug).
+
+CHANGES from v1_10 to v1_11
+  1. remove definition of 'union semun' from sem.h
+  2. add definition of 'union semun' to ipcrm.c, ipcs.c,
+     sem.c, contrib/semtool.c
+  3. Make fourth argument of semctl() optional (sem.h,
+     sem.c)
+
+CHANGES from v1_09 to v1_10
+  1. add C++ guards to all public header files (ipc.h, 
+     msg.h, sem.h, shm.h, ipctrace.h)
+  2. msg.h, sem.h, shm.h now include ipc.h (so you don't
+     have to, and as required by SUSv2)
+  3. doc updates
+
+CHANGES from v1_08 to v1_09
+  1. Fred Yankowski: add huge chunk of code to ipc-daemon 
+     that enables it to operate as a service under WinNT/2K, 
+     without using srvany or instsrv.
+  2. Corinna Vinschen: security-related code to enable
+     Fred's ipc-daemon service to successfully operate from 
+     the LocalSystem account, rather than requiring daemon
+     and client to run from the same account.
+  3. Yutaka Tanida: bugfix in semaphore handling and shared 
+     memory code
+  4. Pete Forman: B20.1 compatibility fix and relocated a 
+     #define from public to private headers to prevent 
+     conflict with postgresql
+  5. CSW: error handling cleanups in the library
+     affects msg.c, sem.c, shm.c, strace.c, version.c, 
+     and include/sys/ipctrace.h
+  6. CSW: take advantage of the errhandling cleanups from
+     ipctest and ipc-daemon.
+  7. CSW: Improved option handling/help messages 
+     in ipc-daemon --- now requires popt library 
+  8. CSW: Makefile changes for compatibility with latest 
+     w32api package and gcc package.
+  9. CSW: MAJOR overhaul of the README and USAGE files to 
+     reflect new capabilities in ipc-daemon
+ 10. CSW: Add a TODO file 
+
+CHANGES from v1_07 to v1_08
+  1. msg handling fixes from Malcolm Blue, affecting ipc-daemon,
+     ipctest, msg.c, and include/sys/msg.h
+  2. add documentation from Linux Programmer's Guide
+     Chapter 6 (doc/*.html, doc/*.gif)
+  3. add contrib/ directory with tools from LPG. 
+     contrib/Makefile and contrib/README are original [CSW]
+  4. Don't install IpcNt*.h files; these are library-private
+     Suggestion from Pete Forman
+  5. README updates
+
+CHANGES from v1_06 (or v1_05) to v1_07
+  1. W2K fixes from Andrea Malagoli and Pete Forman
+  2. itoa() --> name_mangle(), itoa.c --> name_mangle.c
+  3. build cleanups
+  4. added COPYING file, NEWS file, ChangeLog file (empty
+     for now) 
+  5. README --> README.old
+  
+CHANGES from v1_05 to v1_06
+  1. various W2K fixes from Andrea Malagoli (Andrea named his
+     vesion 1.06, so to avoid confusion "my" 1.06 was never 
+	  released.  Instead, I merged his changes and jumped to 
+	  1.07
+	  
+CHANGES from v1_04 to v1_05
+  1. open() file mode cleanups (csw)
+
+CHANGES from v1_03-csw to v1_04
+  1. variable initialization cleanups (Danial Horak)
+     g++ cleanups (Eric Fifer)
+
+v1_03-csw
+  1. my initial release
+  2. added ftok() [ cribbed from the glibc-2.1.2 source ]
+
+--- old versions ---
+
+v1_03
+  1. From Ludovic LANGE (llange@capgemini.fr)
+    a. -DTRACE to have executions traces
+    b. fixed a bug with shmat allocation at a fixed address
+
+V1_02
+  1. Denis LALANNE (DLalanne@sif.com.ar)
+    a. warning fixed
+    b. minor code changes
+    c. Makefile facelifts
+    d. bugs fixed.
+  2. Ludovic LANGE (llange@capgemini.fr)
+    a. ENOSYS return code for unimplemented ctl operations
+
+v1_01
+  1. Added -DSHMAT_LINUX as an option
+
+v1_00
+  1. First public release

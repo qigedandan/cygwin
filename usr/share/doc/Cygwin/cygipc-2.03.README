@@ -1,0 +1,522 @@
+# $Id: README,v 1.29 2004/02/01 06:48:03 cwilson Exp $
+
+CygIPC has been deprecated.  It still works, it is still 
+supported (as much as it ever has been) but you are STRONGLY
+encouraged to migrate to the new, and much better, cygserver
+implementation which is provided as part of cygwin as of
+Cygwin Kernel Version 1.5.7.
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!! CygIPC VERSION 2 Works only with cygwin 1.5.0 or later !!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+cygipc
+----------------------------------------------------
+CygIPC provides shared memory, semaphores, and message support
+for cygwin.  It provides the following functions:
+   msgget      semget      shmget
+   msgrcv      semop       shmat
+   msgsnd      semctl      shmdt
+   msgctl                  shmctl
+
+The following functions are non-portable, but may help
+in debugging your code.
+   cygipc_set_err_handler, cygipc_get_err_handler
+   cygipc_set_debug, cygipc_get_debug
+   cygipc_tracing_enabled 
+
+Runtime requirements (these, or newer)
+  cygwin-1.5.2-1
+  libpopt0-1.6.4-4
+
+Build requirements
+  cygwin-1.5.2-1
+  libpopt0-1.6.4-4
+  popt-1.6.4-4
+  gcc-3.2-3
+  binutils-20030307-1
+
+Optional
+  cygutils-1.2.0 or later contains
+     ipck
+     ( ipcrm is now provided by the cygwin kernel package )
+     ( ipcs  is now provided by the cygwin kernel package )
+     semtool
+     shmtool
+     msgtool
+     semstat
+  However, those programs are compiled with cygserver, not cygipc,
+  support.  Therefore cygutils-1.2.3 and later contains
+     ipckcygipc
+     ipcrmcygipc
+     ipcscygipc
+     semtoolcygipc
+     shmtoolcygipc
+     msgtoolcygipc
+     semstatcygipc
+
+Canonical homepage:
+  http://www.neuro.gatech.edu/users/cwilson/cygutils/cygipc/
+
+Canonical download:
+  http://www.neuro.gatech.edu/users/cwilson/cygutils/cygipc/
+
+---------------------------------------
+
+Build instructions:
+  unpack cygipc-2.03-X-src.tar.bz2
+    if you use setup to install this src package, it will be unpacked
+    under /usr/src automatically
+  cd /usr/src
+  ./cygipc-2.03-X.sh all
+
+There are no automated tests, but you can use 'ipctest.exe' 
+to manually verify operation of the library.  To do this:
+
+  #1) You may need to delete manually some old files in your 
+      /tmp directory, such as /tmp/MultiFileSem2, /tmp/MultiFileShm2, 
+      and /tmp/MultiFileMsg2
+  #2) start './ipc-daemon2.exe &'
+  #3) run './ipctest.exe [options]'
+
+--------------------
+
+To link this library with your projects:
+  #1) include one or more of:
+      ( sys/msg.h, sys/sem.h, and sys/shm.h )
+  #2) for debugging and error redirection, also
+      include sys/ipctrace.h.  See NOTES below.
+  #3) Compile using -I/usr/include/cygipc
+  #4) link with the static library using '-lcygipc'
+
+=========================================
+Known Issues:
+
+1) If shutting down and restarting ipc-daemon2
+   under DIFFERENT users, you must "clean out"
+   the IPC files in /tmp.  These include:
+      /tmp/MultiFileMsg2
+      /tmp/MultiFileSem2
+      /tmp/MultiFileShm2
+      /tmp/cygipc2_*
+
+=========================================
+
+- ipc-daemon2:
+
+  *** Windows 9x/ME ****
+  Under W9X ipc-daemon2 can be started from a shell prompt or 
+  from the autostart folder, or from the Explorer.  However,
+  if you start ipc-daemon2 from a command.com prompt you will 
+  not see any of the debugging, help, or error output.  This
+  unfortunately includes messages such as 
+    "ipc-daemon2: Installing service `ipc-daemon' failed"
+  Oops.
+
+  The workaround is to call ipc-daemon2 as shown below, when
+  you must call it from a command.com/cmd.exe box:
+  
+    ipc-daemon2 [options] 2>&1 | cat
+
+  or to call it only from a bash prompt, not from a `naked'
+  command.com prompt.
+
+  I realize this is an awkward restriction, but it appears that 
+  the alternative is to compile ipc-daemon2 without -mwindows 
+  (e.g. edit the Makefile and change the definition of the 
+  IPCDAEMON_SPECIAL macro).  However, if you do this, you'll 
+  end up with an ugly, empty command.com box every time you 
+  start ipc-daemon2 -- even if you start it from a shortcut in 
+  your Startup folder.  Worse, if you ever close that ugly,
+  empty dosbox, ipc-daemon2 will die.  So it seems that the 
+  awkward behavior above is a better compromise.  
+
+  Do not under any circumstances call ipc-daemon2 with the
+  '--service' option; it will NOT do what you think.  That
+  option is intended for use ONLY in Windows NT/2K and
+  even then, ONLY when ipc-daemon2 is started by the
+  service manager.
+
+  *** Windows NT/2K ***
+  Under NT/W2K ipc-daemon2 should be started from service 
+  manager. It must not be started via SRVANY but it has 
+  two new options to install or remove it as service 
+  (but these commands can only be run as Administrator):
+
+        ipc-daemon2 --install-as-service
+        ipc-daemon2 --remove-as-service
+
+  When you already have an older version of ipc-daemon2 installed,
+  please remove the service before installing the new one.  Note
+  that when running `ipc-deamon --install-as-service' it WILL
+  honor other options; for instance:
+
+        ipc-daemon2 --install-as-service --debug-level=2
+
+  will install the ipc-daemon2 as a service with appropriate 
+  registry settings so that the daemon will always start using
+  the `--debug-level=2' option.  Ditto the `--tight-security' 
+  option: see SECURITY section for more info.
+
+  Remember, if you are calling ipc-daemon2 from a `naked'
+  dosbox, you'll need to use the `2>&1 | cat' workaround in order
+  to see the output of the above commands -- see the W9X discussion
+  above.
+
+  If you don't start ipc-daemon2 as service under LocalSystem but under
+  another account, you have to care that that account has several
+  user rights set in the user manager resp. local/domain security
+  policy mmc snap in:
+        "Logon as a service" (currently required)
+        "Act as part of the operating system" (not necessary yet...)
+        "Replace process level token" (not necessary yet...)
+        "Increase quotas" (not necessary yet...)
+  Note that administrators do not have all that user rights set
+  by default!
+
+  I created a user called "services" on my machine, to which
+  I added these rights.  Then, I start sshd, inetd, and ipc-daemon2
+  under that account. 
+
+  *** USER ACCOUNT requirements ***
+  Note that the user account under which ipc-daemon2 is started
+  must have a full configuration -- that is,
+
+  - The environment variable CYGWIN must be set either in the
+    system environment or you can set CYGWIN thru the registry:
+    Under the key HKLM\Software\Cygnus Solutions\Cygwin\Program Options
+    create a key of type REG_SZ (String) named like the full DOS path
+    to the application, eg. "C:\cygwin\usr\local\bin\ipc-daemon2.exe" 
+    and with the value equal to the preferred CYGWIN settings, 
+    eg "binmode tty ntsec".
+
+  - The system environment variable PATH (or PATH variable for the 
+    user under which ipc-daemon2 is started)  must contain the path
+    to the directory which contains the cygwin1.dll.
+
+  - Only the system mount table and the user mount table for the
+    user under which ipc-daemon2 is running are valid! 
+
+  *** LocalSystem requirements ***
+  For all applications started via NT/W2K service manager under
+  LocalSystem account, the following restrictions apply:
+
+  - The environment variable CYGWIN must be set either in
+    the system environment or via the registry (see USER
+    ACCOUNT requirements above)
+
+  - The system environment variable PATH must contain the path
+    to the directory which contains the cygwin1.dll
+
+  - Only the system mount table is valid!
+
+  After you have installed ipc-daemon2 it will be started 
+  automatically on reboot. Manually starting and stopping 
+  is possible via
+
+        net start ipc-daemon2
+        net stop ipc-daemon2
+
+  You can also run ipc-daemon2 on a temporary basis by starting
+  it directly:
+
+        ipc-daemon2 &   /* or ipc-daemon2 --debug-level=2 & */
+
+  but this is not recommended except for debugging purposes.
+
+  *** SECURITY CONCERNS ***
+  The following discussion applies only to WinNT/2K; Win9x has 
+  no security to speak of.
+
+  In its default configuration when run as a service, ipc-daemon2
+  has zero security.  Any client can access, create, delete, or 
+  read any shared msg, memory segment, or semaphore.
+
+  Eventually we hope to implement a more realistic security model.
+  However, for now, you have two choices: run ipc-daemon2 in its
+  default `wide-open' zero-security mode, or restrict ipc usage to
+  a single user account.  If you want to restrict ipc usage to a
+  single user, you should run the ipc-daemon2 under that user,
+  either manually or as a service (not under the LocalSystem user).
+
+  You should also add the '-t' option (alt: --tight-security) 
+  to the command with which you start ipc-daemon2.
+
+  So, if you want to start ipc-daemon2 manually, you would
+  execute the following command from a DOS or BASH box:
+
+        ipc-daemon2 --tight-security [--debug-level=2]
+
+  If you want to run ipc-daemon2 as a service under a specific 
+  user, it's a bit more complicated.  Follow these steps:
+
+   1) install the service:
+          ipc-daemon2 --install-as-service --tight-security
+      Note that if ipc-daemon2 is already installed as a service,
+      you should --remove-as-service before re-installing.
+
+   2) Use the control panel to edit the service's properties:
+    a) change the user from LocalSystem to the desired account
+    b) type the appropriate password
+
+  For the adventurous: you can use regedit to edit the following 
+  key and change the service's startup parameters....
+  HKLM\SYSTEM\CurrentControlSet\Services\ipc-daemon2\Parameters
+    Verbose: (equivalent to the --debug-level option)
+      0 (suppress even normal logging)
+      1 (normal logging behavior)
+      2 (record debug messages to syslog)
+    TightSecurity: (equivalent to the --tight-security option)
+      0 (zero security -- wide open)
+      1 (single-user)
+
+--------------------
+
+Files included in the binary distro
+
+  /etc/postinstall/cygipc.sh
+  /etc/preremove/cygipc.sh
+
+  /usr/bin/cygcygipc-2.dll
+  /usr/bin/ipc-daemon2.exe
+  /usr/bin/ipctest.exe
+  /usr/bin/ipcrmcygipc.exe
+  /usr/bin/ipcscygipc.exe
+  /usr/bin/ipctestcygipc.exe
+  /usr/bin/msgtoolcygipc.exe
+  /usr/bin/semstatcygipc.exe
+  /usr/bin/semtoolcygipc.exe
+  /usr/bin/shmtoolcygipc.exe
+
+  /usr/include/cygipc/sys/ipc.h
+  /usr/include/cygipc/sys/ipctrace.h
+  /usr/include/cygipc/sys/msg.h
+  /usr/include/cygipc/sys/sem.h
+  /usr/include/cygipc/sys/shm.h
+
+  /usr/lib/libcygipc.a
+  /usr/lib/libcygipc.dll.a
+
+  /usr/man/share/man8/ipcrmcygipc.8
+  /usr/man/share/man8/ipcscygipc.8
+
+  /usr/share/doc/Cygwin/cygipc-x.xx.README
+  /usr/share/doc/cygipc-x.xx/
+  /usr/share/doc/cygipc-x.xx/README
+  /usr/share/doc/cygipc-x.xx/README.old
+  /usr/share/doc/cygipc-x.xx/COPYING
+  /usr/share/doc/cygipc-x.xx/NEWS
+  /usr/share/doc/cygipc-x.xx/USAGE
+  /usr/share/doc/cygipc-x.xx/TODO
+  /usr/share/doc/cygipc-x.xx/index.html
+  /usr/share/doc/cygipc-x.xx/node*.html
+  /usr/share/doc/cygipc-x.xx/*.gif
+
+-----------------
+
+Port Notes:
+2.03-2
+------------------------------------------------
+* Move man pages to /usr/share/*
+* Update documentation
+
+2.03-1
+------------------------------------------------
+* Improve coexistence with cygserver, now that it is official:
+  - move headers into /usr/include/cygipc/sys/*
+  - provided postinstall/preremove scripts to generate symlinks
+    into /usr/include/sys if necessary (e.g. if on old cygwin kernel)
+
+2.02-1
+------------------------------------------------
+* Better shutdown behavior (Jason Tishler)
+
+2.01-2
+-------------------------------------------------
+* cygwin-1.5.2 FLAG DAY release
+
+2.01-1 
+-------------------------------------------------
+* Build library as DLL; link daemon dynamically
+* Move documentation to /usr/share/*
+* cygiwn-1.5.1 FLAG DAY release
+
+2.00-2 (first cygwin official release)
+-------------------------------------------------
+* Fix mistake in Makefile
+
+2.00-1
+-------------------------------------------------
+* update docs
+
+1.90-1 (not released)
+-------------------------------------------------
+Getting ready for v2.00.
+* Switch to 64bit key_t
+* use ftok() provided by cygwin-1.5.x and later.
+* remove ipck, ipcs, and ipcrm (now provided by
+  cygutils)
+
+1.14-1
+-------------------------------------------------
+* Add fix for WinXP/Fast User Switching
+
+1.13-2:
+-------------------------------------------------
+* quote program path in install_as_service so that
+  ipc-daemon can live in Program Files/
+* force install-as-service to actually record the
+  verboseness level in the registry.
+
+1.13-1:
+-------------------------------------------------
+Okay, the garbage about key_t below, and renaming 
+ipc-daemon, doesn't apply; I jumped the gun.  That
+change (and rename) will eventually happen, but not
+until key_t ACTUALLY goes to 64 bits.
+
+So, this release just reverts all of those changes, 
+and adds some ENOSYS/EACCESS corrections from Jason 
+Tischler.
+
+1.12:
+-------------------------------------------------
+Since key_t is now 64 bits (thanks to some changes in
+newlib), I've updated ftok and cygipc to reflect that.
+However, previously compiled programs still believe that
+key_t is 32bits -- and they won't work with a server that
+expects 64bits.
+
+So, the server has been renamed "ipc-daemon2.exe" so that it
+can run alongside the older ipc-daemon.exe.  Old apps will 
+talk to the old daemon; new apps will talk to the new daemon.
+
+Also, the new daemon uses different files in /tmp.
+
+1.11: 
+-------------------------------------------------
+sem.h no longer declares 'union semun'.  According to SUSv2 
+documentation, your application must declare that union.  It
+should be:
+  union semun {
+    int val;                /* value for SETVAL */
+    struct semid_ds *buf;   /* buffer for IPC_STAT & IPC_SET */
+    ushort *array;          /* array for GETALL & SETALL */
+    struct seminfo *__buf;  /* buffer for IPC_INFO */
+    void *__pad;
+  };
+The first three fields of semun are required by SUSv2.  The fourth
+field is a cygipc (and Linux) requirement.  I'm not sure why the __pad
+field is there -- it isn't used by cygipc, but is required by Linux.
+
+Also, semctl() is now defined as
+  int semctl (int semid, int semnum, int cmd, ... );
+instead of
+  int semctl (int semid, int semnum, int cmd, union semun arg);
+That is, the fourth argument is optional, as specified by SUSv2.  Now,
+Linux requires the original form, so this is an experiment...passing
+a union as a vararg is tricky, and I'm not sure if it is actually 
+working.
+
+1.10:
+-------------------------------------------------
+Header files ipc.h, sem.h, shm.h, and msg.h now have C++ protection.
+Also, sem.h, shm.h, and msg.h now include ipc.h (so your client code
+  does not need to include <sys/ipc.h>).  This is required by SUSv2:
+  http://www.opengroup.org/onlinepubs/7908799/xsh/sysshm.h.html
+
+1.09:
+-------------------------------------------------
+
+Programming with cygipc:  The library has a built in
+  mechanism for redirecting error messages (and TRACE
+  messages if the library was compiled with -DTRACE).
+  Ordinarily, library-internal error messages are 
+  printed to stderr, but this can be changed by declaring
+  a function that matches the following signature:
+    #include <sys/ipctrace.h>
+    int my_err_handler(FILE *stream, int severity, const char *fmt, ...);
+  then, call
+    cygipc_set_err_handler(my_err_handler);
+
+  Also provided in ipctrace.h are:
+    err_handlerP typedef, and the 
+    err_handlerP cygipc_get_err_handler(void);
+  function.
+  
+  severity usually indicates the message LOG level, such
+  as LOG_ERR, LOG_DEBUG, etc.  See <syslog.h>
+
+  For an example of handling library error messages, see
+  the source code for ipctest.c.
+
+Tracing:  When the library is compiled with -DTRACE, it 
+  outputs tracing messages (via err_handler) to stderr.
+  You can turn this off by calling:
+    cygipc_set_debug(0);
+  and get current debug status by calling:
+    int cygipc_get_debug(void);
+  Also, you can determine whether the library was compiled
+  with -DTRACE by calling:
+    int cygipc_tracing_enabled(void);
+  Currently, get_debug and set_debug exist, but have
+  no effect unless the libary was compiled with -DTRACE.
+
+Tracing and library error messages in ipc-daemon:
+  Note that the ONLY functions in the library that ipc-daemon
+  itself actually calls are:
+    name_mangle()
+    cygipc_set_debug(), cygipc_get_debug()
+    cygipc_set_err_handler()
+  Given the current state of libcygipc, AND the fact that
+  ipc-daemon never calls any of the "important" library 
+  functions (like semctl, etc) -- the debugging stuff
+  has little practical effect in redirecting *library*
+  error messages incurred by ipc-daemon.  (The only function 
+  capable of producing an error/trace message is 
+  name_mangle() -- and it doesn't call any of the tracing 
+  or printing functions)!
+
+  However, the err_message redirect and debug setting stuff
+  is here "just in case" ipc-daemon ever calls the "important"
+  functions in the library in future releases.
+
+GENERAL:
+--------------------------------------------------
+
+This package was originally located here:
+   http://www.multione.capgemini.fr/tools/pack_ipc/
+but the server has been inaccessible since early December 99.
+CygIPC was originally written by Philippe CHAPUY and Ludovic LANGE,
+and those authors still own the copyright.  However, since 
+repeated efforts to contact them by myself and others has failed, 
+I officially forked the code at v1.03 and maintain this version.
+
+I found a mirror of the original code here:
+   http://dods.jpl.nasa.gov/WinPort/portEnvSetup.html
+   ftp://podaac.jpl.nasa.gov/pub/users/rmorris/DodsWin32Port/cygwinB20IPC.tar.gz
+but it was compiled for B20.1 and needed some fixups to compile
+with newew Cygwin kernels.
+
+Compilation options:
+
+  Edit the makefile and add the following to CONF_FLAGS:
+  
+  -DSHMAT_LINUX will result in a shmat function with this signature:
+    int shmat(int shmid, char *shmaddr, int shmflg, char **adr);
+  otherwise, shmat has this signature:
+    char * shmat(int shmid, char *shmaddr, int shmflg);
+  I did NOT use SHMAT_LINUX.
+
+  -DTRACE will build a library with execution traces to stderr (this does
+    *not* use the cygwin strace function, but looks a lot like it).
+  I did NOT use TRACE.
+
+Makefile targets (typical):
+  make all
+  make clean
+  make realclean
+  make install
+
+Cygwin port maintained by: Charles Wilson cwilson@ece.gatech.edu

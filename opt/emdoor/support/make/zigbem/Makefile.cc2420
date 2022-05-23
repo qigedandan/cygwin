@@ -1,0 +1,47 @@
+ifndef CC2420_MAC
+	CC2420_MAC=BMAC
+endif
+
+PFLAGS += -DCC2420_STACK
+
+CFLAGS += -I$(TOSROOT)/tos/chips/cc2420 \
+	-I$(TOSROOT)/tos/chips/cc2420/alarm \
+	-I$(TOSROOT)/tos/chips/cc2420/control \
+	-I$(TOSROOT)/tos/chips/cc2420/csma \
+	-I$(TOSROOT)/tos/chips/cc2420/interfaces \
+	-I$(TOSROOT)/tos/chips/cc2420/link \
+	-I$(TOSROOT)/tos/chips/cc2420/lowpan \
+	-I$(TOSROOT)/tos/chips/cc2420/lpl \
+	-I$(TOSROOT)/tos/chips/cc2420/packet \
+	-I$(TOSROOT)/tos/chips/cc2420/receive \
+	-I$(TOSROOT)/tos/chips/cc2420/spi \
+	-I$(TOSROOT)/tos/chips/cc2420/transmit \
+	-I$(TOSROOT)/tos/chips/cc2420/unique \
+	-I$(TOSROOT)/tos/chips/cc2420/cc2430 \
+	-I$(TOSROOT)/tos/lib/zigbem/umpa/interfaces \
+	-I$(TOSROOT)/tos/lib/zigbem/umpa/system \
+	-I$(TOSROOT)/tos/lib/zigbem/umpa/types \
+	-I$(TOSROOT)/tos/lib/zigbem/umpa/lib/alarm \
+	-I$(TOSROOT)/tos/lib/zigbem/net \
+	-I$(TOSROOT)/tos/lib/zigbem/power \
+	
+ifdef CC2420_CTP
+  CFLAGS += \
+	-I$(TOSROOT)/tos/lib/zigbem/net/ctp \
+	-I$(TOSROOT)/tos/lib/zigbem/net/drip \
+	-I$(TOSROOT)/tos/lib/zigbem/net/4bitle
+else
+  CFLAGS += -I$(TOSROOT)/tos/lib/zigbem/net/lqi
+endif
+	
+	
+	
+ifeq ($(CC2420_MAC),XMAC)
+	CFLAGS += -I$(TOSROOT)/tos/lib/zigbem/umpa/lib/macs/xmac
+else
+	CFLAGS += -I$(TOSROOT)/tos/lib/zigbem/umpa/lib/macs/bmac
+endif
+	
+	
+	
+	

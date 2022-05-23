@@ -1,0 +1,5 @@
+To compile GNU emacs under Cygwin, use the install script supplied in
+the Cygwin source package for GNU emacs.
+
+Joe Buehler
+jhpb@hekimian.com

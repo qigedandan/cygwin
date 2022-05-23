@@ -1,0 +1,55 @@
+automake1.10
+--------------------------------------
+Provides the latest version of automake in the 1.10.x series
+
+Runtime requirements (these or newer):
+  cygwin-1.5.21-2
+  perl-5.8.7-5
+  mktemp-1.5-3
+  autoconf2.5
+  autoconf
+
+Build requirements (these or newer):
+  cygwin-1.5.21-2
+  perl-5.8.7-5
+  mktemp-1.5-3
+  autoconf2.5
+  autoconf
+  cygport-0.2.4-1
+  make-3.81-1
+
+Canonical homepage:
+  http://www.gnu.org/software/automake/
+
+Canonical download:
+  ftp://ftp.gnu.org/pub/gnu/automake/
+
+---------------------------------------
+
+Build instructions:
+  unpack automake1.10-1.10-X-src.tar.bz2
+    if you use setup to install this src package, it will be unpacked
+    under /usr/src automatically
+  cd /usr/src
+  cygport ./automake1.10-1.10-X.cygport all
+
+This will create:
+  /usr/src/automake1.10-1.10-X-src.tar.bz2
+  /usr/src/automake1.10-1.10-X.bz2
+
+Also, 'cygport ./automake1.10-1.10-X.cygport check' will test the package
+
+---------------------------------------
+
+Files included in automake1.10-1.10-X:
+  see cygcheck -l output
+
+----------------------------------------
+
+Port Notes:
+
+----- automake1.10-1.10-1 -- 14 Oct 2006 ----
+First instance in the 1.10 series.  Uses cygport.
+
+----------------------------------------
+Cygwin port maintained by: Chuck Wilson <cygwin@cygwin.com>

@@ -1,0 +1,7 @@
+#ifndef ACTIVEMESSAGERESOURCE_H
+#define ACTIVEMESSAGERESOURCE_H
+
+#define AMRESOURCE_ID	"AMResource"
+
+#endif
+

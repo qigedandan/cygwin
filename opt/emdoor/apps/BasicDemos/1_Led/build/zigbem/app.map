@@ -1,0 +1,695 @@
+LX51 LINKER/LOCATER V4.41                                                               01/04/2022  08:02:17  PAGE 1
+
+
+LX51 LINKER/LOCATER V4.41, INVOKED BY:
+C:\KEIL\C51\BIN\LX51.EXE STARTUP.OBJ, APP.OBJ TO APP PRINT (app.map) CLASSES (XDATA (X:0XE000-X:0XFD53), IDATA (I:0-I:0X
+>> FF)) REGFILE (app.reg) DISABLEWARNING (15)
+
+
+CPU MODE:     8051 MODE
+MEMORY MODEL: LARGE
+
+
+INPUT MODULES INCLUDED:
+  STARTUP.OBJ (?C_STARTUP)
+         COMMENT TYPE 1: A51 / ASM51 Assembler
+  APP.OBJ (APP)
+         COMMENT TYPE 0: C51 V9.00
+  C:\KEIL\C51\LIB\C51L.LIB (?C_INIT)
+         COMMENT TYPE 1: A51 / ASM51 Assembler
+  C:\KEIL\C51\LIB\C51L.LIB (?C?ULCMP)
+         COMMENT TYPE 1: A51 / ASM51 Assembler
+  C:\KEIL\C51\LIB\C51L.LIB (?C?MEMSET)
+         COMMENT TYPE 1: A51 / ASM51 Assembler
+
+
+ACTIVE MEMORY CLASSES OF MODULE:  APP (?C_STARTUP)
+
+BASE        START       END         USED      MEMORY CLASS
+==========================================================
+X:000000H   X:00E000H   X:00FD53H   000020H   XDATA
+I:000000H   I:000000H   I:0000FFH   000001H   IDATA
+C:000000H   C:000000H   C:00FFFFH   0004F9H   CODE
+I:000000H   I:000000H   I:00007FH   000008H   DATA
+
+
+MEMORY MAP OF MODULE:  APP (?C_STARTUP)
+
+
+START     STOP      LENGTH    ALIGN  RELOC    MEMORY CLASS   SEGMENT NAME
+=========================================================================
+
+* * * * * * * * * * *   D A T A   M E M O R Y   * * * * * * * * * * * * *
+000000H   000007H   000008H   ---    AT..     DATA           "REG BANK 0"
+000008H   000008H   000001H   BYTE   UNIT     IDATA          ?STACK
+
+* * * * * * * * * * *   C O D E   M E M O R Y   * * * * * * * * * * * * *
+000000H   000002H   000003H   ---    OFFS..   CODE           ?CO??C_STARTUP?0
+000003H   00009CH   00009AH   BYTE   UNIT     CODE           ?C_C51STARTUP
+00009DH   0000FCH   000060H   BYTE   UNIT     CODE           ?PR?FLASHIEEEP__INIT__INIT?APP
+0000FDH   000153H   000057H   BYTE   UNIT     CODE           ?PR?FLASHIEEEP__FLASHIEEE__WRITETOREGISTER?APP
+000154H   0001A5H   000052H   BYTE   UNIT     CODE           ?PR?BLINKM__DEMOLED__RUNTASK?APP
+0001A6H   0001E2H   00003DH   BYTE   UNIT     CODE           ?PR?SCHEDULERBASICP__POPTASK?APP
+0001E3H   00021FH   00003DH   BYTE   UNIT     CODE           ?C?LIB_CODE
+000220H   000255H   000036H   BYTE   UNIT     CODE           ?PR?MCUSLEEPLOCKMANP__0__MCUSLEEPLOCKMAN__ISLOCKED?APP
+000256H   000289H   000034H   BYTE   UNIT     CODE           ?PR?FLASHIEEEP__FLASHIEEE__WRITETOAM?APP
+00028AH   0002BCH   000033H   BYTE   UNIT     CODE           ?PR?MAIN?APP
+0002BDH   0002EDH   000031H   BYTE   UNIT     CODE           ?PR?MCUSLEEPP__MCUSLEEP__SLEEP?APP
+0002EEH   00031AH   00002DH   BYTE   UNIT     CODE           ?PR?LEDSP__INIT__INIT?APP
+00031BH   000344H   00002AH   BYTE   UNIT     CODE           ?PR?_SCHEDULERBASICP__PUSHTASK?APP
+000345H   00036EH   00002AH   BYTE   UNIT     CODE           ?PR?SCHEDULERBASICP__SCHEDULER__TASKLOOP?APP
+00036FH   000396H   000028H   BYTE   UNIT     CODE           ?C_INITSEG
+000397H   0003BDH   000027H   BYTE   UNIT     CODE           ?PR?_SCHEDULERBASICP__TASKBASIC__POSTTASK?APP
+0003BEH   0003E0H   000023H   BYTE   UNIT     CODE           ?PR?PLATFORMP__INIT__INIT?APP
+0003E1H   0003FCH   00001CH   BYTE   UNIT     CODE           ?PR?_SCHEDULERBASICP__ISWAITING?APP
+0003FDH   000416H   00001AH   BYTE   UNIT     CODE           ?PR?SCHEDULERBASICP__SCHEDULER__INIT?APP
+000417H   00042AH   000014H   BYTE   UNIT     CODE           ?PR?SCHEDULERBASICP__SCHEDULER__RUNNEXTTASK?APP
+00042BH   00043DH   000013H   BYTE   UNIT     CODE           ?PR?_SCHEDULERBASICP__TASKBASIC__RUNTASK?APP
+00043EH   00044DH   000010H   BYTE   UNIT     CODE           ?PR?_ACTIVEMESSAGEADDRESSC__ACTIVEMESSAGEADDRESS__SETADDRE
+                                                             -SS?APP
+LX51 LINKER/LOCATER V4.41                                                             01/04/2022  08:02:17  PAGE 2
+
+
+00044EH   000458H   00000BH   BYTE   UNIT     CODE           ?PR?FLASHIEEEP__FLASHIEEE__GETPANID?APP
+000459H   000463H   00000BH   BYTE   UNIT     CODE           ?PR?FLASHIEEEP__FLASHIEEE__GETSHORTADDRESS?APP
+000464H   00046BH   000008H   BYTE   UNIT     CODE           ?PR?__NESC_ATOMIC_START?APP
+00046CH   000471H   000006H   BYTE   UNIT     CODE           ?PR?___NESC_ATOMIC_END?APP
+000472H   000477H   000006H   BYTE   UNIT     CODE           ?PR?LEDSP__LEDS__YELLOWLEDON?APP
+000478H   00047DH   000006H   BYTE   UNIT     CODE           ?PR?LEDSP__LEDS__REDLEDOFF?APP
+00047EH   000483H   000006H   BYTE   UNIT     CODE           ?PR?LEDSP__LEDS__BLUELEDON?APP
+000484H   000489H   000006H   BYTE   UNIT     CODE           ?PR?LEDSP__LEDS__YELLOWLEDOFF?APP
+00048AH   00048FH   000006H   BYTE   UNIT     CODE           ?PR?LEDSP__LEDS__REDLEDON?APP
+000490H   000495H   000006H   BYTE   UNIT     CODE           ?PR?LEDSP__LEDS__BLUELEDOFF?APP
+000496H   00049BH   000006H   BYTE   UNIT     CODE           ?PR?_SCHEDULERBASICP__TASKBASIC__DEFAULT__RUNTASK?APP
+00049CH   0004A0H   000005H   BYTE   UNIT     CODE           ?PR?BLINKM__BOOT__BOOTED?APP
+0004A1H   0004A4H   000004H   BYTE   UNIT     CODE           ?PR?HPLCC2430GENERALIOC__P14__MAKEOUTPUT?APP
+0004A5H   0004A8H   000004H   BYTE   UNIT     CODE           ?PR?HPLCC2430GENERALIOC__P10__MAKEOUTPUT?APP
+0004A9H   0004ACH   000004H   BYTE   UNIT     CODE           ?PR?HPLCC2430GENERALIOC__P11__MAKEOUTPUT?APP
+0004ADH   0004B0H   000004H   BYTE   UNIT     CODE           ?PR?HPLCC2430GENERALIOC__P01__MAKEOUTPUT?APP
+0004B1H   0004B4H   000004H   BYTE   UNIT     CODE           ?PR?HPLCC2430GENERALIOC__P20__MAKEOUTPUT?APP
+0004B5H   0004B8H   000004H   BYTE   UNIT     CODE           ?PR?HPLCC2430GENERALIOC__P12__MAKEOUTPUT?APP
+0004B9H   0004BCH   000004H   BYTE   UNIT     CODE           ?PR?HPLCC2430GENERALIOC__P13__MAKEOUTPUT?APP
+0004BDH   0004BFH   000003H   BYTE   UNIT     CODE           ?PR?HPLCC2430GENERALIOC__P14__SET?APP
+0004C0H   0004C2H   000003H   BYTE   UNIT     CODE           ?PR?HPLCC2430GENERALIOC__P10__SET?APP
+0004C3H   0004C5H   000003H   BYTE   UNIT     CODE           ?PR?HPLCC2430GENERALIOC__P11__SET?APP
+0004C6H   0004C8H   000003H   BYTE   UNIT     CODE           ?PR?HPLCC2430GENERALIOC__P01__SET?APP
+0004C9H   0004CBH   000003H   BYTE   UNIT     CODE           ?PR?HPLCC2430GENERALIOC__P20__SET?APP
+0004CCH   0004CEH   000003H   BYTE   UNIT     CODE           ?PR?HPLCC2430GENERALIOC__P12__SET?APP
+0004CFH   0004D1H   000003H   BYTE   UNIT     CODE           ?PR?HPLCC2430GENERALIOC__P13__SET?APP
+0004D2H   0004D4H   000003H   BYTE   UNIT     CODE           ?PR?HPLCC2430GENERALIOC__P01__CLR?APP
+0004D5H   0004D7H   000003H   BYTE   UNIT     CODE           ?PR?HPLCC2430GENERALIOC__P13__CLR?APP
+0004D8H   0004DAH   000003H   BYTE   UNIT     CODE           ?PR?HPLCC2430GENERALIOC__P10__CLR?APP
+0004DBH   0004DDH   000003H   BYTE   UNIT     CODE           ?PR?LEDSP__LEDS__GREENLEDOFF?APP
+0004DEH   0004E0H   000003H   BYTE   UNIT     CODE           ?PR?HPLCC2430GENERALIOC__P14__CLR?APP
+0004E1H   0004E3H   000003H   BYTE   UNIT     CODE           ?PR?HPLCC2430GENERALIOC__P20__CLR?APP
+0004E4H   0004E6H   000003H   BYTE   UNIT     CODE           ?PR?HPLCC2430GENERALIOC__P11__CLR?APP
+0004E7H   0004E9H   000003H   BYTE   UNIT     CODE           ?PR?HPLCC2430GENERALIOC__P12__CLR?APP
+0004EAH   0004ECH   000003H   BYTE   UNIT     CODE           ?PR?LEDSP__LEDS__GREENLEDON?APP
+0004EDH   0004EFH   000003H   BYTE   UNIT     CODE           ?PR?REALMAINP__SOFTWAREINIT__DEFAULT__INIT?APP
+0004F0H   0004F2H   000003H   BYTE   UNIT     CODE           ?PR?__NESC_ENABLE_INTERRUPT?APP
+0004F3H   0004F5H   000003H   BYTE   UNIT     CODE           ?PR?__NESC_DISABLE_INTERRUPT?APP
+0004F6H   0004F6H   000001H   BYTE   UNIT     CODE           ?PR?FLASHIEEEP__ACTIVEMESSAGEADDRESS__CHANGED?APP
+0004F7H   0004F7H   000001H   BYTE   UNIT     CODE           ?PR?MCUSLEEPP__MCUSLEEPCONTROL__DEFAULT__AFTERWAKEUP?APP
+0004F8H   0004F8H   000001H   BYTE   UNIT     CODE           ?PR?MCUSLEEPP__MCUSLEEPCONTROL__DEFAULT__BEFORESLEEP?APP
+
+* * * * * * * * * * *  X D A T A   M E M O R Y  * * * * * * * * * * * * *
+00E000H   00E019H   00001AH   BYTE   UNIT     XDATA          ?XD?APP
+00E01AH   00E01FH   000006H   BYTE   UNIT     XDATA          _XDATA_GROUP_
+
+
+
+OVERLAY MAP OF MODULE:   APP (?C_STARTUP)
+
+
+FUNCTION/MODULE                               XDATA_GROUP
+--> CALLED FUNCTION/MODULE                    START  STOP
+=========================================================
+?C_C51STARTUP                                 ----- -----
+  +--> ?PR?MAIN?APP
+  +--> ?C_INITSEG
+
+MAIN/APP                                      E01AH E01AH
+  +--> ?PR?__NESC_ATOMIC_START?APP
+  +--> ?PR?SCHEDULERBASICP__SCHEDULER__INIT?APP
+  +--> ?PR?PLATFORMP__INIT__INIT?APP
+  +--> ?PR?SCHEDULERBASICP__SCHEDULER__RUNNE...
+  +--> ?PR?REALMAINP__SOFTWAREINIT__DEFAULT_...
+  +--> ?PR?___NESC_ATOMIC_END?APP
+LX51 LINKER/LOCATER V4.41                                                             01/04/2022  08:02:17  PAGE 3
+
+
+  +--> ?PR?__NESC_ENABLE_INTERRUPT?APP
+  +--> ?PR?BLINKM__BOOT__BOOTED?APP
+  +--> ?PR?SCHEDULERBASICP__SCHEDULER__TASKL...
+
+__NESC_ATOMIC_START/APP                       ----- -----
+
+SCHEDULERBASICP__SCHEDULER__INIT/APP          ----- -----
+
+PLATFORMP__INIT__INIT/APP                     ----- -----
+  +--> ?PR?LEDSP__INIT__INIT?APP
+  +--> ?PR?FLASHIEEEP__INIT__INIT?APP
+  +--> ?PR?FLASHIEEEP__FLASHIEEE__WRITETOREG...
+  +--> ?PR?FLASHIEEEP__FLASHIEEE__WRITETOAM?APP
+
+LEDSP__INIT__INIT/APP                         ----- -----
+  +--> ?PR?HPLCC2430GENERALIOC__P13__MAKEOUT...
+  +--> ?PR?HPLCC2430GENERALIOC__P12__MAKEOUT...
+  +--> ?PR?HPLCC2430GENERALIOC__P20__MAKEOUT...
+  +--> ?PR?HPLCC2430GENERALIOC__P13__SET?APP
+  +--> ?PR?HPLCC2430GENERALIOC__P12__SET?APP
+  +--> ?PR?HPLCC2430GENERALIOC__P20__SET?APP
+  +--> ?PR?HPLCC2430GENERALIOC__P01__MAKEOUT...
+  +--> ?PR?HPLCC2430GENERALIOC__P11__MAKEOUT...
+  +--> ?PR?HPLCC2430GENERALIOC__P10__MAKEOUT...
+  +--> ?PR?HPLCC2430GENERALIOC__P14__MAKEOUT...
+  +--> ?PR?HPLCC2430GENERALIOC__P01__SET?APP
+  +--> ?PR?HPLCC2430GENERALIOC__P11__SET?APP
+  +--> ?PR?HPLCC2430GENERALIOC__P10__SET?APP
+  +--> ?PR?HPLCC2430GENERALIOC__P14__SET?APP
+
+HPLCC2430GENERALIOC__P13__MAKEOUTPUT/APP      ----- -----
+
+HPLCC2430GENERALIOC__P12__MAKEOUTPUT/APP      ----- -----
+
+HPLCC2430GENERALIOC__P20__MAKEOUTPUT/APP      ----- -----
+
+HPLCC2430GENERALIOC__P13__SET/APP             ----- -----
+
+HPLCC2430GENERALIOC__P12__SET/APP             ----- -----
+
+HPLCC2430GENERALIOC__P20__SET/APP             ----- -----
+
+HPLCC2430GENERALIOC__P01__MAKEOUTPUT/APP      ----- -----
+
+HPLCC2430GENERALIOC__P11__MAKEOUTPUT/APP      ----- -----
+
+HPLCC2430GENERALIOC__P10__MAKEOUTPUT/APP      ----- -----
+
+HPLCC2430GENERALIOC__P14__MAKEOUTPUT/APP      ----- -----
+
+HPLCC2430GENERALIOC__P01__SET/APP             ----- -----
+
+HPLCC2430GENERALIOC__P11__SET/APP             ----- -----
+
+HPLCC2430GENERALIOC__P10__SET/APP             ----- -----
+
+HPLCC2430GENERALIOC__P14__SET/APP             ----- -----
+
+FLASHIEEEP__INIT__INIT/APP                    ----- -----
+
+FLASHIEEEP__FLASHIEEE__WRITETOREGISTE...      ----- -----
+  +--> ?PR?FLASHIEEEP__FLASHIEEE__GETPANID?APP
+  +--> ?PR?FLASHIEEEP__FLASHIEEE__GETSHORTAD...
+
+FLASHIEEEP__FLASHIEEE__GETPANID/APP           ----- -----
+LX51 LINKER/LOCATER V4.41                                                             01/04/2022  08:02:17  PAGE 4
+
+
+
+FLASHIEEEP__FLASHIEEE__GETSHORTADDRES...      ----- -----
+
+FLASHIEEEP__FLASHIEEE__WRITETOAM/APP          ----- -----
+  +--> ?PR?FLASHIEEEP__FLASHIEEE__GETPANID?APP
+  +--> ?PR?FLASHIEEEP__FLASHIEEE__GETSHORTAD...
+  +--> ?PR?_ACTIVEMESSAGEADDRESSC__ACTIVEMES...
+
+_ACTIVEMESSAGEADDRESSC__ACTIVEMESSAGE...      ----- -----
+  +--> ?PR?FLASHIEEEP__ACTIVEMESSAGEADDRESS_...
+
+FLASHIEEEP__ACTIVEMESSAGEADDRESS__CHA...      ----- -----
+
+SCHEDULERBASICP__SCHEDULER__RUNNEXTTA...      E01BH E01BH
+  +--> ?PR?SCHEDULERBASICP__POPTASK?APP
+  +--> ?PR?_SCHEDULERBASICP__TASKBASIC__RUNT...
+
+SCHEDULERBASICP__POPTASK/APP                  E01DH E01DH
+
+_SCHEDULERBASICP__TASKBASIC__RUNTASK/APP      E01DH E01DH
+  +--> ?PR?BLINKM__DEMOLED__RUNTASK?APP
+  +--> ?PR?_SCHEDULERBASICP__TASKBASIC__DEFA...
+
+BLINKM__DEMOLED__RUNTASK/APP                  ----- -----
+  +--> ?PR?LEDSP__LEDS__YELLOWLEDON?APP
+  +--> ?PR?LEDSP__LEDS__REDLEDOFF?APP
+  +--> ?PR?LEDSP__LEDS__BLUELEDON?APP
+  +--> ?PR?LEDSP__LEDS__GREENLEDOFF?APP
+  +--> ?PR?LEDSP__LEDS__YELLOWLEDOFF?APP
+  +--> ?PR?LEDSP__LEDS__REDLEDON?APP
+  +--> ?PR?LEDSP__LEDS__BLUELEDOFF?APP
+  +--> ?PR?LEDSP__LEDS__GREENLEDON?APP
+
+LEDSP__LEDS__YELLOWLEDON/APP                  ----- -----
+  +--> ?PR?HPLCC2430GENERALIOC__P20__SET?APP
+  +--> ?PR?HPLCC2430GENERALIOC__P14__SET?APP
+
+LEDSP__LEDS__REDLEDOFF/APP                    ----- -----
+  +--> ?PR?HPLCC2430GENERALIOC__P13__CLR?APP
+  +--> ?PR?HPLCC2430GENERALIOC__P01__CLR?APP
+
+HPLCC2430GENERALIOC__P13__CLR/APP             ----- -----
+
+HPLCC2430GENERALIOC__P01__CLR/APP             ----- -----
+
+LEDSP__LEDS__BLUELEDON/APP                    ----- -----
+  +--> ?PR?HPLCC2430GENERALIOC__P12__SET?APP
+  +--> ?PR?HPLCC2430GENERALIOC__P11__SET?APP
+
+LEDSP__LEDS__GREENLEDOFF/APP                  ----- -----
+  +--> ?PR?HPLCC2430GENERALIOC__P10__CLR?APP
+
+HPLCC2430GENERALIOC__P10__CLR/APP             ----- -----
+
+LEDSP__LEDS__YELLOWLEDOFF/APP                 ----- -----
+  +--> ?PR?HPLCC2430GENERALIOC__P20__CLR?APP
+  +--> ?PR?HPLCC2430GENERALIOC__P14__CLR?APP
+
+HPLCC2430GENERALIOC__P20__CLR/APP             ----- -----
+
+HPLCC2430GENERALIOC__P14__CLR/APP             ----- -----
+
+LEDSP__LEDS__REDLEDON/APP                     ----- -----
+  +--> ?PR?HPLCC2430GENERALIOC__P13__SET?APP
+  +--> ?PR?HPLCC2430GENERALIOC__P01__SET?APP
+LX51 LINKER/LOCATER V4.41                                                             01/04/2022  08:02:17  PAGE 5
+
+
+
+LEDSP__LEDS__BLUELEDOFF/APP                   ----- -----
+  +--> ?PR?HPLCC2430GENERALIOC__P12__CLR?APP
+  +--> ?PR?HPLCC2430GENERALIOC__P11__CLR?APP
+
+HPLCC2430GENERALIOC__P12__CLR/APP             ----- -----
+
+HPLCC2430GENERALIOC__P11__CLR/APP             ----- -----
+
+LEDSP__LEDS__GREENLEDON/APP                   ----- -----
+  +--> ?PR?HPLCC2430GENERALIOC__P10__SET?APP
+
+_SCHEDULERBASICP__TASKBASIC__DEFAULT_...      E01EH E01EH
+
+REALMAINP__SOFTWAREINIT__DEFAULT__INI...      ----- -----
+
+___NESC_ATOMIC_END/APP                        ----- -----
+
+__NESC_ENABLE_INTERRUPT/APP                   ----- -----
+
+BLINKM__BOOT__BOOTED/APP                      ----- -----
+  +--> ?PR?_SCHEDULERBASICP__TASKBASIC__POST...
+
+_SCHEDULERBASICP__TASKBASIC__POSTTASK...      E01BH E01CH
+  +--> ?PR?__NESC_ATOMIC_START?APP
+  +--> ?PR?_SCHEDULERBASICP__PUSHTASK?APP
+  +--> ?PR?___NESC_ATOMIC_END?APP
+
+_SCHEDULERBASICP__PUSHTASK/APP                ----- -----
+  +--> ?PR?_SCHEDULERBASICP__ISWAITING?APP
+
+_SCHEDULERBASICP__ISWAITING/APP               ----- -----
+
+SCHEDULERBASICP__SCHEDULER__TASKLOOP/APP      E01BH E01CH
+  +--> ?PR?__NESC_ATOMIC_START?APP
+  +--> ?PR?SCHEDULERBASICP__POPTASK?APP
+  +--> ?PR?___NESC_ATOMIC_END?APP
+  +--> ?PR?_SCHEDULERBASICP__TASKBASIC__RUNT...
+  +--> ?PR?MCUSLEEPP__MCUSLEEP__SLEEP?APP
+
+MCUSLEEPP__MCUSLEEP__SLEEP/APP                E01DH E01DH
+  +--> ?PR?MCUSLEEPLOCKMANP__0__MCUSLEEPLOCK...
+  +--> ?PR?MCUSLEEPP__MCUSLEEPCONTROL__DEFAU...
+  +--> ?PR?__NESC_ENABLE_INTERRUPT?APP
+  +--> ?PR?__NESC_ATOMIC_START?APP
+  +--> ?PR?___NESC_ATOMIC_END?APP
+  +--> ?PR?MCUSLEEPP__MCUSLEEPCONTROL__DEFAU...
+
+MCUSLEEPLOCKMANP__0__MCUSLEEPLOCKMAN_...      E01EH E01FH
+  +--> ?PR?__NESC_ATOMIC_START?APP
+  +--> ?PR?___NESC_ATOMIC_END?APP
+
+MCUSLEEPP__MCUSLEEPCONTROL__DEFAULT__...      ----- -----
+
+MCUSLEEPP__MCUSLEEPCONTROL__DEFAULT__...      ----- -----
+
+?C_INITSEG                                    ----- -----
+
+
+
+PUBLIC SYMBOLS OF MODULE:  APP (?C_STARTUP)
+
+
+      VALUE       CLASS    TYPE      PUBLIC SYMBOL NAME
+      =================================================
+LX51 LINKER/LOCATER V4.41                                                             01/04/2022  08:02:17  PAGE 6
+
+
+      00000000H   NUMBER   ---       ?C?CODESEG
+      010001F4H   CODE     ---       ?C?MEMSET
+      010001E3H   CODE     ---       ?C?ULCMP
+      00000000H   NUMBER   ---       ?C?XDATASEG
+      01000058H   CODE     ---       ?C_START
+      01000000H   CODE     ---       ?C_STARTUP
+      0100046CH   CODE     ---       ___nesc_atomic_end
+      01000464H   CODE     ---       __nesc_atomic_start
+      0200E009H   XDATA    WORD      ActiveMessageAddressC__addr
+      0200E00CH   XDATA    BYTE      ActiveMessageAddressC__group
+      0200E012H   XDATA    BYTE      current_task_id
+      0200E000H   XDATA    ---       FlashIEEEP__m_ieee
+      0100028AH   CODE     ---       main
+      0200E013H   XDATA    DWORD     McuSleepLockManP__0__lock_bitmap
+      0200E00BH   XDATA    BYTE      McuSleepP__m_need_sleep
+      0200E019H   XDATA    BYTE      SchedulerBasicP__m_head
+      0200E00DH   XDATA    ---       SchedulerBasicP__m_next
+      0200E008H   XDATA    BYTE      SchedulerBasicP__m_tail
+      0200E00EH   XDATA    WORD      TOS_IEEE_PANID
+      0200E010H   XDATA    WORD      TOS_IEEE_SADDR
+      0200E017H   XDATA    WORD      TOS_NODE_ID
+
+
+
+SYMBOL TABLE OF MODULE:  APP (?C_STARTUP)
+
+      VALUE       REP       CLASS    TYPE      SYMBOL NAME
+      ====================================================
+      ---         MODULE    ---      ---       ?C_STARTUP
+      01000000H   PUBLIC    CODE     ---       ?C_STARTUP
+      000000E0H   SYMBOL    DATA     ---       ACC
+      000000F0H   SYMBOL    DATA     ---       B
+      00000083H   SYMBOL    DATA     ---       DPH
+      00000082H   SYMBOL    DATA     ---       DPL
+      00000000H   SYMBOL    NUMBER   ---       IBPSTACK
+      00000100H   SYMBOL    NUMBER   ---       IBPSTACKTOP
+      00000080H   SYMBOL    NUMBER   ---       IDATALEN
+      01000006H   SYMBOL    CODE     ---       IDATALOOP
+      00000000H   SYMBOL    NUMBER   ---       PBPSTACK
+      00000100H   SYMBOL    NUMBER   ---       PBPSTACKTOP
+      00000000H   SYMBOL    NUMBER   ---       PDATALEN
+      00000000H   SYMBOL    NUMBER   ---       PDATASTART
+      00000000H   SYMBOL    NUMBER   ---       PPAGE
+      00000000H   SYMBOL    NUMBER   ---       PPAGEENABLE
+      000000A0H   SYMBOL    DATA     ---       PPAGE_SFR
+      00000081H   SYMBOL    DATA     ---       SP
+      01000003H   SYMBOL    CODE     ---       STARTUP1
+      00000000H   SYMBOL    NUMBER   ---       XBPSTACK
+      00000000H   SYMBOL    NUMBER   ---       XBPSTACKTOP
+      00001D53H   SYMBOL    NUMBER   ---       XDATALEN
+      01000011H   SYMBOL    CODE     ---       XDATALOOP
+      0000E000H   SYMBOL    NUMBER   ---       XDATASTART
+      01000000H   LINE      CODE     ---       #126
+      01000003H   LINE      CODE     ---       #133
+      01000005H   LINE      CODE     ---       #134
+      01000006H   LINE      CODE     ---       #135
+      01000007H   LINE      CODE     ---       #136
+      01000009H   LINE      CODE     ---       #140
+      0100000CH   LINE      CODE     ---       #141
+      0100000EH   LINE      CODE     ---       #143
+      01000010H   LINE      CODE     ---       #147
+      01000011H   LINE      CODE     ---       #148
+      01000012H   LINE      CODE     ---       #149
+      01000013H   LINE      CODE     ---       #150
+      01000015H   LINE      CODE     ---       #151
+LX51 LINKER/LOCATER V4.41                                                             01/04/2022  08:02:17  PAGE 7
+
+
+      01000017H   LINE      CODE     ---       #185
+      0100001AH   LINE      CODE     ---       #196
+
+      ---         MODULE    ---      ---       APP
+      0200E019H   PUBLIC    XDATA    BYTE      SchedulerBasicP__m_head
+      0200E017H   PUBLIC    XDATA    WORD      TOS_NODE_ID
+      0200E013H   PUBLIC    XDATA    DWORD     McuSleepLockManP__0__lock_bitmap
+      0200E012H   PUBLIC    XDATA    BYTE      current_task_id
+      0200E010H   PUBLIC    XDATA    WORD      TOS_IEEE_SADDR
+      0200E00EH   PUBLIC    XDATA    WORD      TOS_IEEE_PANID
+      0200E00DH   PUBLIC    XDATA    ---       SchedulerBasicP__m_next
+      0200E00CH   PUBLIC    XDATA    BYTE      ActiveMessageAddressC__group
+      0200E00BH   PUBLIC    XDATA    BYTE      McuSleepP__m_need_sleep
+      0200E009H   PUBLIC    XDATA    WORD      ActiveMessageAddressC__addr
+      0200E008H   PUBLIC    XDATA    BYTE      SchedulerBasicP__m_tail
+      0200E000H   PUBLIC    XDATA    ---       FlashIEEEP__m_ieee
+      0100028AH   PUBLIC    CODE     ---       main
+      0100046CH   PUBLIC    CODE     ---       ___nesc_atomic_end
+      01000464H   PUBLIC    CODE     ---       __nesc_atomic_start
+
+      01000464H   BLOCK     CODE     ---       LVL=0
+      01000464H   BLOCK     CODE     NEAR LAB  LVL=1
+      00000007H   SYMBOL    DATA     VOID      tmp
+      ---         BLOCKEND  ---      ---       LVL=1
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      0100046CH   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      010003FDH   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      010004F6H   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      0100043EH   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      01000256H   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      010000FDH   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      0100009DH   BLOCK     CODE     ---       LVL=0
+      0100009DH   BLOCK     CODE     NEAR LAB  LVL=1
+      00000005H   SYMBOL    DATA     VOID      i
+      00000006H   SYMBOL    DATA     VOID      old_code_map
+      ---         BLOCKEND  ---      ---       LVL=1
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      010004BDH   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      010004C0H   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      010004C3H   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      010004C6H   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      010004A1H   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+LX51 LINKER/LOCATER V4.41                                                             01/04/2022  08:02:17  PAGE 8
+
+
+
+      010004A5H   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      010004A9H   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      010004ADH   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      010004C9H   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      010004CCH   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      010004CFH   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      010004B1H   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      010004B5H   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      010004B9H   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      010002EEH   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      010003BEH   BLOCK     CODE     ---       LVL=0
+      010003BEH   BLOCK     CODE     NEAR LAB  LVL=1
+      00000007H   SYMBOL    DATA     VOID      new_clkcon
+      ---         BLOCKEND  ---      ---       LVL=1
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      01000472H   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      010004D2H   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      010004D5H   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      01000478H   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      0100047EH   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      010004D8H   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      010004DBH   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      010004DEH   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      010004E1H   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      01000484H   BLOCK     CODE     ---       LVL=0
+LX51 LINKER/LOCATER V4.41                                                             01/04/2022  08:02:17  PAGE 9
+
+
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      0100048AH   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      010004E4H   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      010004E7H   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      01000490H   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      010004EAH   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      010004EDH   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      010003E1H   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      0100031BH   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      01000397H   BLOCK     CODE     ---       LVL=0
+      01000399H   BLOCK     CODE     NEAR LAB  LVL=1
+      0200E01BH   SYMBOL    XDATA    VOID      __nesc_atomic
+      010003A1H   BLOCK     CODE     NEAR LAB  LVL=2
+      0200E01CH   SYMBOL    XDATA    VOID      __nesc_temp
+      ---         BLOCKEND  ---      ---       LVL=2
+      ---         BLOCKEND  ---      ---       LVL=1
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      0100049CH   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      010004F7H   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      010004F0H   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      010004F8H   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      01000220H   BLOCK     CODE     ---       LVL=0
+      01000220H   BLOCK     CODE     NEAR LAB  LVL=1
+      0200E01EH   SYMBOL    XDATA    VOID      __nesc_atomic
+      01000228H   BLOCK     CODE     NEAR LAB  LVL=2
+      0200E01FH   SYMBOL    XDATA    VOID      __nesc_temp
+      ---         BLOCKEND  ---      ---       LVL=2
+      ---         BLOCKEND  ---      ---       LVL=1
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      010002BDH   BLOCK     CODE     ---       LVL=0
+      010002DAH   BLOCK     CODE     NEAR LAB  LVL=1
+      0200E01DH   SYMBOL    XDATA    VOID      __nesc_atomic
+      ---         BLOCKEND  ---      ---       LVL=1
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      01000496H   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+LX51 LINKER/LOCATER V4.41                                                             01/04/2022  08:02:17  PAGE 10
+
+
+      0100042BH   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      010001A6H   BLOCK     CODE     ---       LVL=0
+      010001ADH   BLOCK     CODE     NEAR LAB  LVL=1
+      0200E01DH   SYMBOL    XDATA    VOID      id
+      ---         BLOCKEND  ---      ---       LVL=1
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      01000345H   BLOCK     CODE     ---       LVL=0
+      01000345H   BLOCK     CODE     NEAR LAB  LVL=1
+      0200E01BH   SYMBOL    XDATA    VOID      nextTask
+      01000345H   BLOCK     CODE     NEAR LAB  LVL=2
+      0200E01CH   SYMBOL    XDATA    VOID      __nesc_atomic
+      ---         BLOCKEND  ---      ---       LVL=2
+      ---         BLOCKEND  ---      ---       LVL=1
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      010004F3H   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      0100028AH   BLOCK     CODE     ---       LVL=0
+      0100028AH   BLOCK     CODE     NEAR LAB  LVL=1
+      0200E01AH   SYMBOL    XDATA    VOID      __nesc_atomic
+      ---         BLOCKEND  ---      ---       LVL=1
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      0100044EH   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      01000459H   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      01000417H   BLOCK     CODE     ---       LVL=0
+      01000417H   BLOCK     CODE     NEAR LAB  LVL=1
+      00000007H   SYMBOL    DATA     VOID      nextTask
+      0100041EH   BLOCK     CODE     NEAR LAB  LVL=2
+      0200E01BH   SYMBOL    XDATA    VOID      __nesc_temp
+      ---         BLOCKEND  ---      ---       LVL=2
+      ---         BLOCKEND  ---      ---       LVL=1
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      01000154H   BLOCK     CODE     ---       LVL=0
+      01000154H   BLOCK     CODE     NEAR LAB  LVL=1
+      00000004H   SYMBOL    DATA     VOID      i
+      00000006H   SYMBOL    DATA     VOID      j
+      ---         BLOCKEND  ---      ---       LVL=1
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      ---         MODULE    ---      ---       ?C_INIT
+      01000058H   PUBLIC    CODE     ---       ?C_START
+
+      ---         MODULE    ---      ---       ?C?ULCMP
+      010001E3H   PUBLIC    CODE     ---       ?C?ULCMP
+
+      ---         MODULE    ---      ---       ?C?MEMSET
+      010001F4H   PUBLIC    CODE     ---       ?C?MEMSET
+
+
+
+FUNCTION REGISTER MASKS
+
+
+FUNCTION . . . . . . . . . . . . . . REG MASK
+==============================================
+LX51 LINKER/LOCATER V4.41                                                             01/04/2022  08:02:17  PAGE 11
+
+
+
+___nesc_atomic_end . . . . . . . . . @0x18000800
+__nesc_atomic_start. . . . . . . . . @0x18000880
+
+
+
+*** WARNING L16: UNCALLED FUNCTION, IGNORED FOR OVERLAY PROCESS
+    NAME:    __NESC_DISABLE_INTERRUPT/APP
+
+Program Size: data=9.0 xdata=32 const=0 code=1273
+LX51 RUN COMPLETE.  1 WARNING(S),  0 ERROR(S)

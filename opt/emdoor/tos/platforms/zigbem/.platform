@@ -1,0 +1,49 @@
+
+#
+# FILE: zigbem/.platform
+# 
+# Includes that should take precedence come first.  Platforms come before
+# chips because they may override files.  These must be specified as
+# @includes instead of -I's to @opts, otherwise the %T won't be processed
+# by ncc. 
+#
+#
+
+
+
+$CR = $ENV{"TOSROOT"} if defined($ENV{"TOSROOT"});
+
+$PATH_LIST = "$ENV{'TOSROOT'}/tos/chips/cc2430 $ENV{'TOSROOT'}/tos/lib/zigbem";
+
+@dirs = `find $PATH_LIST -type d ! -regex ".*\.svn.*"`;
+chomp(@dirs);
+push(@includes, @dirs);
+
+#@dirs = `find $ENV{'TOSROOT'}/diku/common -type d \! -regex ".*\.svn.*"`;
+#chomp(@dirs);
+#push(@includes, @dirs);
+
+#qw doesn't replace variable so build list manually
+@LIST=(
+  "%T/interfaces",
+  "%T/system",
+  "%T/lib/timer",
+  "%T/lib/serial",
+  "%T/lib/power",
+  "%T/lib/net/lqi",
+);
+
+push( @includes, @LIST);
+
+
+# None of these seems to end up as commandline options!? In particular
+# target is povided by the Makefile
+
+
+
+push (@opts, qw(
+		-fnesc-no-debug
+		-fnesc-scheduler=TinySchedulerC,TinySchedulerC.TaskBasic,TaskBasic,TaskBasic,runTask,postTask
+		)
+      );
+

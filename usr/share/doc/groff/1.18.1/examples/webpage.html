@@ -1,0 +1,942 @@
+<!-- Creator     : groff version 1.18.1 -->
+<!-- CreationDate: Mon Dec 16 13:03:10 2002 -->
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta name="Content-Style" content="text/css">
+<title></title>
+</head>
+<body bgcolor="#FFFFFF">
+
+
+<p>Home of Groff (GNU Troff).</p>
+
+<p align=left><img src="img/webpage1.png"></p>
+<h2><hr> GNU Troff <a href="http://groff.ffii.org/">(Groff)</a> &mdash; a <a href="http://www.gnu.org/">GNU</a> project. Hosted by <a href="http://ffii.org/">FFII</a>. <hr></h2>
+
+
+<p><img src="img/webpage2.png" align=left width=33 height=33>
+HE groff (GNU Troff) software is a typesetting package which
+reads plain text mixed with formatting commands and produces
+formatted output. Groff now supports HTML.</p>
+<h2>Download</h2>
+
+<p><a href="ftp://groff.ffii.org/pub/groff/">Germany</a> |
+<a href="ftp://ftp.gnu.org/gnu/groff/">USA</a></p>
+
+
+<p><a href="http://www.gnu.org/copyleft/gpl.html">License</a>
+|
+<a href="http://ffii.org/mailman/listinfo/groff/">Mailing list</a>
+|
+<a href="http://gnuwin32.sf.net/packages/groffl.htm">Groff for Windows</a></p>
+
+<p>User issues lead:
+<a href="mailto:Ted.Harding@nessie.mcc.ac.uk">Ted Harding</a><br>
+Technical issues lead:
+<a href="mailto:wl@gnu.org">Werner Lemberg</a></p>
+<h2>README</h2>
+
+<p>This is the GNU groff document formatting system. The
+version number is given in the file VERSION.</p>
+
+<p>Included in this release are implementations of troff,
+pic, eqn, tbl, refer, the &minus;man macros and the
+&minus;ms macros, and drivers for PostScript, TeX dvi
+format, HP LaserJet 4 printers, HTML format (still alpha),
+and typewriter-like devices. Also included is a modified
+version of the Berkeley &minus;me macros, an enhanced
+version of the X11 xditview previewer, and an implementation
+of the &minus;mm macros contributed by
+<a href="mailto:jh@axis.se">J&ouml;rgen H&auml;gg</a>.</p>
+
+<p>See the file INSTALL for installation instructions. You
+will require a C++ compiler.</p>
+
+<p>The file NEWS describes recent user-visible changes to
+groff.</p>
+
+<p>Groff is free software. See the file COPYING for copying
+permission.</p>
+
+<p>The file PROBLEMS describes various problems that have
+been encountered in compiling, installing, and running
+groff.</p>
+
+<p>For the moment, the documentation assumes that you are
+already familiar with the Unix versions of troff,
+&minus;man, &minus;ms and the preprocessors.</p>
+
+<p>The most recent released version of groff is always
+available by anonymous ftp from ftp.gnu.org in the directory
+pub/gnu/groff.</p>
+
+<p>A CVS repository is now available, containing the
+current development version of groff. You can access it with
+the commands</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+<pre>export CVSROOT=:pserver:anoncvs@anoncvs.ffii.org:/var/cvs
+cvs login
+cvs -z9 co groff
+</pre>
+</td>
+</table>
+
+<p>(if the prompt for the password appears, just press the
+enter key). After a successful login you no longer need the
+first two commands; an update of a checked out repository
+should be done with</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+<p><tt>cvs -z9 update -dP</tt></p>
+</td>
+</table>
+
+<p>Please read the info pages of cvs for further
+details.</p>
+
+<p>Alternatively, you can download snapshots (which are
+updated twice a day) from
+<a href="ftp://ftp.ffii.org/pub/groff/devel/groff-current.tar.gz">here</a>
+or a diff file relative to the latest official groff release
+as:</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+
+<p><tt>ftp://ftp.ffii.org/pub/groff/devel/groff-&lang;version&rang;-current.diff.gz</tt></p>
+</td>
+</table>
+
+<p>Assuming that groff-&lang;version&rang;.tar.gz and
+groff-&lang;version&rang;-current.diff.gz are in the same
+directory, do the following to apply the diff file:</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+<pre>tar xzvf groff-&lang;version&rang;.tar.gz
+cd groff-&lang;version&rang;
+gunzip -c ../groff-&lang;version&rang;-current.diff.gz | patch -p1
+</pre>
+</td>
+</table>
+
+<p>Please report bugs using the form in the file
+BUG-REPORT; the idea of this is to make sure that FSF has
+all the information it needs to fix the bug. At the very
+least, read the BUG-REPORT form and make sure that you
+supply all the information that it asks for. Even if you are
+not sure that something is a bug, report it using
+BUG-REPORT: this will enable us to determine whether it
+really is a bug or not.</p>
+
+<p>Three mailing lists are available:</p>
+
+<p><ul> <li>
+<a href="mailto:bug-groff@gnu.org">bug-groff@gnu.org</a> for
+reporting bugs</p>
+
+<p><li> <a href="mailto:groff@gnu.org">groff@gnu.org</a>
+for general discussion of groff</p>
+
+<p><li>
+<a href="mailto:groff-commit@ffii.org">groff-commit@ffii.org</a>
+a read-only list showing logs of commitments to the CVS
+repository </ul></p>
+
+<p>Note that groff@gnu.org is an alias for
+<a href="mailto:groff@ffii.org">groff@ffii.org</a>; you must
+be subscribed to the &lsquo;groff&rsquo; list to send
+mails.</p>
+
+<p>To subscribe, send e-mail to
+&lang;list&rang;-request@&lang;domain&rang; (example:
+<a href="mailto:groff-request@ffii.org">groff-request@ffii.org</a>)
+with the word &lsquo;subscribe&rsquo; in either the subject
+or body of the e-mail (don&rsquo;t include the quotes).</p>
+
+<p>GNU groff was written by
+<a href="mailto:jjc@jclark.com">James Clark</a>. It is now
+maintained by
+<a href="mailto:Ted.Harding@nessie.mcc.ac.uk">Ted Harding</a>
+and <a href="mailto:wl@gnu.org">Werner Lemberg</a>.</p>
+<h2>NEWS VERSION 1.18.1</h2>
+<h2>troff</h2>
+
+<p><ul> <li> The non-slanted PostScript font definition
+files have been regenerated to include left and right italic
+correction values. Applying those to a glyph (this is,
+prepending the glyph with &lsquo;\,&rsquo; and appending
+&lsquo;\/&rsquo; to the glyph) sets the glyph width to the
+real value given by the horizontal bounding box values.
+Without those escapes, the advance width for the particular
+glyph is used (which can differ considerably).</p>
+
+<p>Most users will neither need this feature nor notice a
+difference in existing documents (provided \, and \/ is used
+as advertised, namely for italic fonts only); its main goal
+is to improve image generation with grohtml.</p>
+
+<p>This is an experimental change, and feedback is welcome.
+</ul></p>
+<h2>tbl</h2>
+
+<p><ul> <li> Added global option &lsquo;nospaces&rsquo; to
+ignore leading and trailing spaces in data items. </ul></p>
+<h2>grolbp</h2>
+
+<p><ul> <li> The option &minus;w (&minus;&minus;linewidth)
+has been added (similar to other device drivers) to set the
+default line width. </ul></p>
+<h2>grn</h2>
+
+<p><ul> <li> Support for b-spline and Bezier curves has
+been added. </ul></p>
+<h2>groffer</h2>
+
+<p><ul> <li> New option &minus;&minus;shell to select the
+shell under wich groffer shall run. </ul></p>
+<h2>Macro Packages</h2>
+
+<p><ul> <li> The string &lsquo;Am&rsquo; (producing an
+ampersand) has been added to mdoc for compatibility with
+NetBSD.</p>
+
+<p><li> &lsquo;.IX&rsquo; is now deprecated for mom; you
+should use &lsquo;.IQ&rsquo; (Indent Quit) instead.</p>
+
+<p><li> In mom, new inlines &lsquo;FWD&rsquo;,
+&lsquo;BCK&rsquo;, &lsquo;UP&rsquo;, and &lsquo;DOWN&rsquo;
+deal with horizontal and vertical movements; please refer to
+contrib/mom/NEWS for more details.</p>
+
+<p><li> New macro ENDNOTES_HDRFTR_CENTER for mom to better
+control headers. </ul></p>
+<h2>Miscellaneous</h2>
+
+<p><ul> <li> The &lsquo;papersize&rsquo; keyword in the
+DESC file now accepts multiple arguments. It is scanned from
+left to the right, and the first valid argument is used.
+This makes it possible to provide a fallback paper size.</p>
+
+<p>Example:</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+<p><tt>papersize /etc/papersize a4</tt></p>
+</td>
+</table>
+
+<p><li> A local font directory has been prepended to the
+default font path; it defaults to
+/usr/local/share/groff/site-font. Similar to the normal font
+searching process, files must be placed into a dev<i>XXX</i>
+subdirectory, e.g.</p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+<p><tt>/usr/local/share/groff/site-font/devps/FOO</tt></p>
+</td>
+</table>
+
+<p>for a PostScript font definition file FOO. </ul></p>
+<h2>NEWS VERSION 1.18</h2>
+
+<p>This section describes recent user-visible changes in
+groff. Bug fixes are not described. There are more details
+in the man pages.</p>
+
+<p><big><big><font color="#FF0000">Please read the changes
+below regarding <a href="#grotty">grotty</a>, groff&rsquo;s
+tty frontend.</font></big></big></p>
+<h2>Troff</h2>
+
+<p><font color="#000000"><ul> <li> Color support has been
+added to troff and pic (and to the device drivers grops,
+grodvi, grotty, and grohtml -- other preprocessors and
+drivers will follow). A new function &lsquo;defcolor&rsquo;
+defines colors; the escape sequence &lsquo;\m&rsquo; sets
+the drawing color, the escape sequence &lsquo;\M&rsquo;
+specifies the background color for closed objects created
+with \D&rsquo;...&rsquo; commands. &lsquo;\m[]&rsquo; and
+&lsquo;\M[]&rsquo; switch back to the previous color.
+&lsquo;\m&rsquo; and &lsquo;\M&rsquo; correspond to the new
+troff output command sets starting with &lsquo;m&rsquo; and
+&lsquo;DF&rsquo;. The device-specific default color is
+called &lsquo;default&rsquo; and can&rsquo;t be
+redefined.</font></p>
+
+<p><font color="#000000">Use the &lsquo;color&rsquo;
+request to toggle the usage of colors (default is on); the
+read-only register &lsquo;.color&rsquo; is 0 if colors are
+not active, and non-zero otherwise.</font></p>
+
+<p><font color="#000000">The old &lsquo;Df&rsquo; output
+command is mapped onto &lsquo;DFg&rsquo;; all color output
+commands don&rsquo;t change the current font position
+(consequently, &lsquo;Df&rsquo; doesn&rsquo;t
+either).</font></p>
+
+<p><font color="#000000">Outputting color can be disabled
+in troff and groff with the option &minus;c (it is always
+disabled in compatibility mode). See the section on grotty
+for the <a href="#GROFF_NO_SGR">GROFF_NO_SGR</a> environment
+variable also.</font></p>
+
+<p><font color="#000000">For defining color components as
+fractions between 0 and 1, a new scaling indicator
+&lsquo;f&rsquo; has been defined: 1f = 65536u. For testing
+whether a color is defined (with .if and .ie), a new
+conditional operator &lsquo;m&rsquo; is
+available.</font></p>
+
+<p><font color="#000000">More details can be found in the
+groff_diff.7 manual page and in groff.texinfo.</font></p>
+
+<p><font color="#000000"><li> Similar to \m and \M, \f[]
+switches back to the previous font. \fP (and \f[P]) is still
+valid for backwards compatibility.</font></p>
+
+<p><font color="#000000"><li> The new escape \F is the same
+as &lsquo;.fam&rsquo;; \F[] switches back to previous family
+-- \F[P] selects family &lsquo;P&rsquo;.</font></p>
+
+<p><font color="#000000"><li> Two new glyph symbols are
+available: &lsquo;eu&rsquo; is the official Euro symbol;
+&lsquo;Eu&rsquo; is a font-specific glyph
+variant.</font></p>
+
+<p><font color="#000000"><li> The new glyph symbols
+&lsquo;t+&minus;&rsquo;, &lsquo;tdi&rsquo;, and
+&lsquo;tmu&rsquo; are textual variants of
+&lsquo;+&minus;&rsquo;, &lsquo;di&rsquo;, and
+&lsquo;mu&rsquo;, respectively.</font></p>
+
+<p><font color="#000000"><li> Latin-1 character 181 (PS
+name &lsquo;mu&rsquo;, Unicode name U+00B5 MICRO SIGN) has
+got the troff glyph name &lsquo;mc&rsquo;.</font></p>
+
+<p><font color="#000000"><li> &minus;Tutf8 is now available
+on EBCDIC hosts.</font></p>
+
+<p><font color="#000000"><li> Strings can take arguments,
+using this syntax: \*[foo arg1 arg2 ...].
+Example:</font></p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+<pre><font color="#000000">.ds xxx This is a \\$1 test.
+\*[xxx nice]
+</font></pre>
+</td>
+</table>
+
+<p><font color="#000000"><li> It is now possible to have
+whitespace between the first and second dot (or the name of
+the ending macro) to end a macro definition.
+Example:</font></p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+<pre><font color="#000000">.de !
+..
+.
+.de foo
+.  nop Hello, I&rsquo;m &lsquo;foo&rsquo;.
+.  nop I will now define &lsquo;bar&rsquo;.
+.  de bar !
+.    nop Hello, I&rsquo;m &lsquo;bar&rsquo;.
+.  !
+..
+</font></pre>
+</td>
+</table>
+
+<p><font color="#000000"><li> &lsquo;.fn&rsquo; is a new
+string-valued register which returns the (internal) real
+font name; styles and families are properly
+concatenated.</font></p>
+
+<p><font color="#000000"><li> Three new read/write
+registers &lsquo;seconds&rsquo;, &lsquo;minutes&rsquo;, and
+&lsquo;hours&rsquo; contain the current time, set at
+start-up of troff. Use the &lsquo;af&rsquo; request to
+control their output format.</font></p>
+
+<p><font color="#000000"><li> The new request
+&lsquo;fchar&rsquo; can be used to provide fallback
+characters. It has the same syntax as the &lsquo;char&rsquo;
+request; the only difference is that a character defined
+with &lsquo;.char&rsquo; hides the glyph with the same name
+in the current font, whereas a character defined with
+&lsquo;.fchar&rsquo; is checked only if the particular glyph
+isn&rsquo;t found in the current font. This test happens
+before checking special fonts.</font></p>
+
+<p><font color="#000000"><li> In analogy to the
+&lsquo;tmc&rsquo; request, &lsquo;.writec&rsquo; is the same
+as &lsquo;.write&rsquo; but doesn&rsquo;t emit a final
+newline.</font></p>
+
+<p><font color="#000000"><li> The new request
+&lsquo;itc&rsquo; is a variant of &lsquo;.it&rsquo; for
+which a line interrupted with \c counts as one input
+line.</font></p>
+
+<p><font color="#000000"><li> Two new requests
+&lsquo;ds1&rsquo; and &lsquo;as1&rsquo; which are similar to
+&lsquo;ds&rsquo; and &lsquo;as&rsquo; but with compatibility
+mode disabled during expansion of strings defined by
+them.</font></p>
+
+<p><font color="#000000"><li> The syntax of the
+&lsquo;substring&rsquo; request has been changed: The first
+character in a string now has index 0, the last character
+has index &minus;1. Note that this is an incompatible
+change.</font></p>
+
+<p><font color="#000000"><li> To emit strings directly to
+the intermediate output, a new &lsquo;output&rsquo; request
+has been added; it is similar to &lsquo;\!&rsquo; used at
+the top level.</font></p>
+
+<p><font color="#000000"><li> &lsquo;.hpf&rsquo; has been
+extended. It can now handle most TeX hyphenation pattern
+files without modification. To do that, the commands
+\patterns, \hyphenation, and \endinput are recognized.
+Please refer to groff_diff.7 for more
+information.</font></p>
+
+<p><font color="#000000"><li> &lsquo;hpfcode&rsquo; is a
+new request to provide an input encoding mapping for the
+&lsquo;hpf&rsquo; request.</font></p>
+
+<p><font color="#000000"><li> The new request
+&lsquo;hpfa&rsquo; appends hyphenation patterns
+(&lsquo;hpf&rsquo; replaces already existing
+patterns).</font></p>
+
+<p><font color="#000000"><li> A new request
+&lsquo;ami&rsquo; (append macro indirect) has been added.
+The first and second parameter of &lsquo;ami&rsquo; are
+taken from string registers rather than directly; this very
+special request is needed to make &lsquo;trace.tmac&rsquo;
+independent from the escape character (which might even be
+disabled).</font></p>
+
+<p><font color="#000000"><li> The new request
+&lsquo;sizes&rsquo; is similar to the &lsquo;sizes&rsquo;
+command in DESC files. It expects the same syntax; the data
+must be on a single line, and the final &lsquo;0&rsquo; can
+be omitted.</font></p>
+
+<p><font color="#000000"><li> &lsquo;trin&rsquo; (translate
+input) is a new request which is similar to &lsquo;tr&rsquo;
+with the exception that the &lsquo;asciify&rsquo; request
+will use the character code (if any) before the character
+translation. Example:</font></p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+<pre><font color="#000000">.trin ax
+.di xxx
+a
+.br
+.di
+.xxx
+.trin aa
+.asciify xxx
+.xxx
+</font></pre>
+</td>
+</table>
+
+<p><font color="#000000">The result is &lsquo;x a&rsquo;.
+Using &lsquo;tr&rsquo;, the result would be &lsquo;x
+x&rsquo;.</font></p>
+
+<p><font color="#000000"><li> The request &lsquo;pvs&rsquo;
+isn&rsquo;t new, but hasn&rsquo;t been documented before. It
+adds vertical space after a line has been output. This makes
+it an alternative to the &lsquo;ls&rsquo; request to produce
+double-spaced documents. The read-only register
+&lsquo;.pvs&rsquo; holds the current amount of the
+post-vertical line space.</font></p>
+
+<p><font color="#000000"><li> For compatibility with plan
+9&rsquo;s troff, multiple &lsquo;pi&rsquo; requests are
+supported:</font></p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+<pre><font color="#000000">.pi foo
+.pi bar
+</font></pre>
+</td>
+</table>
+
+<p><font color="#000000">is now equivalent to</font></p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+<p><font color="#000000"><tt>.pi foo | bar</tt></font></p>
+</td>
+</table>
+
+<p><font color="#000000"><li> A new escape sequence
+&lsquo;\O&rsquo; is available to disable and enable glyph
+output. Please see groff_diff.man and groff.texinfo for more
+details.</font></p>
+
+<p><font color="#000000"><li> The escapes &lsquo;\%&rsquo;,
+&lsquo;\&amp;&rsquo;, &lsquo;\)&rsquo;, and &lsquo;\:&rsquo;
+no longer cause an error in \X; they are ignored now.
+Additionally &lsquo;\ &rsquo; and &lsquo;\~&rsquo; are
+converted to single space characters.</font></p>
+
+<p><font color="#000000"><li> The default tab distance in
+nroff mode is now 0.8i to be compatible with UNIX
+troff.</font></p>
+
+<p><font color="#000000"><li> Using the latin-1 input
+character 0xAD (soft hyphen) for the &lsquo;shc&rsquo;
+request was a bad idea. Instead, it is now translated to
+&lsquo;\%&rsquo;, and the default hyphenation character is
+again \[hy]. Note that the glyph \[shc] is not useful for
+typographic purposes; it only exists to have glyph names for
+all latin-1 characters. </ul></font></p>
+<h2>Macro Packages</h2>
+
+<p><font color="#000000"><ul> <li>
+<a href="mailto:df191@ncf.ca">Peter Schaffter</a> has
+contributed a new major macro package called
+&lsquo;mom&rsquo;, mainly for non-scientific writers, which
+takes care of many typographic issues. It comes with a
+complete reference (in HTML format) and some examples.
+&lsquo;mom&rsquo; has been designed to format documents for
+PostScript output only.</font></p>
+
+<p><font color="#000000"><li> Two macros &lsquo;AT&rsquo;
+(AT&amp;T) and &lsquo;UC&rsquo; (Univ. of California) have
+been added to the man macros for compatibility with older
+BSD releases.</font></p>
+
+<p><font color="#000000"><li> Both the man and mdoc macro
+packages now use the LL and LT registers for setting the
+line and title length, respectively (similar to those
+registers in the ms macro package). If not set on the
+command line or in a macro file loaded before the macro
+package itself, they default to 78n in nroff mode and 6.5i
+in troff mode.</font></p>
+
+<p><font color="#000000"><li> The
+&lsquo;&minus;xwidth&rsquo; specifier in the mdoc macro
+package has been removed. Its functionality is now
+integrated directly into &lsquo;&minus;width&rsquo;.
+Similarly, &lsquo;&minus;column&rsquo; has been extended to
+has this functionality also.</font></p>
+
+<p><font color="#000000"><li> A new macro &lsquo;Ex&rsquo;
+has been added to the mdoc macro package to document an exit
+status.</font></p>
+
+<p><font color="#000000"><li> &lsquo;troff.man&rsquo; has
+been split. Differences to UNIX troff are now documented in
+the new man page &lsquo;groff_diff.man&rsquo;.</font></p>
+
+<p><font color="#000000"><li> The PSPIC macro has been
+extended to work with DVI output (&lsquo;pspic.tmac&rsquo;
+is now automatically loaded for &minus;Tdvi), using a dvips
+special to load the EPS file.</font></p>
+
+<p><font color="#000000"><li> The trace.tmac package now
+traces calls to &lsquo;am&rsquo; also. Additionally, it
+works in compatibility mode.</font></p>
+
+<p><font color="#000000"><li> &lsquo;troff.1&rsquo; has
+been split. Differences to UNIX troff are now documented in
+the new man page &lsquo;groff_diff.7&rsquo;.</font></p>
+
+<p><font color="#000000"><li> &lsquo;groff_mwww.7&rsquo;
+has been renamed to &lsquo;groff_www.7&rsquo;. The file
+mwww.tmac has been removed.</font></p>
+
+<p><font color="#000000"><li> &lsquo;groff_ms.7&rsquo; has
+been completely rewritten. It now contains a complete
+reference to the ms macros.</font></p>
+
+<p><font color="#000000"><li> &lsquo;groff_trace.7&rsquo;
+documents the trace macro package.</font></p>
+
+<p><font color="#000000"><li> Changes in
+www.tmac</font></p>
+
+<p><font color="#000000">Note that HTML support is still in
+alpha change, so it is rather likely that both macro names
+and macro syntax will change. Some of the macros mentioned
+below aren&rsquo;t really new but haven&rsquo;t been
+documented properly before.</font></p>
+
+<p><font color="#000000"><ul> <li> The following macros
+have been renamed:</font></p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+<pre><font color="#000000">MAILTO -&gt; MTO
+IMAGE  -&gt; IMG
+LINE   -&gt; HR
+</font></pre>
+</td>
+</table>
+
+<p><font color="#000000"><li> For consistency, the macros
+&lsquo;URL&rsquo;, &lsquo;FTL&rsquo;, and &lsquo;MTO&rsquo;
+now all have the address as the first parameter followed by
+the description.</font></p>
+
+<p><font color="#000000"><li> By default, grohtml generates
+links to all section headings at the top of the document.
+Use the new &lsquo;LK&rsquo; macro to specify a different
+place.</font></p>
+
+<p><font color="#000000"><li> For specifying the background
+color and a background image, use the new macros
+&lsquo;BCL&rsquo; and &lsquo;BGIMG&rsquo;,
+respectively.</font></p>
+
+<p><font color="#000000"><li> The macro &lsquo;NHR&rsquo;
+has been added; it suppresses the generation of top and
+bottom rules which grohtml emits by default.</font></p>
+
+<p><font color="#000000"><li> The new macro
+&lsquo;HX&rsquo; determines the cut-off point for automatic
+link generation to headings.</font></p>
+
+<p><font color="#000000"><li> The image position parameter
+names in &lsquo;IMG&rsquo; have been changed to
+&lsquo;&minus;L&rsquo;, &lsquo;&minus;R&rsquo;, and
+&lsquo;&minus;C&rsquo;.</font></p>
+
+<p><font color="#000000"><li> New macro &lsquo;PIMG&rsquo;
+for inclusion of a PNG image (it will automatically convert
+it into an EPS file if not &minus;Thtml is used).</font></p>
+
+<p><font color="#000000"><li> New macro &lsquo;MPIMG&rsquo;
+for putting a PNG image into the left or right margin (it
+will automatically convert it into an EPS file if not
+&minus;Thtml is used).</font></p>
+
+<p><font color="#000000"><li> New macros &lsquo;HnS&rsquo;,
+&lsquo;HnE&rsquo; to start and end a header line
+block.</font></p>
+
+<p><font color="#000000"><li> New macro &lsquo;DC&rsquo; to
+produce dropcap characters.</font></p>
+
+<p><font color="#000000"><li> New macro &lsquo;HTL&rsquo;
+to generate an HTML title line only but no H1
+heading.</font></p>
+
+<p><font color="#000000"><li> New macros &lsquo;ULS&rsquo;
+and &lsquo;ULE&rsquo; to start and end an unordered list.
+The new macro &lsquo;LI&rsquo; inserts a list item. </ul>
+</ul></font></p>
+<h2>groff</h2>
+
+<p><font color="#000000"><ul> <li> The new command line
+&lsquo;&minus;c&rsquo; disables color output (which is
+always disabled in compatibility mode). </ul></font></p>
+<h2>Nroff</h2>
+
+<p><font color="#000000"><ul> <li> Two new command line
+options &lsquo;&minus;c&rsquo; and &lsquo;&minus;C&rsquo;;
+the former passes &lsquo;&minus;c&rsquo; to grotty
+(switching to the old output scheme); the latter passes
+&lsquo;&minus;C&rsquo; to groff (enabling compatibility
+mode). </ul></font></p>
+<h2>pic</h2>
+
+<p><font color="#000000"><ul> <li> New keywords
+&lsquo;color&rsquo; (or &lsquo;colour&rsquo;,
+&lsquo;colored&rsquo;, &lsquo;coloured&rsquo;),
+&lsquo;outline&rsquo; (or &lsquo;outlined&rsquo;), and
+&lsquo;shaded&rsquo; are available. &lsquo;outline&rsquo;
+sets the color of the outline, &lsquo;shaded&rsquo; the fill
+color, and &lsquo;color&rsquo; sets both.
+Example:</font></p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+<p><font color="#000000"><tt>circle shaded &quot;green&quot;
+outline &quot;black&quot; ;</tt></font></p>
+</td>
+</table>
+
+<p><font color="#000000">Filled arrows always use the
+outline color for filling.</font></p>
+
+<p><font color="#000000">Color support for TeX output is
+not implemented yet. </ul></font></p>
+<h2>Pic2graph</h2>
+
+<p><font color="#000000"><ul> <li> A new script contributed
+by <a href="mailto:esr@thyrsus.com">Eric S. Raymond</a>. It
+converts a PIC diagram into a cropped image. Since it uses
+gs and the PNM library, virtually all graphics formats are
+available for output. </ul></font></p>
+<h2>Eqn2graph</h2>
+
+<p><font color="#000000"><ul> <li> A new script contributed
+by <a href="mailto:esr@thyrsus.com">Eric S. Raymond</a>. It
+converts an EQN diagram into a cropped image. Since it uses
+gs and the PNM library, virtually all graphics formats are
+available for output. </ul></font></p>
+<h2>Groffer</h2>
+
+<p><font color="#000000"><ul> <li> A new script contributed
+by <a href="mailto:bwarken@mayn.de">Bernd Warken</a>. It
+displays groff files and man pages on X and tty, taking care
+of most parameters automatically. </ul></font></p>
+<h2>Grog</h2>
+
+<p><font color="#000000"><ul> <li> Documents using the mom
+macro package are recognized. </ul></font></p>
+<h2>grops</h2>
+
+<p><font color="#000000"><ul> <li> Color support has been
+added.</font></p>
+
+<p><font color="#000000"><li> A new option
+&lsquo;&minus;p&rsquo; is available to select the output
+paper size. It has the same syntax as the new
+&lsquo;papersize&rsquo; keyword in the DESC file.
+</ul></font></p>
+<h2>Grodvi</h2>
+
+<p><font color="#000000"><ul> <li> By default, font sizes
+are now available in the range 5&minus;10000pt, similar to
+PS fonts. If you want the old behaviour (i.e., font sizes at
+discrete values only), insert the following at the start of
+your document:</font></p>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="90%">
+<pre><font color="#000000">.if &rsquo;\*[.T]&rsquo;dvi&rsquo; \
+.  sizes 500 600 700 800 900 1000 1095 1200 1400 1440 1600 \
+         1728 1800 2000 2074 2200 2400 2488 2800 3600
+</font></pre>
+</td>
+</table>
+
+<p><font color="#000000"><li> A new font file HBI (using
+cmssbxo10; this is slanted sans serif bold extended) has
+been added.</font></p>
+
+<p><font color="#000000"><li> Two font families are now
+available: &lsquo;T&rsquo; and &lsquo;H&rsquo;.</font></p>
+
+<p><font color="#000000"><li> EC and TC fonts have been
+integrated. Use &lsquo;&minus;mec&rsquo; (calling the file
+ec.tmac) to switch to them. Those fonts give a much better
+coverage of the symbols defined by groff than the CM
+fonts.</font></p>
+
+<p><font color="#000000">Note that ec.tmac must be called
+before any language-specific files; it doesn&rsquo;t take
+care of hcode values.</font></p>
+
+<p><font color="#000000"><li> Color support has been added.
+For drawing commands, colors are translated to gray values
+currently. </ul> <a name="grotty"></a></font></p>
+<h2>Grotty</h2>
+
+<p><font color="#000000"><ul> <li> Color support has been
+added, using the SGR (ISO 6429, sometimes called ANSI color)
+escape sequences.</font></p>
+
+<p><font color="#000000"><li> SGR escape sequences are now
+used by default for underlining and bold printing also, no
+longer using the backspace character trick. To revert to the
+old behaviour, use the &lsquo;&minus;c&rsquo;
+switch.</font></p>
+
+<p><font color="#000000">Note that you have to use the
+&lsquo;&minus;R&rsquo; option of &lsquo;less&rsquo; to make
+SGR escapes display correctly. On the other hand, terminal
+programs and consoles like &lsquo;xterm&rsquo; which support
+SGR sequences natively can directly display the output of
+grotty. Consequently, the options &lsquo;&minus;b&rsquo;,
+&lsquo;&minus;B&rsquo;, &lsquo;&minus;u&rsquo;, and
+&lsquo;&minus;U&rsquo; work only in combination with
+&lsquo;&minus;c&rsquo; and are ignored silently
+otherwise.</font></p>
+
+<p><font color="#000000">For the &lsquo;man&rsquo; program,
+it may be necessary to add the &lsquo;&minus;R&rsquo; option
+of &lsquo;less&rsquo; to the $PAGER environment variable;
+alternatively, you can use &lsquo;man&rsquo;s
+&lsquo;&minus;P&rsquo; option (or adapt its configuration
+file accordingly). See man(1) for more details.</font></p>
+
+<p><font color="#000000"><a name="GROFF_NO_SGR"></a> <li>
+If the environment variable GROFF_NO_SGR is set, SGR output
+is disabled, reverting to the old behaviour.</font></p>
+
+<p><font color="#000000"><li> A new special \X&rsquo;tty:
+sgr n&rsquo; has been added; if n is non-zero or missing,
+enable SGR output (the default).</font></p>
+
+<p><font color="#000000"><li> If the new option
+&lsquo;&minus;i&rsquo; is used (only in SGR mode), grotty
+sends escape sequences to set the italic font attribute
+instead of the underline attribute for italic fonts. Note
+that many terminals don&rsquo;t have support for this
+(including xterm). </ul></font></p>
+<h2>grohtml</h2>
+
+<p><font color="#000000"><ul> <li> Color support for glyphs
+has been added.</font></p>
+
+<p><font color="#000000"><li> New option
+&lsquo;&minus;h&rsquo; to select the style of headings in
+HTML output.</font></p>
+
+<p><font color="#000000"><li> New option
+&lsquo;&minus;b&rsquo; to set the background colour to
+white.</font></p>
+
+<p><font color="#000000"><li> New options
+&lsquo;&minus;a&rsquo; and &lsquo;&minus;g&rsquo; to control
+the number of bits for anti-aliasing used for text and
+graphics, respectively. Default value is 4; 0 means no
+anti-aliasing.</font></p>
+
+<p><font color="#000000"><li> groff character/glyph
+entities now map onto HTML 4 character entities.
+</ul></font></p>
+<h2>Grolbp</h2>
+
+<p><font color="#000000"><ul> <li> Valid paper sizes are
+now specified as with the new &lsquo;papersize&rsquo;
+keyword in the DESC file. Specifically, the old custom paper
+type format &lsquo;custAAAxBBB&rsquo; is no longer
+supported. </ul></font></p>
+<h2>Miscellaneous</h2>
+
+<p><font color="#000000"><ul> <li> A new manual page
+&lsquo;ditroff.7&rsquo; is available.</font></p>
+
+<p><font color="#000000"><li> The groff texinfo manual will
+now be installed, together with a bunch of
+examples.</font></p>
+
+<p><font color="#000000"><li> A new keyword
+&lsquo;papersize&rsquo; has been added to the DESC file
+format. Its argument is either</font></p>
+<!-- TABS -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="4" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="2%">
+
+<p><font color="#000000">&bull;</font></p>
+</td>
+<td width="8%"></td>
+<td width="80%">
+
+<p><font color="#000000">a predefined paper format (e.g.
+&lsquo;A4&rsquo; or &lsquo;letter&rsquo;)</font></p>
+</td>
+</table>
+<!-- TABS -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="4" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="2%">
+
+<p><font color="#000000">&bull;</font></p>
+</td>
+<td width="8%"></td>
+<td width="80%">
+
+<p><font color="#000000">a file name pointing to a file
+which must contain a paper size specification in its first
+line (e.g. &lsquo;/etc/papersize&rsquo;)</font></p>
+</td>
+</table>
+<!-- TABS -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="4" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="2%">
+
+<p><font color="#000000">&bull;</font></p>
+</td>
+<td width="8%"></td>
+<td width="80%">
+
+<p><font color="#000000">a custom paper size definition
+like &lsquo;35c,4i&rsquo;</font></p>
+</td>
+</table>
+
+<p><font color="#000000">See groff_font(5) for more
+details. This keyword only affects the physical dimensions
+of the output medium; grops, grolj4, and grolbp use it
+currently. troff completely ignores it. </ul> <hr>
+<i><small>This document was produced using
+<a href="http://groff.ffii.org/">groff-1.18.1</a>.<br>
+The image at the top has been contributed by Imogen Mulley
+(born 1991), based on a similar picture found on the
+<a href="http://www.gnu.org">GNU server</a>.
+<hr></small></i></font></p>
+</body>
+</html>

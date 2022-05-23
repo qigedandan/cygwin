@@ -1,0 +1,167 @@
+#!/usr/bin/perl
+# This file is part of the nesC compiler.
+#    Copyright (C) 2002 Intel Corporation
+# 
+# The attached "nesC" software is provided to you under the terms and
+# conditions of the GNU General Public License Version 2 as published by the
+# Free Software Foundation.
+# 
+# nesC is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with nesC; see the file COPYING.  If not, write to
+# the Free Software Foundation, 59 Temple Place - Suite 330,
+# Boston, MA 02111-1307, USA.
+
+use File::Basename;
+
+for ($i = 0; $i <= $#ARGV; $i++) {
+    $_ = $ARGV[$i];
+
+    if (/^-_ASM$/) {
+	# magic marker for assembler options
+	$for_assembler = 1;
+    }
+    elsif ($for_assembler) {
+	push @gcc_args, "-Wa,$_";
+    }
+    elsif (/^-/) {
+	if (/^-fsyntax-only$/) {
+	    $nocompile = 1;
+	}
+
+	if (/^-_?fnesc-conly$/) {
+	    $conly = 1;
+	}
+
+	if (/^-[_WwvpfmD]/ || /^-pedantic$/ || /^-ansi$/) {
+	    push @nesc_args, $_ unless /^-_?fnesc-.*cfile=/;
+	    $verbose = 1 if /^-v/;
+	}
+
+	if (/^-I/) {
+	    ($i, $idir) = &extractarg($i);
+	    push @nesc_args, "-I$idir";
+	}
+	elsif (/^-o/) {
+	    ($i, $objtarget) = &extractarg($i);
+	}
+	elsif (/^-S$/) {
+	    $asmonly = 1;
+	}
+	elsif (/^-_?fnesc-/) {
+	    if (/^-_?fnesc-cfile=(.*)$/) {
+		$ctarget = $1;
+	    }
+	    if (/^-_?fnesc-tmpcfile=(.*)$/) {
+		$ctarget = $1;
+		$delcfile = 1;
+	    }
+	    if (/^-_?fnesc-gcc=(.*)$/) {
+		$gcc = $1;
+	    }
+	}
+	elsif (!(/^-D/)) {
+	    if (!(/^-_?W(no-)?nesc/)) {
+		push @gcc_args, $_;
+	    }
+	}
+    }
+    else {
+	if ($source ne "") {
+	    printf STDERR "two source files specified ($source and $_)\n";
+	    exit 2;
+	}
+	$source = $_;
+    }
+}
+
+if ($source eq "") {
+    printf STDERR "no source file specified\n";
+    exit 2;
+}
+
+
+if ($ctarget eq "") {
+    if ($conly) {
+	$ctarget = $source;
+	$ctarget =~ s/\.nc$/.c/;
+    }
+    elsif ($ENV{TMP}) {
+	$ctarget = "$ENV{TMP}/nesc.$$.c";
+    }
+    else {
+	$ctarget = "/tmp/nesc.$$.c";
+    }
+    $delcfile = 1;
+}
+
+if ($objtarget eq "") {
+    $objtarget = $source;
+    $objtarget =~ s/\.nc$/.o/ unless $asmonly;
+    $objtarget =~ s/\.nc$/.s/ if $asmonly;
+}
+
+push @nesc_args, $source;
+push @nesc_args, "-o";
+if ($nocompile && !$conly) {
+    push @nesc_args, "/dev/null";
+} else {
+    push @nesc_args, $ctarget;
+}
+unshift @nesc_args, "nesc1";
+
+&vsystem(@nesc_args);
+if ($? != 0) {
+    unlink $ctarget;
+    exit 2;
+}
+exit 0 if $nocompile || $conly;
+
+push @gcc_args, "-o";
+push @gcc_args, $objtarget;
+push @gcc_args, "-S" if $asmonly;
+push @gcc_args, "-c" unless $asmonly;
+push @gcc_args, "-fdollars-in-identifiers";
+push @gcc_args, $ctarget;
+unshift @gcc_args, "-B$ENV{NCDIR}";
+unshift @gcc_args, $gcc;
+&vsystem(@gcc_args);
+unlink $ctarget if $delcfile;
+
+exit 2 if $?;
+exit 0;
+
+sub vsystem() {
+    print STDERR join(" ", @_), "\n" if $verbose;
+    system @_;
+}
+
+sub extractarg {
+    my ($i) = @_;
+
+    if (length($ARGV[$i]) == 2) {
+	return &nextarg($i);
+    }
+    else {
+	$arg = substr($ARGV[$i], 2);
+	return ($i, $arg);
+    }
+}
+
+sub nextarg {
+    my ($i) = @_;
+
+    if ($i < $#ARGV) {
+	$arg = $ARGV[++$i];
+    }
+    else {
+	printf STDERR "missing argument to $ARGV[$i]\n";
+	exit 2;
+    }
+    return ($i, $arg);
+}
+

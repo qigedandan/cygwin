@@ -1,0 +1,5 @@
+* Improve security settings for ipc-daemon. Right now,
+  we use a `wide open' security descriptor for all IPC
+  semaphores.  Might be better to steal stuff from
+  alloc_sa in cygwin's security.cc file.
+

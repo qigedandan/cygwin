@@ -1,0 +1,260 @@
+define zigbem_HELP
+
+-------------------------------------------------------------------------------
+zigbem compile:
+    Compile zigbem application.
+    *> make zigbem
+        
+-------------------------------------------------------------------------------
+zigbem compile-install:
+    Compile zigbem application and install application to the CC2430 node.
+    
+    Options:
+        NID  : Specify the node id
+        GRP  : Specify the node network group   
+    
+    examples:
+        *> make zigbem install NID=01 GRP=01
+        *> make zigbem install NID=E2 GRP=13
+   
+-------------------------------------------------------------------------------
+endef
+
+HELP = $(zigbem_HELP) $(APP_HELP)
+
+NCC = ncc
+
+BUILDDIR = build/$(PLATFORM)
+MAIN_EXE = $(BUILDDIR)/APP
+MAIN_SREC = $(BUILDDIR)/main.srec
+MAIN_IHEX = $(BUILDDIR)/app.hex
+APP_C = $(BUILDDIR)/app.c
+APP_C_TMP = $(BUILDDIR)/app.orig.c
+INSTALL_SREC = $(MAIN_SREC).out$(if $(NODEID),-$(NODEID),)
+VOLUMEFILE = volumes-at45db.xml
+
+CFLAGS += -I$(TOSROOT)/tos/platforms/$(PLATFORM)
+
+NESC_FLAGS += -conly
+PFLAGS += -Wall -Wshadow  $(NESC_FLAGS)
+PFLAGS += -target=$(PLATFORM) -fnesc-cfile=$(APP_C)
+ifdef MSG_SIZE
+PFLAGS += -DTOSH_DATA_LENGTH=$(MSG_SIZE)
+endif
+
+
+BUILDLESS_DEPS += bytes
+
+zigbem_MAKE_PATH = $(TOSROOT)/support/make/zigbem
+
+ifndef BUILD_DEPS
+  ifeq ($(filter $(BUILDLESS_DEPS),$(GOALS)),)
+    BUILD_DEPS = exe
+  endif
+endif
+
+
+
+FILTER_INLINE = 
+ifndef NO_FILTER
+	FILTER_INLINE += filterinline
+endif
+
+
+BUILD_TARGET = ncc $(POST_NCC_DEPS) $(BUILDDIR)/startup.OBJ FORCE keilhex 
+
+
+######################################## WSN ########################################
+
+## Sensor board
+ifdef ASO
+	PFLAGS += $(shell perl -e 'my @sensors=split(/,/,"$(ASO)"); foreach $$sensor(@sensors) { print " -DASO_".$$sensor; } ;')
+endif
+
+## Sensor Rate
+ifdef SPEED
+	PFLAGS += -DCONFIG_SENSOR_RATE=$(SPEED)
+endif
+
+## Board Type
+BOARD_TYPE = 1
+
+ifdef TYPE
+	PFLAGS += -DEM_NODE_TYPE=$(TYPE)
+endif
+
+ifdef CH
+	PFLAGS += -DEM_RADIO_CHANNEL=$(CH) -DCC2420_DEF_CHANNEL=$(CH)
+endif
+
+
+########################################   WSN   ########################################
+
+######################################## Program ########################################
+
+PROG_EXE = $(TOSROOT)/tools/AGTProg/SmartRFProgConsole.exe
+PROG_ACTION = prog
+
+FLASH_ID = 128
+AGT_ID = $(AGT)
+
+IEEE_ADDRESS = FF.FF.FF.FF
+
+ifdef GRP
+	NODE_GROUP = 00.$(GRP)
+endif
+
+ifdef FGRP
+	NODE_GROUP = $(FGRP)
+endif
+
+
+ifdef NID
+	NODE_ID = 00.$(NID)
+endif
+
+ifdef FNID
+	NODE_ID = $(FNID)
+endif
+
+
+ifdef NODE_GROUP
+	ifdef NODE_ID
+		PROG_ACTION = idprog
+	endif
+endif
+
+
+
+
+
+idprog:
+	@echo ""
+	@echo "---- Program $(MAIN_IHEX) from AGT to zigbem [ID:$(NODE_ID) GROUPT:$(NODE_GROUP)] ----"
+	@$(PROG_EXE) S\($(AGT_ID)\) EP F="$(MAIN_IHEX)" WI\(F=$(FLASH_ID),I=$(IEEE_ADDRESS).$(NODE_GROUP).$(NODE_ID)\) | grep -v Chipcon
+
+prog:
+	@echo ""
+	@echo "---- Program $(MAIN_IHEX) from AGT to zigbem ----"
+	@$(PROG_EXE) S\($(AGT_ID)\) EP F="$(MAIN_IHEX)" KI\(F=$(FLASH_ID)\) | grep -v Chipcon
+
+######################################## Program ########################################
+
+######################################## Radio Stack ########################################
+ifdef USE_CC2420_STACK
+include $(zigbem_MAKE_PATH)/Makefile.cc2420
+endif
+######################################## Radio Stack ########################################
+
+
+#--------------------------------------- Mcu Sleep -----------------------------------------#
+BUILD_BAT = CC2430-F128.bat
+ifdef MCU_SLEEP
+BUILD_BAT = CC2430-F128-SLEEP.bat
+PFLAGS += -DMCU_SLEEP
+endif
+#--------------------------------------- Mcu Sleep -----------------------------------------#
+
+
+
+#--------------------------------------Sensor Application------------------------------------#
+ifdef SENSOR_APP
+
+define zigbem_APP_HELP
+zigbem application:
+    ASO	 : Specify the sensor type
+    TYPE : Specify the node type value
+   
+    examples:
+        [make node application with sensor TH, and node type 1]
+        *> make zigbem ASO=TH TYPE=1 
+         
+        [make node application and install]
+        *> make zigbem ASO=T TYPE=2 install NID=03 GRP=01
+    notes:
+        For zigbem node, the NID should not = 01!
+-------------------------------------------------------------------------------
+endef
+
+APP_HELP += $(zigbem_APP_HELP)
+
+endif  #SENSOR_APP
+
+#--------For check the sensor application,  use $(SENSOR_APP_CHECK) after "include $(MAKERULES)" in your Makefile ----#
+define SENSOR_APP_CHECK
+
+endef  #SENSOR_APP_CHECK
+#--------For check the sensor application,  use $(SENSOR_APP_CHECK) after "include $(MAKERULES)" in your Makefile ----#
+
+
+
+#--------------------------------------Sensor Application------------------------------------#
+
+
+#####
+# $(APP_C) moves to app.preMangle.c
+# mangles to app.c
+# Build to .hex using CC2430-F128.bat
+
+tosimage: ihex FORCE
+	@:
+
+ihex: exe FORCE
+	@:
+
+
+apppre:
+	@mv $(APP_C) $(BUILDDIR)/app.preMangle.c
+
+
+
+filterinline:
+	@echo ""
+	@echo "-------- Filtering dummy inline --------"
+	@perl -w $(zigbem_MAKE_PATH)/filter.pl --file=$(BUILDDIR)/app.preMangle.c > $(BUILDDIR)/filter_log
+
+mangleAppC: apppre $(FILTER_INLINE)
+	@echo ""
+	@echo "-------- Mangle app.c for keil now --------"
+	@cp -f $(zigbem_MAKE_PATH)/pm0.c $(BUILDDIR)
+	@perl -w $(zigbem_MAKE_PATH)/mangleAppC.pl --KEIL --file=$(BUILDDIR)/app.preMangle.c  > $(APP_C)
+	@cp -f $(APP_C) $(BUILDDIR)/$(BUILD_LIB).c
+
+keilhex: mangleAppC
+	@echo ""
+	@echo "-------- Building Keil Hex file --------"
+	@cp $(zigbem_MAKE_PATH)/$(BUILD_BAT) $(BUILDDIR)/CC2430-F128.bat
+	@cd $(BUILDDIR) && ./CC2430-F128.bat $(WITH_LIB)
+	@bash -c "if [ -f $(COMPONENT).s ]; then mv $(COMPONENT).s build/zigbem/; fi"
+	@echo "    compiled $(COMPONENT) to a $(PLATFORM) binary"
+	@echo "Code size of app.o"
+	@grep -A 7 "MODULE INFORMATION:   STATIC OVERLAYABLE" $(BUILDDIR)/app.lst
+	@echo "Total sizes"
+	@grep "Program Size:" $(BUILDDIR)/app.map
+
+exe: $(BUILD_TARGET)
+	@echo ""
+	@echo "-------- compiling $(COMPONENT) to a $(PLATFORM) binary --------"
+
+
+
+$(BUILDDIR)/startup.OBJ: $(zigbem_MAKE_PATH)/startup.a51
+	@cp $(zigbem_MAKE_PATH)/startup.a51 $(BUILDDIR)
+	@cp $(zigbem_MAKE_PATH)/startup.bat $(BUILDDIR)
+	@cd $(BUILDDIR) && ./startup.bat 2>&1
+
+# app.c:  FORCE
+.PHONY: ncc
+ncc: builddir $(BUILD_EXTRA_DEPS)
+	@echo ""
+	@echo "-------- Compiling NESC files... --------"
+	$(NCC) -S $(OPTFLAGS) $(CFLAGS) $(PFLAGS) $(WIRING_CHECK_FLAGS) $(COMPONENT).nc
+
+ifdef WIRING_CHECK_FILE
+	@nescc-wiring $(WIRING_CHECK_FILE)
+endif
+	@echo ""
+	@echo "-------- compiled $(COMPONENT) to $(APP_C) --------"
+
+builddir: FORCE
+	@mkdir -p $(BUILDDIR)

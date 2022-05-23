@@ -1,0 +1,38 @@
+
+
+#include "mcs51hardware.h"
+#include <CC2430Timer.h>
+
+
+module McuSleepC {
+  provides {
+    interface McuSleep;
+    interface McuPowerState;
+  }
+}
+implementation {
+  
+  async command void McuSleep.sleep() {
+    // Allow interrupts to squize in... (See TEP112)
+    __nesc_enable_interrupt();
+
+    // Enable and disable right after each other does not work for cc2430
+    //{ int i;  for(i=0 ; i<1 ; i++) { i; }  }
+
+    // This gives us enough of a break..
+    // (And should be changed to a real low power mode any time now =)
+    //SLEEP = (SLEEP & ~CC2430_SLEEP_MODE_MASK) | CC2430_SLEEP_POWERMODE_0; 
+        //call Alarm.start(50000);
+        
+        if (g_ant_power_state != ANT_POWER_PM0)
+        {
+           SLEEP = (SLEEP & ~CC2430_SLEEP_MODE_MASK) | g_ant_power_state; 
+           PCON = 0x01;
+        }
+
+    //__nesc_disable_interrupt();
+  }
+
+  async command void McuPowerState.update() {
+  }
+}

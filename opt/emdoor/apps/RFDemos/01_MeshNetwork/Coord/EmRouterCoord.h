@@ -1,0 +1,5 @@
+#ifndef EMROUTERCOORD_H
+#define EMROUTERCOORD_H
+
+#endif /* EMROUTERCOORD_H */
+
